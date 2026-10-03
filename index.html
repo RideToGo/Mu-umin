@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Association Mu-umin des pays des Grands Lacs</title>
+<meta name="description" content="Association Mu-umin des pays des Grands Lacs, Québec. Une famille pour tous.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Marcellus&family=Noto+Sans+Arabic:wght@400;600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* Layout: lake-blue hero with calligraphic basmala, quiet white panels below; one accent (reed gold). */
+:root{
+  --lake:#0E4C5A; --lake-2:#1F7A86; --water:#D8EAEA; --reed:#2F6B3F;
+  --gold:#B8911F; --sand:#E7D38E; --ink:#14262B; --muted:#4F6368; --bg:#F3F7F6; --card:#FFFFFF;
+  --line:#CFDCDB; --danger:#9B2C2C; --ok:#2F6B3F; --hero:#0E4C5A; --hero-ink:#CFE3E2; --scrim:rgba(5,20,24,.55);
+  --display:"Marcellus","Palatino Linotype",Georgia,serif;
+  --body:"Source Sans 3","Segoe UI",system-ui,sans-serif;
+  --arabic:"Amiri","Traditional Arabic","Times New Roman",serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --lake:#7CC4CC; --lake-2:#5FB0B9; --water:#16343A; --reed:#7FBF8C;
+    --gold:#D9B64A; --ink:#E6EFEE; --muted:#A3B6B8; --bg:#0D1C20; --card:#132A30;
+    --line:#26444A; --danger:#E08A8A; --ok:#7FBF8C; --hero:#0A3640; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --lake:#7CC4CC; --lake-2:#5FB0B9; --water:#16343A; --reed:#7FBF8C;
+  --gold:#D9B64A; --ink:#E6EFEE; --muted:#A3B6B8; --bg:#0D1C20; --card:#132A30;
+  --line:#26444A; --danger:#E08A8A; --ok:#7FBF8C; --hero:#0A3640; color-scheme:dark;
+}
+html[lang="ar"]{--body:"Noto Sans Arabic","Segoe UI",Tahoma,sans-serif;--display:"Amiri","Traditional Arabic",serif}
+*,*::before,*::after{box-sizing:inherit}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 var(--body)}
+a{color:var(--lake-2)}
+img{max-width:100%}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.2;margin:0 0 .5em;text-wrap:balance}
+html[lang="ar"] h1,html[lang="ar"] h2,html[lang="ar"] h3{font-weight:700}
+h1{font-size:clamp(2.2rem,6vw,3.6rem)}
+h2{font-size:clamp(1.6rem,3.5vw,2.2rem);color:var(--lake)}
+h3{font-size:1.25rem}
+p{margin:0 0 1em;max-width:68ch}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:20px}
+
+/* Header */
+.ticker{position:relative;overflow:hidden;background:var(--hero);color:var(--sand);height:58px;direction:ltr;border-top:1px solid var(--line);border-bottom:1px solid rgba(231,211,142,.3)}
+.ticker-move{position:absolute;left:0;top:0;height:100%;display:inline-flex;align-items:center;gap:22px;white-space:nowrap;animation:ticker-ltr 26s linear -11s infinite;will-change:transform}
+@media (hover:hover){.ticker:hover .ticker-move{animation-play-state:paused}}
+.ticker .ar{font-family:var(--arabic);font-size:2rem;line-height:1;direction:rtl;color:var(--sand)}
+.ticker .tr{font-style:italic;font-size:1.02rem;color:var(--hero-ink)}
+@keyframes ticker-ltr{from{transform:translateX(-100%)}to{transform:translateX(100vw)}}
+@media (max-width:520px){.ticker{height:50px}.ticker .ar{font-size:1.6rem}.ticker .tr{font-size:.92rem}}
+@media (prefers-reduced-motion:reduce){.ticker-move{position:static;animation:none;width:100%;justify-content:center;flex-wrap:wrap;white-space:normal;text-align:center;gap:4px 16px}.ticker{height:auto;min-height:58px;padding-block:6px;display:flex;align-items:center}}
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--card)}
+.bar{display:flex;align-items:center;gap:12px;min-height:64px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.brand svg{flex:none}
+.brand b{font-family:"Marcellus",Georgia,serif;font-weight:400;font-size:1.2rem;line-height:1.1;display:block}
+.brand small{color:var(--muted);font-size:.8rem}
+.lang{margin-inline-start:auto;display:flex;gap:2px;border:1px solid var(--line);border-radius:999px;padding:2px}
+.lang button{border:0;background:none;color:var(--ink);font:600 .85rem var(--body);padding:5px 9px;border-radius:999px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--lake);color:var(--card)}
+.lang button[lang="ar"]{font-family:"Noto Sans Arabic",sans-serif}
+nav.main{display:flex;gap:2px;flex-wrap:wrap;width:100%;padding-bottom:8px}
+nav.main a{padding:7px 10px;border-radius:6px;text-decoration:none;color:var(--ink);font-size:.95rem}
+nav.main a:hover{background:var(--water)}
+nav.main a[aria-current="page"]{background:var(--lake);color:var(--card)}
+.menu-btn{display:none}
+@media (max-width:980px){
+  .menu-btn{display:inline-flex}
+  nav.main{display:none;position:absolute;inset-inline:0;top:100%;background:var(--card);border-bottom:1px solid var(--line);flex-direction:column;padding:8px 20px 16px}
+  nav.main.open{display:flex}
+}
+@media (max-width:520px){.brand small{display:none}.lang button{padding:5px 7px}}
+
+/* Buttons & forms */
+.btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--lake);background:var(--lake);color:var(--card);padding:10px 18px;border-radius:8px;font:600 1rem var(--body);cursor:pointer;text-decoration:none}
+.btn:hover{filter:brightness(1.1)}
+.btn.ghost{background:transparent;color:var(--lake)}
+.btn.gold{background:var(--gold);border-color:var(--gold);color:#1a1405}
+.btn.small{padding:6px 12px;font-size:.9rem}
+label{display:block;font-weight:600;font-size:.92rem;margin:0 0 4px}
+input,select,textarea{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:1rem var(--body)}
+.field{margin-bottom:14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
+@media (max-width:620px){.grid2{grid-template-columns:1fr}}
+.check{display:flex;gap:8px;align-items:center;font-weight:400}
+.check input{width:auto}
+.checks{display:flex;flex-wrap:wrap;gap:6px 18px;margin-bottom:14px}
+.seg{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.seg input{position:absolute;opacity:0;width:1px}
+.seg label{margin:0;padding:8px 14px;border:1px solid var(--line);border-radius:999px;cursor:pointer;font-weight:400}
+.seg input:checked+label{background:var(--lake);color:var(--card);border-color:var(--lake)}
+.seg input:focus-visible+label{outline:3px solid var(--gold)}
+
+/* Layout pieces */
+section.page{display:none;padding-block:40px 64px}
+section.page.active{display:block}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px;min-width:0}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:18px}
+.lead{font-size:1.15rem;color:var(--muted)}
+.tag{display:inline-block;font-size:.8rem;padding:2px 10px;border-radius:999px;background:var(--water);color:var(--lake)}
+.tag.past{background:transparent;border:1px solid var(--line);color:var(--muted)}
+.muted{color:var(--muted)}
+.note{border-inline-start:4px solid var(--gold);background:var(--card);padding:12px 16px;border-radius:8px;margin:16px 0;font-size:.95rem}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:520px}
+th,td{text-align:start;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;font-size:.9rem;color:var(--muted)}
+td.num,th.num{text-align:end;font-variant-numeric:tabular-nums;white-space:nowrap}
+#prayerTable td:first-child{white-space:nowrap}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 18px;border-bottom:1px solid var(--line)}
+.tabs button{border:0;background:none;padding:10px 14px;font:600 1rem var(--body);color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-1px}
+.tabs button[aria-selected="true"]{color:var(--lake);border-bottom-color:var(--lake)}
+
+/* Hero */
+.hero{background:var(--hero);color:#F1F7F6;position:relative;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.3fr 1fr;gap:32px;padding-block:48px 120px;position:relative;z-index:1}
+.hero .wrap>*{min-width:0}
+.hero-main{align-self:center}
+@media (max-width:860px){.hero .wrap{grid-template-columns:1fr;padding-bottom:100px}}
+.st-desc{min-width:170px}
+.hero h1{color:#fff;margin-top:6px}
+.hero p.lead{color:var(--hero-ink)}
+.hero .btn{background:var(--sand);border-color:var(--sand);color:#14262B}
+.hero .btn.ghost{background:transparent;color:#fff;border-color:#9CC7C9}
+.waves{position:absolute;left:0;right:0;bottom:0;width:100%;height:110px}
+.prayer-card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:20px}
+.prayer-card h3{color:#fff;margin-bottom:2px}
+.prayer-row{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.14);font-variant-numeric:tabular-nums;color:#F1F7F6}
+.prayer-row.next{color:var(--sand);font-weight:700}
+.prayer-row small{font-family:var(--arabic);margin-inline-start:8px;opacity:.8;font-size:1rem}
+.countdown{margin:12px 0;font-size:.95rem;color:var(--hero-ink)}
+.prayer-card .btn{font-size:.9rem;padding:6px 12px}
+
+.countries{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0;padding:0;list-style:none}
+.countries li{padding:6px 14px;border:1px solid var(--line);border-radius:999px;background:var(--card)}
+
+/* Lists */
+.item{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
+.item:last-child{border-bottom:0}
+.item>div:last-child{min-width:0}
+.date{flex:none;width:64px;text-align:center;border:1px solid var(--line);border-radius:10px;padding:6px 0;background:var(--bg);line-height:1.15}
+.date b{display:block;font-family:"Marcellus",Georgia,serif;font-size:1.5rem;font-weight:400;color:var(--lake)}
+.date small{font-size:.75rem;color:var(--muted)}
+.item h3{margin-bottom:4px}
+.item p{margin:0 0 6px;color:var(--muted);font-size:.96rem}
+.person{display:flex;gap:14px;align-items:center}
+.avatar{flex:none;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:var(--water);color:var(--lake);font-family:"Marcellus",Georgia,serif;font-size:1.3rem}
+.progress{height:12px;background:var(--water);border-radius:999px;overflow:hidden;margin:10px 0 6px}
+.progress i{display:block;height:100%;background:var(--reed);border-radius:999px;transition:width .6s}
+.big{font-family:"Marcellus",Georgia,serif;font-size:1.6rem;color:var(--lake);font-variant-numeric:tabular-nums}
+.lock{text-align:center;padding:40px 22px}
+.lock p{margin-inline:auto}
+
+/* Statements */
+.st-row{display:grid;grid-template-columns:1.2fr repeat(4,1fr) auto;gap:10px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
+.st-row.head{font-size:.85rem;color:var(--muted);font-weight:600}
+.st-row span.n{text-align:end}
+.st-row b{font-weight:600}
+@media (max-width:760px){
+  .st-row{grid-template-columns:1fr 1fr}
+  .st-row.head{display:none}
+  .st-row span.n{text-align:start}
+  .st-row span[data-l]::before{content:attr(data-l);display:block;font-size:.78rem;color:var(--muted)}
+  .st-row .btn{grid-column:1/-1;justify-self:start}
+}
+.pos{color:var(--ok)} .neg{color:var(--danger)}
+
+/* Chat */
+.chat{display:flex;flex-direction:column;height:420px}
+.msgs{flex:1;overflow-y:auto;padding:8px;display:flex;flex-direction:column;gap:8px;background:var(--bg);border-radius:8px;border:1px solid var(--line)}
+.msg{max-width:78%;padding:8px 12px;border-radius:12px;background:var(--card);border:1px solid var(--line);align-self:flex-start}
+.msg.me{align-self:flex-end;background:var(--water)}
+.msg small{display:block;color:var(--muted);font-size:.78rem}
+.chat form{display:flex;gap:8px;margin-top:10px}
+.audio-list{list-style:none;margin:0;padding:0}
+.audio-list li{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
+.arname{font-family:var(--arabic);font-size:1.3rem}
+
+/* Dialog, toast, adhan bar */
+dialog{border:1px solid var(--line);border-radius:14px;padding:0;max-width:640px;width:calc(100% - 32px);background:var(--card);color:var(--ink)}
+dialog::backdrop{background:var(--scrim)}
+.dlg-head{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:16px 20px;border-bottom:1px solid var(--line)}
+.dlg-head h3{margin:0}
+.dlg-body{padding:20px;max-height:75vh;overflow:auto}
+.x{border:0;background:none;font-size:1.6rem;line-height:1;cursor:pointer;color:var(--muted)}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:12px 20px;border-radius:10px;z-index:50;opacity:0;pointer-events:none;transition:opacity .25s;max-width:90vw}
+.toast.show{opacity:1}
+.adhan-bar{position:fixed;inset-inline:0;bottom:0;z-index:60;background:var(--hero);color:#fff;padding:14px 20px calc(14px + env(safe-area-inset-bottom,0px));display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;border-top:3px solid var(--sand)}
+.adhan-bar b{font-family:var(--display);font-size:1.3rem;font-weight:400;color:var(--sand)}
+.adhan-bar .btn{background:var(--sand);border-color:var(--sand);color:#14262B}
+
+footer{background:var(--card);border-top:1px solid var(--line);padding-block:32px;font-size:.92rem;color:var(--muted)}
+footer .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+footer b{color:var(--ink);font-family:var(--display);font-weight:400;font-size:1.1rem}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  </div>
+  <div class="wrap bar">
+    <a class="brand" href="#accueil">
+      <svg width="42" height="42" viewBox="0 0 42 42" aria-hidden="true">
+        <circle cx="21" cy="21" r="20" fill="#0E4C5A"/>
+        <path d="M25 11.83A10 10 0 1 0 25 30.17A9.5 9.5 0 1 1 25 11.83z" fill="#E7D38E"/>
+        <path d="M7 28c4-3 8-3 12 0s8 3 12 0 6-2 5-1" stroke="#9CC7C9" stroke-width="2" fill="none"/>
+      </svg>
+      <span><b>Mu-umin</b><small data-i="brand_sub"></small></span>
+    </a>
+    <div class="lang" role="group" id="langSwitch">
+      <button type="button" data-lang="fr" lang="fr">FR</button>
+      <button type="button" data-lang="en" lang="en">EN</button>
+      <button type="button" data-lang="sw" lang="sw">SW</button>
+      <button type="button" data-lang="ar" lang="ar">عربي</button>
+    </div>
+    <button class="btn ghost small menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="mainNav" data-i="menu"></button>
+    <nav class="main" id="mainNav">
+      <a href="#accueil" data-i="nav_home"></a>
+      <a href="#activites" data-i="nav_act"></a>
+      <a href="#registres" data-i="nav_reg"></a>
+      <a href="#coran" data-i="nav_quran"></a>
+      <a href="#projets" data-i="nav_proj"></a>
+      <a href="#dons" data-i="nav_don"></a>
+      <a href="#priere" data-i="nav_prayer"></a>
+      <a href="#ecouter" data-i="nav_listen"></a>
+      <a href="#responsables" data-i="nav_leaders"></a>
+      <a href="#membres" id="navMember"></a>
+    </nav>
+  </div>
+  <div class="ticker" role="marquee" aria-live="off">
+    <div class="ticker-move">
+      <span class="ar" lang="ar">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</span>
+      <span class="tr" id="basmalaTr" data-i="basmala_tr"></span>
+    </div>
+</header>
+
+<main>
+<section class="page" id="p-accueil" style="padding-top:0">
+  <div class="hero">
+    <div class="wrap">
+      <div class="hero-main">
+        <h1 data-i="hero_title"></h1>
+        <p class="lead" data-i="hero_lead"></p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:20px">
+          <a class="btn" href="#adhesion" data-i="btn_join"></a>
+          <a class="btn ghost" href="#dons" data-i="btn_support"></a>
+        </div>
+      </div>
+      <aside class="prayer-card" aria-live="polite">
+        <h3 data-i="prayer_today"></h3>
+        <p style="color:#9CC7C9;margin:0 0 10px;font-size:.9rem" id="heroDate"></p>
+        <div id="heroPrayers"></div>
+        <p class="countdown" id="countdown"></p>
+        <button class="btn" type="button" id="heroAdhan"></button>
+      </aside>
+    </div>
+    <svg class="waves" viewBox="0 0 1200 110" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 40 C150 10 300 70 450 40 S750 10 900 40 1100 70 1200 40 V110 H0z" fill="#1F7A86" opacity=".35"/>
+      <path d="M0 65 C200 35 350 95 550 65 S850 35 1000 65 1150 90 1200 70 V110 H0z" fill="#1F7A86" opacity=".55"/>
+      <path d="M0 88 C180 70 380 108 600 88 S950 70 1200 90 V110 H0z" fill="var(--bg)"/>
+    </svg>
+  </div>
+
+  <div class="wrap" style="padding-top:32px">
+    <div class="cols">
+      <div>
+        <h2 data-i="about_title"></h2>
+        <p data-i="about_text"></p>
+        <h3 data-i="countries_label" style="margin-top:18px"></h3>
+        <ul class="countries" id="countryList"></ul>
+      </div>
+      <div class="panel" style="align-self:start">
+        <h3 data-i="find_title"></h3>
+        <p class="muted" data-i="find_public"></p>
+        <p class="muted" style="margin:0" data-i="find_members"></p>
+      </div>
+    </div>
+    <h2 style="margin-top:40px" data-i="upcoming_title"></h2>
+    <div class="panel" id="homeUpcoming"></div>
+  </div>
+</section>
+
+<section class="page" id="p-activites">
+  <div class="wrap">
+    <h2 data-i="act_title"></h2>
+    <p class="lead" data-i="act_lead"></p>
+    <div class="tabs" role="tablist" data-tabs="act">
+      <button role="tab" aria-selected="true" data-val="evenements" data-i="tab_events"></button>
+      <button role="tab" aria-selected="false" data-val="visites" data-i="tab_visits"></button>
+    </div>
+    <div class="cols">
+      <div class="panel"><h3 data-i="upcoming"></h3><div id="actUpcoming"></div></div>
+      <div class="panel"><h3 data-i="past"></h3><div id="actPast"></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="p-registres">
+  <div class="wrap">
+    <h2 data-i="reg_title"></h2>
+    <p class="lead" data-i="reg_lead"></p>
+    <div class="tabs" role="tablist" data-tabs="reg">
+      <button role="tab" aria-selected="true" data-val="naissances" data-i="tab_births"></button>
+      <button role="tab" aria-selected="false" data-val="arrivants" data-i="tab_arr"></button>
+      <button role="tab" aria-selected="false" data-val="deces" data-i="tab_deaths"></button>
+    </div>
+    <div class="panel">
+      <p id="regIntro" class="muted"></p>
+      <div class="scroll"><table id="regTable"></table></div>
+      <div id="regAdd" style="margin-top:16px"></div>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="p-coran">
+  <div class="wrap">
+    <h2 data-i="quran_title"></h2>
+    <p class="lead" data-i="quran_lead"></p>
+    <div class="cols">
+      <div class="panel">
+        <h3 data-i="schedule"></h3>
+        <div class="item"><div><h3 data-i="c_kids_t"></h3><p data-i="c_kids_d"></p></div></div>
+        <div class="item"><div><h3 data-i="c_sis_t"></h3><p data-i="c_sis_d"></p></div></div>
+        <div class="item"><div><h3 data-i="c_bro_t"></h3><p data-i="c_bro_d"></p></div></div>
+        <p class="muted" style="margin-top:12px" data-i="c_online_note"></p>
+      </div>
+      <form class="panel" id="courseForm">
+        <h3 data-i="register"></h3>
+        <label data-i="participant"></label>
+        <div class="seg">
+          <input type="radio" name="age" id="c-adulte" value="adult" checked><label for="c-adulte" data-i="adult"></label>
+          <input type="radio" name="age" id="c-enfant" value="child"><label for="c-enfant" data-i="child"></label>
+        </div>
+        <label data-i="format"></label>
+        <div class="seg">
+          <input type="radio" name="mode" id="c-ligne" value="online" checked><label for="c-ligne" data-i="online"></label>
+          <input type="radio" name="mode" id="c-pres" value="inperson"><label for="c-pres" data-i="inperson"></label>
+        </div>
+        <div class="field"><label for="c-nom" data-i="p_name"></label><input id="c-nom" required></div>
+        <div class="field" id="parentField" hidden><label for="c-parent" data-i="parent"></label><input id="c-parent"></div>
+        <div class="grid2">
+          <div class="field"><label for="c-tel" data-i="phone"></label><input id="c-tel" type="tel" required></div>
+          <div class="field"><label for="c-email" data-i="email"></label><input id="c-email" type="email" required></div>
+        </div>
+        <div class="field"><label for="c-niveau" data-i="level"></label><select id="c-niveau"></select></div>
+        <button class="btn" type="submit" data-i="send_reg"></button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="p-projets">
+  <div class="wrap">
+    <h2 data-i="proj_title"></h2>
+    <div class="cols">
+      <div class="panel"><h3 data-i="proj_up"></h3><div id="projUpcoming"></div></div>
+      <div class="panel"><h3 data-i="proj_done"></h3><div id="projPast"></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="p-dons">
+  <div class="wrap">
+    <h2 data-i="don_title"></h2>
+    <p class="lead" data-i="don_lead"></p>
+    <div class="cols" id="campaigns"></div>
+  </div>
+</section>
+
+<section class="page" id="p-priere">
+  <div class="wrap">
+    <h2 data-i="prayer_title"></h2>
+    <p class="lead" data-i="prayer_lead"></p>
+    <div class="panel" style="margin-bottom:18px">
+      <div class="grid2" style="max-width:560px">
+        <div class="field"><label for="asrMethod" data-i="asr_calc"></label>
+          <select id="asrMethod"><option value="1" data-i="asr_std"></option><option value="2" data-i="asr_han"></option></select></div>
+        <div class="field"><label for="weekStart" data-i="from_date"></label><input type="date" id="weekStart"></div>
+      </div>
+      <div class="scroll"><table id="prayerTable"></table></div>
+    </div>
+    <div class="panel" id="adhanPanel">
+      <h3 data-i="adhan_title"></h3>
+      <p class="muted" data-i="adhan_desc"></p>
+      <label data-i="adhan_which"></label>
+      <div class="checks" id="adhanPrayers"></div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+        <button class="btn" type="button" id="adhanToggle"></button>
+        <button class="btn ghost" type="button" id="adhanTest" data-i="adhan_test"></button>
+      </div>
+      <p class="muted" id="adhanState" style="margin:12px 0 0" aria-live="polite"></p>
+    </div>
+    <p class="note" data-i="prayer_note"></p>
+  </div>
+</section>
+
+<section class="page" id="p-ecouter">
+  <div class="wrap">
+    <h2 data-i="listen_title"></h2>
+    <div class="tabs" role="tablist" data-tabs="aud">
+      <button role="tab" aria-selected="true" data-val="coran" data-i="tab_qaudio"></button>
+      <button role="tab" aria-selected="false" data-val="mawaidha" data-i="tab_maw"></button>
+    </div>
+    <div class="panel" id="audioBox"></div>
+  </div>
+</section>
+
+<section class="page" id="p-responsables">
+  <div class="wrap">
+    <h2 data-i="leaders_title"></h2>
+    <p class="lead" data-i="leaders_lead"></p>
+    <div class="cols" id="leaders"></div>
+  </div>
+</section>
+
+<section class="page" id="p-adhesion">
+  <div class="wrap">
+    <h2 data-i="join_title"></h2>
+    <div class="cols">
+      <form class="panel" id="joinForm">
+        <div class="grid2">
+          <div class="field"><label for="j-prenom" data-i="first"></label><input id="j-prenom" required></div>
+          <div class="field"><label for="j-nom" data-i="last"></label><input id="j-nom" required></div>
+        </div>
+        <div class="grid2">
+          <div class="field"><label for="j-tel" data-i="phone"></label><input id="j-tel" type="tel" required></div>
+          <div class="field"><label for="j-email" data-i="email"></label><input id="j-email" type="email" required></div>
+        </div>
+        <div class="field"><label for="j-adresse" data-i="address"></label><input id="j-adresse"></div>
+        <div class="grid2">
+          <div class="field"><label for="j-pays" data-i="country"></label><input id="j-pays"></div>
+          <div class="field"><label for="j-pass" data-i="password"></label><input id="j-pass" type="password" minlength="6" required></div>
+        </div>
+        <label class="check"><input type="checkbox" id="j-ok" required> <span data-i="consent"></span></label>
+        <button class="btn" type="submit" style="margin-top:16px" data-i="create"></button>
+      </form>
+      <div>
+        <div class="panel">
+          <h3 data-i="already"></h3>
+          <form id="loginForm">
+            <div class="field"><label for="l-email" data-i="email"></label><input id="l-email" type="email" required></div>
+            <div class="field"><label for="l-pass" data-i="password"></label><input id="l-pass" type="password" required></div>
+            <button class="btn" type="submit" data-i="sign_in"></button>
+          </form>
+          <p class="note" id="demoNote"></p>
+        </div>
+        <div class="panel" style="margin-top:18px">
+          <h3 data-i="why"></h3>
+          <p class="muted" style="margin:0" data-i="why_text"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="p-membres">
+  <div class="wrap" id="memberArea"></div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><b data-i="foot_name"></b><br><span data-i="foot_founded"></span></div>
+    <div><span data-i="email"></span> : info@mu-umin.ca<br><span data-i="interac"></span> : paiement@mu-umin.ca</div>
+    <div><button class="btn ghost small" id="themeBtn" type="button" data-i="theme"></button></div>
+  </div>
+</footer>
+
+<dialog id="dlg"><div class="dlg-head"><h3 id="dlgTitle"></h3><button class="x" type="button" id="dlgClose">×</button></div><div class="dlg-body" id="dlgBody"></div></dialog>
+<div class="toast" id="toast" role="status"></div>
+<div class="adhan-bar" id="adhanBar" hidden role="alert"><span><b id="adhanBarTitle"></b><br><span id="adhanBarBody"></span></span><button class="btn" type="button" id="adhanStop"></button></div>
+
+<script>
+/* ===================== Traductions ===================== */
+const I18N={
+fr:{lang_label:"Langue",basmala_tr:"Au nom d'Allah, le Tout Miséricordieux, le Très Miséricordieux.",nav_home:"Accueil",nav_act:"Activités",nav_reg:"Registres",nav_quran:"Cours de Coran",nav_proj:"Projets",nav_don:"Dons",nav_prayer:"Prière",nav_listen:"Audio et mawaidha",nav_leaders:"Responsables",nav_members:"Espace membres",brand_sub:"des pays des Grands Lacs",menu:"Menu",
+hero_title:"Une famille pour tous",hero_lead:"Fondée en 2005 à Québec par des musulmans originaires du Congo, du Burundi, de la Tanzanie et du Rwanda, l'association Mu-umin rassemble, accueille et soutient chaque musulman et musulmane, quel que soit son pays d'origine.",btn_join:"Devenir membre",btn_support:"Soutenir nos causes",
+prayer_today:"Heures de prière aujourd'hui",city:"Ville de Québec",next_prayer:(n,h,m)=>`Prochaine prière : ${n} dans ${h?h+" h ":""}${m} min`,tomorrow_fajr:"Fajr de demain : ",
+about_title:"Qui sommes-nous",about_text:"Mu-umin est une association à but non lucratif ouverte à toutes et à tous. Nous accompagnons les familles aux moments importants de la vie : la naissance d'un enfant, l'arrivée dans un nouveau pays, le deuil. Nous organisons des visites, des événements, des cours de Coran et des projets de charité ici et dans la région des Grands Lacs.",countries_label:"Nos membres viennent de",find_title:"Ce que vous trouverez ici",find_public:"Ouvert à tous les visiteurs : activités et événements, registres communautaires, cours de Coran, projets, avancement des dons, heures de prière, audio du Coran et mawaidha.",find_members:"Réservé aux membres : liste des membres et coordonnées, contributions et dépenses, relevés bancaires mensuels, discussion et appels en ligne.",upcoming_title:"Prochainement",see_all:"Voir toutes les activités",
+act_title:"Visites et événements",act_lead:"Confirmez votre présence en ligne pour nous aider à bien préparer chaque rencontre.",tab_events:"Événements",tab_visits:"Visites",upcoming:"À venir",past:"Passés",none_up:"Aucune activité planifiée pour le moment.",none_past:"Aucune activité passée.",confirm_presence:"Confirmer ma présence",confirmed:n=>`${n} personne${n>1?"s":""} confirmée${n>1?"s":""}`,finished:"Terminé",k_event:"Événement",k_visit:"Visite",rsvp_ok:"Présence confirmée. Qu'Allah vous récompense.",your_name:"Votre nom",n_people:"Nombre de personnes",phone_rem:"Téléphone (rappel)",confirm:"Confirmer",
+reg_title:"Registres de la communauté",reg_lead:"Nous célébrons les naissances, accueillons les nouveaux arrivants et accompagnons les familles endeuillées.",tab_births:"Nouveau-nés",tab_arr:"Nouveaux arrivants",tab_deaths:"Décès",intro_naissances:"Félicitations aux familles. Barakallahu lakum.",intro_arrivants:"Bienvenue ! Contactez-nous pour être jumelé avec une famille d'accueil.",intro_deces:"Inna lillahi wa inna ilayhi raji'un. Nos prières accompagnent les familles.",cols_naissances:["Date","Prénom de l'enfant","Famille","Détail"],cols_arrivants:["Date d'arrivée","Nom","Pays d'origine","Détail"],cols_deces:["Date","Défunt(e)","Lien","Détail"],reg_add_btn:"Ajouter une inscription",reg_login:"Les membres connectés peuvent ajouter une inscription.",sign_in:"Se connecter",reg_add_title:"Ajouter au registre",add:"Ajouter",reg_added:"Inscription ajoutée au registre.",
+quran_title:"Cours de Coran",quran_lead:"Lecture, tajwid et mémorisation, pour adultes et enfants, en ligne ou en présentiel.",schedule:"Horaires",c_kids_t:"Enfants (6 à 14 ans)",c_kids_d:"Samedi et dimanche, 10 h à 12 h, en présentiel. Mercredi 18 h 30 à 19 h 30, en ligne.",c_sis_t:"Adultes, sœurs",c_sis_d:"Mardi 19 h à 20 h 30, en ligne. Dimanche 14 h à 15 h 30, en présentiel.",c_bro_t:"Adultes, frères",c_bro_d:"Jeudi 19 h à 20 h 30, en ligne. Samedi 14 h à 15 h 30, en présentiel.",c_online_note:"Les cours en ligne se tiennent par vidéo. Le lien est envoyé après l'inscription.",register:"S'inscrire",participant:"Participant",adult:"Adulte",child:"Enfant",format:"Format",online:"En ligne",inperson:"Présentiel",p_name:"Nom complet du participant",parent:"Nom du parent ou tuteur",phone:"Téléphone",email:"Courriel",level:"Niveau",levels:["Débutant (alphabet arabe)","Lecture","Tajwid","Mémorisation (hifz)"],send_reg:"Envoyer l'inscription",reg_recv_t:"Inscription reçue",reg_recv:(n,e,o)=>`<p>Merci, <b>${n}</b> est bien inscrit(e).</p><p class="muted">Un responsable vous contactera à ${e} avec l'horaire${o?" et le lien de la classe virtuelle":""}.</p>`,close:"Fermer",
+proj_title:"Nos projets",proj_up:"À venir et en cours",proj_done:"Réalisés",
+don_title:"Avancement des dons de charité",don_lead:"Chaque dollar reçu est affiché ici, visible par tous, pour une gestion transparente.",of_goal:g=>`reçus sur un objectif de ${g}`,pct:(p,n)=>`${p} % atteint, ${n} donateurs`,donate:"Faire un don",donate_t:x=>`Don : ${x}`,
+pay_contrib:"Payer ma contribution",amount:"Montant (CAD)",pay_method:"Mode de paiement",interac:"Virement Interac",credit:"Carte de crédit",debit:"Carte de débit",interac_note:"Depuis votre banque, envoyez un virement Interac à <b>paiement@mu-umin.ca</b>. Le dépôt automatique est activé, aucune question de sécurité n'est requise. Indiquez votre nom dans le message, puis entrez ci-dessous le numéro de référence.",interac_ref:"Numéro de référence Interac",card_name:"Nom sur la carte",card_num:"Numéro de carte",expiry:"Expiration",cvc:"CVC",confirm_pay:"Confirmer le paiement",thanks_t:"Merci, qu'Allah vous récompense",pay_pending:"Votre virement sera confirmé par la trésorière dès réception.",pay_ok:"Paiement accepté.",by:"par",reference:"Référence",receipt:"Un reçu sera envoyé par courriel.",
+prayer_title:"Heures de prière, ville de Québec",prayer_lead:"Calculées pour Québec (46,81° N, 71,21° O), angle de 15° pour le Fajr et l'Icha (méthode ISNA, utilisée en Amérique du Nord).",asr_calc:"Calcul de l'Asr",asr_std:"Standard (Chafi'i, Maliki, Hanbali)",asr_han:"Hanafi",from_date:"À partir du",date:"Date",prayer_note:"Les heures sont calculées astronomiquement. Consultez la mosquée locale pour l'iqama et l'horaire de la prière du vendredi.",
+p_fajr:"Fajr",p_lever:"Lever du soleil",p_dhuhr:"Dhuhr",p_asr:"Asr",p_maghrib:"Maghrib",p_isha:"Icha",
+adhan_title:"Rappels d'adhan",adhan_desc:"Recevez une notification et entendez l'adhan à l'heure de chaque prière. Votre navigateur vous demandera la permission d'afficher des notifications.",adhan_enable:"Activer les rappels d'adhan",adhan_disable:"Désactiver les rappels",adhan_on:"Rappels activés. Gardez le site ouvert, même en arrière-plan.",adhan_nonotif:"Les notifications sont bloquées par ce navigateur. L'adhan jouera quand même sur cette page.",adhan_off:"Rappels désactivés.",adhan_test:"Écouter un essai",adhan_which:"Prières à rappeler",adhan_now:n=>`C'est l'heure de ${n}`,adhan_body:"Hayya 'ala as-salah. Ville de Québec.",adhan_stop:"Arrêter l'adhan",
+listen_title:"Écouter",tab_qaudio:"Audio du Coran",tab_maw:"Mawaidha et sermons",qaudio_note:"Récitations complètes et gratuites. Chaque sourate s'ouvre dans le lecteur audio de Quran.com.",listen:"Écouter",all_surahs:"Voir les 114 sourates",maw_note:"Rappels et sermons de nos imams et enseignants, en français, swahili, kinyarwanda et kirundi.",rec_soon:"Les enregistrements seront ajoutés par l'administrateur du site.",
+leaders_title:"Les responsables",leaders_lead:"Le conseil d'administration est élu par l'assemblée générale des membres.",origin:"Originaire",
+join_title:"Devenir membre",first:"Prénom",last:"Nom",address:"Adresse",country:"Pays d'origine",password:"Mot de passe",consent:"J'accepte que mes coordonnées soient visibles par les autres membres.",create:"Créer mon compte",already:"Déjà membre ?",demo_note:(e,p)=>`Compte de démonstration : <b>${e}</b>, mot de passe <b>${p}</b>`,why:"Pourquoi adhérer",why_text:"Accès à l'annuaire des membres, au suivi transparent des finances et des relevés bancaires, à la discussion et aux appels, ainsi qu'aux rappels par texto, WhatsApp ou courriel.",exists:"Un compte existe déjà avec ce courriel. Connectez-vous.",welcome:n=>`Bienvenue dans l'association, ${n} !`,bad_login:"Courriel ou mot de passe incorrect.",login_ok:n=>`Connexion réussie. As-salamu alaykum, ${n}.`,
+members_only:"Réservé aux membres",members_only_text:"La liste des membres, les contributions, les dépenses, les relevés bancaires, la discussion et les appels sont accessibles après connexion.",login_or_join:"Se connecter ou s'inscrire",salam:n=>`As-salamu alaykum, ${n}`,logout:"Se déconnecter",tab_dir:"Membres",tab_fin:"Contributions et dépenses",tab_bank:"Relevés bancaires",tab_chat:"Discussion et appels",tab_notifs:"Notifications",search_m:"Rechercher un membre",search_ph:"Nom, quartier ou pays",col_name:"Nom",col_area:"Quartier",no_match:"Aucun membre ne correspond à cette recherche.",contribs:"Contributions",expenses:"Dépenses",balance:"Solde de la période",source:"Source",object:"Objet",amount_col:"Montant",
+bank_title:"Relevés bancaires mensuels",bank_lead:"Le relevé du compte de l'association est publié chaque mois par la trésorière. Réservé aux membres.",account:"Compte d'opérations de l'association, folio ••••4417",month:"Mois",opening:"Solde d'ouverture",deposits:"Dépôts",withdrawals:"Retraits",closing:"Solde de clôture",view_st:"Voir le relevé",st_of:m=>`Relevé de ${m}`,desc:"Description",running:"Solde",bank_pdf:"Relevé officiel de la banque (PDF)",latest:"Dernier relevé",
+chat_ph:"Écrire un message",send:"Envoyer",call_title:"Appel en ligne",call_text:"Lancez un appel audio ou vidéo avec les membres. L'appel s'ouvre dans un nouvel onglet. Partagez ensuite le lien de la salle.",audio_call:"Appel audio",video_call:"Appel vidéo",call_room:"Salle",
+notif_title:"Recevoir les avis",notif_text:"Choisissez comment être informé des événements, des décès, des naissances et des rappels de contribution.",sms:"Texto (SMS)",mobile:"Numéro de cellulaire",topics:"Sujets",t_ev:"Événements et visites",t_dc:"Décès et naissances",t_dn:"Campagnes de dons et contributions",save_prefs:"Enregistrer mes préférences",prefs_saved:"Préférences enregistrées.",need_phone:"Ajoutez un numéro de cellulaire pour les textos et WhatsApp.",
+foot_name:"Association Mu-umin des pays des Grands Lacs",foot_founded:"Fondée en 2005, Québec",theme:"Changer le thème",
+dues:n=>`Cotisations mensuelles (${n} membres)`,friday:"Collecte du vendredi",picnic:"Vente de repas au pique-nique",contrib_of:n=>`Contribution de ${n}`,rent:m=>`Location de la salle (${m})`,kits:"Trousses d'accueil nouveaux arrivants",picnic_cost:"Pique-nique : nourriture et permis",funeral:"Aide funéraire, famille Bizimana",fees:"Frais bancaires",online_dons:"Dépôt des dons en ligne",
+lang_fr:"Français",lang_sw:"Swahili",lang_rw:"Kinyarwanda / Kirundi"},
+
+en:{lang_label:"Language",basmala_tr:"In the name of Allah, the Most Gracious, the Most Merciful.",nav_home:"Home",nav_act:"Activities",nav_reg:"Registers",nav_quran:"Quran classes",nav_proj:"Projects",nav_don:"Donations",nav_prayer:"Prayer",nav_listen:"Audio and mawaidha",nav_leaders:"Leadership",nav_members:"Members area",brand_sub:"of the Great Lakes countries",menu:"Menu",
+hero_title:"A family for all",hero_lead:"Founded in 2005 in Québec City by Muslims from Congo, Burundi, Tanzania and Rwanda, the Mu-umin association brings together, welcomes and supports every Muslim, whatever their country of origin.",btn_join:"Become a member",btn_support:"Support our causes",
+prayer_today:"Today's prayer times",city:"Québec City",next_prayer:(n,h,m)=>`Next prayer: ${n} in ${h?h+" h ":""}${m} min`,tomorrow_fajr:"Tomorrow's Fajr: ",
+about_title:"Who we are",about_text:"Mu-umin is a non-profit association open to everyone. We stand with families at life's important moments: the birth of a child, arriving in a new country, the loss of a loved one. We organize visits, events, Quran classes and charity projects here and in the Great Lakes region.",countries_label:"Our members come from",find_title:"What you'll find here",find_public:"Open to all visitors: activities and events, community registers, Quran classes, projects, donation progress, prayer times, Quran audio and mawaidha.",find_members:"Members only: member directory and contact details, contributions and expenses, monthly bank statements, chat and online calls.",upcoming_title:"Coming up",see_all:"See all activities",
+act_title:"Visits and events",act_lead:"Confirm your attendance online to help us prepare each gathering.",tab_events:"Events",tab_visits:"Visits",upcoming:"Upcoming",past:"Past",none_up:"No activities planned yet.",none_past:"No past activities.",confirm_presence:"Confirm attendance",confirmed:n=>`${n} confirmed`,finished:"Ended",k_event:"Event",k_visit:"Visit",rsvp_ok:"Attendance confirmed. May Allah reward you.",your_name:"Your name",n_people:"Number of people",phone_rem:"Phone (reminder)",confirm:"Confirm",
+reg_title:"Community registers",reg_lead:"We celebrate births, welcome newcomers and support grieving families.",tab_births:"Newborns",tab_arr:"Newcomers",tab_deaths:"Deaths",intro_naissances:"Congratulations to the families. Barakallahu lakum.",intro_arrivants:"Welcome! Contact us to be paired with a host family.",intro_deces:"Inna lillahi wa inna ilayhi raji'un. Our prayers are with the families.",cols_naissances:["Date","Child's name","Family","Details"],cols_arrivants:["Arrival date","Name","Country of origin","Details"],cols_deces:["Date","Deceased","Relation","Details"],reg_add_btn:"Add an entry",reg_login:"Signed-in members can add an entry.",sign_in:"Sign in",reg_add_title:"Add to the register",add:"Add",reg_added:"Entry added to the register.",
+quran_title:"Quran classes",quran_lead:"Reading, tajwid and memorization, for adults and children, online or in person.",schedule:"Schedule",c_kids_t:"Children (ages 6 to 14)",c_kids_d:"Saturday and Sunday, 10 a.m. to noon, in person. Wednesday 6:30 to 7:30 p.m., online.",c_sis_t:"Adults, sisters",c_sis_d:"Tuesday 7 to 8:30 p.m., online. Sunday 2 to 3:30 p.m., in person.",c_bro_t:"Adults, brothers",c_bro_d:"Thursday 7 to 8:30 p.m., online. Saturday 2 to 3:30 p.m., in person.",c_online_note:"Online classes are held by video. The link is sent after registration.",register:"Register",participant:"Participant",adult:"Adult",child:"Child",format:"Format",online:"Online",inperson:"In person",p_name:"Participant's full name",parent:"Parent or guardian's name",phone:"Phone",email:"Email",level:"Level",levels:["Beginner (Arabic alphabet)","Reading","Tajwid","Memorization (hifz)"],send_reg:"Send registration",reg_recv_t:"Registration received",reg_recv:(n,e,o)=>`<p>Thank you, <b>${n}</b> is registered.</p><p class="muted">A coordinator will contact you at ${e} with the schedule${o?" and the online class link":""}.</p>`,close:"Close",
+proj_title:"Our projects",proj_up:"Upcoming and ongoing",proj_done:"Completed",
+don_title:"Charity donation progress",don_lead:"Every dollar received is shown here, visible to all, for transparent management.",of_goal:g=>`raised of a ${g} goal`,pct:(p,n)=>`${p}% reached, ${n} donors`,donate:"Donate",donate_t:x=>`Donate: ${x}`,
+pay_contrib:"Pay my contribution",amount:"Amount (CAD)",pay_method:"Payment method",interac:"Interac e-Transfer",credit:"Credit card",debit:"Debit card",interac_note:"From your bank, send an Interac e-Transfer to <b>paiement@mu-umin.ca</b>. Autodeposit is on, so no security question is needed. Put your name in the message, then enter the reference number below.",interac_ref:"Interac reference number",card_name:"Name on card",card_num:"Card number",expiry:"Expiry",cvc:"CVC",confirm_pay:"Confirm payment",thanks_t:"Thank you, may Allah reward you",pay_pending:"The treasurer will confirm your transfer once it arrives.",pay_ok:"Payment accepted.",by:"by",reference:"Reference",receipt:"A receipt will be sent by email.",
+prayer_title:"Prayer times, Québec City",prayer_lead:"Calculated for Québec City (46.81° N, 71.21° W), 15° angle for Fajr and Isha (ISNA method, used in North America).",asr_calc:"Asr calculation",asr_std:"Standard (Shafi'i, Maliki, Hanbali)",asr_han:"Hanafi",from_date:"Starting from",date:"Date",prayer_note:"Times are calculated astronomically. Check with your local mosque for iqama and Friday prayer times.",
+p_fajr:"Fajr",p_lever:"Sunrise",p_dhuhr:"Dhuhr",p_asr:"Asr",p_maghrib:"Maghrib",p_isha:"Isha",
+adhan_title:"Adhan reminders",adhan_desc:"Get a notification and hear the adhan at each prayer time. Your browser will ask for permission to show notifications.",adhan_enable:"Turn on adhan reminders",adhan_disable:"Turn off reminders",adhan_on:"Reminders on. Keep the site open, even in the background.",adhan_nonotif:"Notifications are blocked in this browser. The adhan will still play on this page.",adhan_off:"Reminders off.",adhan_test:"Play a test",adhan_which:"Prayers to remind",adhan_now:n=>`It's time for ${n}`,adhan_body:"Hayya 'ala as-salah. Québec City.",adhan_stop:"Stop the adhan",
+listen_title:"Listen",tab_qaudio:"Quran audio",tab_maw:"Mawaidha and sermons",qaudio_note:"Complete, free recitations. Each surah opens in the Quran.com audio player.",listen:"Listen",all_surahs:"See all 114 surahs",maw_note:"Reminders and sermons from our imams and teachers, in French, Swahili, Kinyarwanda and Kirundi.",rec_soon:"Recordings will be added by the site administrator.",
+leaders_title:"Leadership",leaders_lead:"The board is elected by the members' general assembly.",origin:"From",
+join_title:"Become a member",first:"First name",last:"Last name",address:"Address",country:"Country of origin",password:"Password",consent:"I agree that other members can see my contact details.",create:"Create my account",already:"Already a member?",demo_note:(e,p)=>`Demo account: <b>${e}</b>, password <b>${p}</b>`,why:"Why join",why_text:"Access to the member directory, transparent finances and bank statements, chat and calls, plus reminders by text, WhatsApp or email.",exists:"An account already uses this email. Sign in instead.",welcome:n=>`Welcome to the association, ${n}!`,bad_login:"Incorrect email or password.",login_ok:n=>`Signed in. As-salamu alaykum, ${n}.`,
+members_only:"Members only",members_only_text:"The member list, contributions, expenses, bank statements, chat and calls are available after signing in.",login_or_join:"Sign in or register",salam:n=>`As-salamu alaykum, ${n}`,logout:"Sign out",tab_dir:"Members",tab_fin:"Contributions and expenses",tab_bank:"Bank statements",tab_chat:"Chat and calls",tab_notifs:"Notifications",search_m:"Search for a member",search_ph:"Name, area or country",col_name:"Name",col_area:"Area",no_match:"No member matches this search.",contribs:"Contributions",expenses:"Expenses",balance:"Period balance",source:"Source",object:"Item",amount_col:"Amount",
+bank_title:"Monthly bank statements",bank_lead:"The treasurer publishes the association's account statement every month. Members only.",account:"Association operating account, ••••4417",month:"Month",opening:"Opening balance",deposits:"Deposits",withdrawals:"Withdrawals",closing:"Closing balance",view_st:"View statement",st_of:m=>`Statement for ${m}`,desc:"Description",running:"Balance",bank_pdf:"Official bank statement (PDF)",latest:"Latest",
+chat_ph:"Write a message",send:"Send",call_title:"Online call",call_text:"Start an audio or video call with members. The call opens in a new tab. Then share the room link.",audio_call:"Audio call",video_call:"Video call",call_room:"Room",
+notif_title:"Get notices",notif_text:"Choose how you hear about events, deaths, births and contribution reminders.",sms:"Text message (SMS)",mobile:"Mobile number",topics:"Topics",t_ev:"Events and visits",t_dc:"Deaths and births",t_dn:"Donation campaigns and contributions",save_prefs:"Save my preferences",prefs_saved:"Preferences saved.",need_phone:"Add a mobile number for text messages and WhatsApp.",
+foot_name:"Mu-umin Association of the Great Lakes Countries",foot_founded:"Founded in 2005, Québec City",theme:"Switch theme",
+dues:n=>`Monthly dues (${n} members)`,friday:"Friday collection",picnic:"Meal sales at the picnic",contrib_of:n=>`Contribution from ${n}`,rent:m=>`Hall rental (${m})`,kits:"Welcome kits for newcomers",picnic_cost:"Picnic: food and permit",funeral:"Funeral assistance, Bizimana family",fees:"Bank fees",online_dons:"Online donations deposit",
+lang_fr:"French",lang_sw:"Swahili",lang_rw:"Kinyarwanda / Kirundi"},
+
+sw:{lang_label:"Lugha",basmala_tr:"Kwa jina la Mwenyezi Mungu, Mwingi wa Rehema, Mwenye Kurehemu.",nav_home:"Mwanzo",nav_act:"Shughuli",nav_reg:"Rejista",nav_quran:"Madarasa ya Qur'ani",nav_proj:"Miradi",nav_don:"Michango",nav_prayer:"Swala",nav_listen:"Sauti na mawaidha",nav_leaders:"Viongozi",nav_members:"Eneo la wanachama",brand_sub:"wa nchi za Maziwa Makuu",menu:"Menyu",
+hero_title:"Familia kwa wote",hero_lead:"Ilianzishwa mwaka 2005 mjini Québec na Waislamu kutoka Kongo, Burundi, Tanzania na Rwanda. Jumuiya ya Mu-umin inaunganisha, inakaribisha na kumsaidia kila Muislamu, bila kujali nchi anayotoka.",btn_join:"Kuwa mwanachama",btn_support:"Saidia malengo yetu",
+prayer_today:"Nyakati za swala leo",city:"Jiji la Québec",next_prayer:(n,h,m)=>`Swala ijayo: ${n} baada ya ${h?"saa "+h+" na ":""}dakika ${m}`,tomorrow_fajr:"Alfajiri ya kesho: ",
+about_title:"Sisi ni nani",about_text:"Mu-umin ni jumuiya isiyo ya kibiashara iliyo wazi kwa kila mtu. Tunasimama na familia katika nyakati muhimu za maisha: kuzaliwa kwa mtoto, kuwasili katika nchi mpya, na msiba. Tunaandaa ziara, matukio, madarasa ya Qur'ani na miradi ya hisani hapa na katika eneo la Maziwa Makuu.",countries_label:"Wanachama wetu wanatoka",find_title:"Utakachopata hapa",find_public:"Wazi kwa wageni wote: shughuli na matukio, rejista za jamii, madarasa ya Qur'ani, miradi, maendeleo ya michango, nyakati za swala, sauti ya Qur'ani na mawaidha.",find_members:"Kwa wanachama pekee: orodha ya wanachama na mawasiliano yao, michango na matumizi, taarifa za benki za kila mwezi, mazungumzo na simu za mtandaoni.",upcoming_title:"Yanayokuja",see_all:"Tazama shughuli zote",
+act_title:"Ziara na matukio",act_lead:"Thibitisha kuhudhuria kwako mtandaoni ili kutusaidia kuandaa kila mkutano vizuri.",tab_events:"Matukio",tab_visits:"Ziara",upcoming:"Yajayo",past:"Yaliyopita",none_up:"Hakuna shughuli iliyopangwa kwa sasa.",none_past:"Hakuna shughuli zilizopita.",confirm_presence:"Thibitisha kuhudhuria",confirmed:n=>`Watu ${n} wamethibitisha`,finished:"Imekwisha",k_event:"Tukio",k_visit:"Ziara",rsvp_ok:"Kuhudhuria kumethibitishwa. Mwenyezi Mungu akulipe.",your_name:"Jina lako",n_people:"Idadi ya watu",phone_rem:"Simu (kikumbusho)",confirm:"Thibitisha",
+reg_title:"Rejista za jamii",reg_lead:"Tunasherehekea kuzaliwa, tunawakaribisha wageni wapya na tunazifariji familia zilizofiwa.",tab_births:"Watoto wachanga",tab_arr:"Wageni wapya",tab_deaths:"Vifo",intro_naissances:"Hongera kwa familia. Barakallahu lakum.",intro_arrivants:"Karibuni! Wasiliana nasi ili uunganishwe na familia mwenyeji.",intro_deces:"Inna lillahi wa inna ilayhi raji'un. Dua zetu ziko pamoja na familia.",cols_naissances:["Tarehe","Jina la mtoto","Familia","Maelezo"],cols_arrivants:["Tarehe ya kuwasili","Jina","Nchi ya asili","Maelezo"],cols_deces:["Tarehe","Marehemu","Uhusiano","Maelezo"],reg_add_btn:"Ongeza taarifa",reg_login:"Wanachama walioingia wanaweza kuongeza taarifa.",sign_in:"Ingia",reg_add_title:"Ongeza kwenye rejista",add:"Ongeza",reg_added:"Taarifa imeongezwa kwenye rejista.",
+quran_title:"Madarasa ya Qur'ani",quran_lead:"Kusoma, tajwidi na kuhifadhi, kwa watu wazima na watoto, mtandaoni au ana kwa ana.",schedule:"Ratiba",c_kids_t:"Watoto (miaka 6 hadi 14)",c_kids_d:"Jumamosi na Jumapili, 10:00 hadi 12:00, ana kwa ana. Jumatano 18:30 hadi 19:30, mtandaoni.",c_sis_t:"Watu wazima, akina dada",c_sis_d:"Jumanne 19:00 hadi 20:30, mtandaoni. Jumapili 14:00 hadi 15:30, ana kwa ana.",c_bro_t:"Watu wazima, akina kaka",c_bro_d:"Alhamisi 19:00 hadi 20:30, mtandaoni. Jumamosi 14:00 hadi 15:30, ana kwa ana.",c_online_note:"Madarasa ya mtandaoni hufanyika kwa video. Kiungo hutumwa baada ya usajili.",register:"Jisajili",participant:"Mshiriki",adult:"Mtu mzima",child:"Mtoto",format:"Mfumo",online:"Mtandaoni",inperson:"Ana kwa ana",p_name:"Jina kamili la mshiriki",parent:"Jina la mzazi au mlezi",phone:"Simu",email:"Barua pepe",level:"Kiwango",levels:["Mwanzo (alfabeti ya Kiarabu)","Kusoma","Tajwidi","Kuhifadhi (hifdh)"],send_reg:"Tuma usajili",reg_recv_t:"Usajili umepokelewa",reg_recv:(n,e,o)=>`<p>Asante, <b>${n}</b> amesajiliwa.</p><p class="muted">Mratibu atawasiliana nawe kupitia ${e} kuhusu ratiba${o?" na kiungo cha darasa la mtandaoni":""}.</p>`,close:"Funga",
+proj_title:"Miradi yetu",proj_up:"Yajayo na yanayoendelea",proj_done:"Yaliyokamilika",
+don_title:"Maendeleo ya michango ya hisani",don_lead:"Kila dola inayopokelewa inaonyeshwa hapa, wazi kwa wote, kwa usimamizi wa uwazi.",of_goal:g=>`zimepokelewa kati ya lengo la ${g}`,pct:(p,n)=>`${p}% imefikiwa, wachangiaji ${n}`,donate:"Changia",donate_t:x=>`Mchango: ${x}`,
+pay_contrib:"Lipa mchango wangu",amount:"Kiasi (CAD)",pay_method:"Njia ya malipo",interac:"Uhamisho wa Interac",credit:"Kadi ya mkopo",debit:"Kadi ya benki (debit)",interac_note:"Kutoka benki yako, tuma uhamisho wa Interac kwa <b>paiement@mu-umin.ca</b>. Uwekaji wa moja kwa moja umewashwa, hakuna swali la usalama linalohitajika. Andika jina lako kwenye ujumbe, kisha weka namba ya kumbukumbu hapa chini.",interac_ref:"Namba ya kumbukumbu ya Interac",card_name:"Jina kwenye kadi",card_num:"Namba ya kadi",expiry:"Muda wa kuisha",cvc:"CVC",confirm_pay:"Thibitisha malipo",thanks_t:"Asante, Mwenyezi Mungu akulipe",pay_pending:"Mweka hazina atathibitisha uhamisho wako utakapofika.",pay_ok:"Malipo yamekubaliwa.",by:"kwa",reference:"Kumbukumbu",receipt:"Risiti itatumwa kwa barua pepe.",
+prayer_title:"Nyakati za swala, jiji la Québec",prayer_lead:"Zimehesabiwa kwa Québec (46.81° N, 71.21° W), pembe ya 15° kwa Alfajiri na Isha (mbinu ya ISNA, inayotumika Amerika Kaskazini).",asr_calc:"Hesabu ya Alasiri",asr_std:"Kawaida (Shafi'i, Maliki, Hanbali)",asr_han:"Hanafi",from_date:"Kuanzia",date:"Tarehe",prayer_note:"Nyakati zimehesabiwa kwa elimu ya falaki. Uliza msikiti wa karibu kuhusu iqama na swala ya Ijumaa.",
+p_fajr:"Alfajiri",p_lever:"Macheo",p_dhuhr:"Adhuhuri",p_asr:"Alasiri",p_maghrib:"Magharibi",p_isha:"Isha",
+adhan_title:"Vikumbusho vya adhana",adhan_desc:"Pata arifa na usikie adhana wakati wa kila swala. Kivinjari chako kitaomba ruhusa ya kuonyesha arifa.",adhan_enable:"Washa vikumbusho vya adhana",adhan_disable:"Zima vikumbusho",adhan_on:"Vikumbusho vimewashwa. Acha tovuti wazi, hata ikiwa nyuma.",adhan_nonotif:"Arifa zimezuiwa na kivinjari hiki. Adhana bado itasikika kwenye ukurasa huu.",adhan_off:"Vikumbusho vimezimwa.",adhan_test:"Jaribu sauti",adhan_which:"Swala za kukumbushwa",adhan_now:n=>`Ni wakati wa ${n}`,adhan_body:"Hayya 'ala as-salah. Jiji la Québec.",adhan_stop:"Simamisha adhana",
+listen_title:"Sikiliza",tab_qaudio:"Sauti ya Qur'ani",tab_maw:"Mawaidha na hotuba",qaudio_note:"Visomo kamili bila malipo. Kila sura inafunguka kwenye kicheza sauti cha Quran.com.",listen:"Sikiliza",all_surahs:"Tazama sura zote 114",maw_note:"Mawaidha na hotuba za maimamu na walimu wetu, kwa Kifaransa, Kiswahili, Kinyarwanda na Kirundi.",rec_soon:"Rekodi zitaongezwa na msimamizi wa tovuti.",
+leaders_title:"Viongozi",leaders_lead:"Bodi huchaguliwa na mkutano mkuu wa wanachama.",origin:"Anatoka",
+join_title:"Kuwa mwanachama",first:"Jina la kwanza",last:"Jina la ukoo",address:"Anwani",country:"Nchi ya asili",password:"Nenosiri",consent:"Nakubali mawasiliano yangu yaonekane kwa wanachama wengine.",create:"Fungua akaunti yangu",already:"Tayari ni mwanachama?",demo_note:(e,p)=>`Akaunti ya majaribio: <b>${e}</b>, nenosiri <b>${p}</b>`,why:"Kwa nini ujiunge",why_text:"Upatikanaji wa orodha ya wanachama, fedha na taarifa za benki kwa uwazi, mazungumzo na simu, pamoja na vikumbusho kwa SMS, WhatsApp au barua pepe.",exists:"Akaunti tayari ipo kwa barua pepe hii. Tafadhali ingia.",welcome:n=>`Karibu kwenye jumuiya, ${n}!`,bad_login:"Barua pepe au nenosiri si sahihi.",login_ok:n=>`Umeingia. As-salamu alaykum, ${n}.`,
+members_only:"Kwa wanachama pekee",members_only_text:"Orodha ya wanachama, michango, matumizi, taarifa za benki, mazungumzo na simu vinapatikana baada ya kuingia.",login_or_join:"Ingia au jisajili",salam:n=>`As-salamu alaykum, ${n}`,logout:"Toka",tab_dir:"Wanachama",tab_fin:"Michango na matumizi",tab_bank:"Taarifa za benki",tab_chat:"Mazungumzo na simu",tab_notifs:"Arifa",search_m:"Tafuta mwanachama",search_ph:"Jina, mtaa au nchi",col_name:"Jina",col_area:"Mtaa",no_match:"Hakuna mwanachama anayelingana na utafutaji huu.",contribs:"Michango",expenses:"Matumizi",balance:"Salio la kipindi",source:"Chanzo",object:"Kitu",amount_col:"Kiasi",
+bank_title:"Taarifa za benki za kila mwezi",bank_lead:"Mweka hazina huchapisha taarifa ya akaunti ya jumuiya kila mwezi. Kwa wanachama pekee.",account:"Akaunti ya uendeshaji ya jumuiya, ••••4417",month:"Mwezi",opening:"Salio la mwanzo",deposits:"Amana",withdrawals:"Matoleo",closing:"Salio la mwisho",view_st:"Tazama taarifa",st_of:m=>`Taarifa ya ${m}`,desc:"Maelezo",running:"Salio",bank_pdf:"Taarifa rasmi ya benki (PDF)",latest:"Ya hivi karibuni",
+chat_ph:"Andika ujumbe",send:"Tuma",call_title:"Simu ya mtandaoni",call_text:"Anzisha simu ya sauti au video na wanachama. Simu itafunguka kwenye kichupo kipya. Kisha shiriki kiungo cha chumba.",audio_call:"Simu ya sauti",video_call:"Simu ya video",call_room:"Chumba",
+notif_title:"Pokea taarifa",notif_text:"Chagua jinsi ya kupata taarifa za matukio, vifo, kuzaliwa na vikumbusho vya michango.",sms:"Ujumbe mfupi (SMS)",mobile:"Namba ya simu ya mkononi",topics:"Mada",t_ev:"Matukio na ziara",t_dc:"Vifo na kuzaliwa",t_dn:"Kampeni za michango na ada",save_prefs:"Hifadhi mapendeleo yangu",prefs_saved:"Mapendeleo yamehifadhiwa.",need_phone:"Ongeza namba ya simu kwa SMS na WhatsApp.",
+foot_name:"Jumuiya ya Mu-umin ya Nchi za Maziwa Makuu",foot_founded:"Ilianzishwa 2005, Québec",theme:"Badilisha mandhari",
+dues:n=>`Ada za kila mwezi (wanachama ${n})`,friday:"Mchango wa Ijumaa",picnic:"Mauzo ya chakula kwenye pikiniki",contrib_of:n=>`Mchango wa ${n}`,rent:m=>`Kodi ya ukumbi (${m})`,kits:"Vifurushi vya makaribisho kwa wageni wapya",picnic_cost:"Pikiniki: chakula na kibali",funeral:"Msaada wa mazishi, familia ya Bizimana",fees:"Ada za benki",online_dons:"Amana ya michango ya mtandaoni",
+lang_fr:"Kifaransa",lang_sw:"Kiswahili",lang_rw:"Kinyarwanda / Kirundi"},
+
+ar:{lang_label:"اللغة",basmala_tr:"",nav_home:"الرئيسية",nav_act:"الأنشطة",nav_reg:"السجلات",nav_quran:"دروس القرآن",nav_proj:"المشاريع",nav_don:"التبرعات",nav_prayer:"الصلاة",nav_listen:"الصوتيات والمواعظ",nav_leaders:"المسؤولون",nav_members:"فضاء الأعضاء",brand_sub:"من دول البحيرات العظمى",menu:"القائمة",
+hero_title:"عائلة للجميع",hero_lead:"تأسست جمعية مؤمن سنة 2005 في مدينة كيبك على يد مسلمين من الكونغو وبوروندي وتنزانيا ورواندا، وهي تجمع كل مسلم ومسلمة وترحب بهم وتدعمهم، أيًّا كان بلدهم الأصلي.",btn_join:"انضم إلينا",btn_support:"ادعم مشاريعنا",
+prayer_today:"مواقيت الصلاة اليوم",city:"مدينة كيبك",next_prayer:(n,h,m)=>`الصلاة القادمة: ${n} بعد ${h?h+" س و":""}${m} د`,tomorrow_fajr:"فجر الغد: ",
+about_title:"من نحن",about_text:"مؤمن جمعية غير ربحية مفتوحة للجميع. نقف إلى جانب العائلات في لحظات الحياة المهمة: ولادة طفل، والوصول إلى بلد جديد، وفقدان عزيز. ننظم الزيارات والفعاليات ودروس القرآن والمشاريع الخيرية هنا وفي منطقة البحيرات العظمى.",countries_label:"أعضاؤنا من",find_title:"ما ستجده هنا",find_public:"متاح لجميع الزوار: الأنشطة والفعاليات، سجلات الجالية، دروس القرآن، المشاريع، تقدم التبرعات، مواقيت الصلاة، تلاوات القرآن والمواعظ.",find_members:"للأعضاء فقط: قائمة الأعضاء وبيانات الاتصال، المساهمات والمصاريف، الكشوف البنكية الشهرية، الدردشة والمكالمات عبر الإنترنت.",upcoming_title:"قريبًا",see_all:"عرض كل الأنشطة",
+act_title:"الزيارات والفعاليات",act_lead:"أكّد حضورك عبر الإنترنت لتساعدنا على التحضير الجيد لكل لقاء.",tab_events:"الفعاليات",tab_visits:"الزيارات",upcoming:"القادمة",past:"السابقة",none_up:"لا توجد أنشطة مبرمجة حاليًا.",none_past:"لا توجد أنشطة سابقة.",confirm_presence:"تأكيد الحضور",confirmed:n=>`${n} أكّدوا الحضور`,finished:"انتهى",k_event:"فعالية",k_visit:"زيارة",rsvp_ok:"تم تأكيد الحضور. جزاكم الله خيرًا.",your_name:"اسمك",n_people:"عدد الأشخاص",phone_rem:"الهاتف (للتذكير)",confirm:"تأكيد",
+reg_title:"سجلات الجالية",reg_lead:"نحتفي بالمواليد، ونرحب بالقادمين الجدد، ونواسي العائلات المكلومة.",tab_births:"المواليد",tab_arr:"القادمون الجدد",tab_deaths:"الوفيات",intro_naissances:"تهانينا للعائلات. بارك الله لكم.",intro_arrivants:"أهلًا وسهلًا! تواصلوا معنا لنربطكم بعائلة مضيفة.",intro_deces:"إنا لله وإنا إليه راجعون. دعواتنا مع العائلات.",cols_naissances:["التاريخ","اسم المولود","العائلة","تفاصيل"],cols_arrivants:["تاريخ الوصول","الاسم","البلد الأصلي","تفاصيل"],cols_deces:["التاريخ","المتوفى","صلة القرابة","تفاصيل"],reg_add_btn:"إضافة تسجيل",reg_login:"يمكن للأعضاء بعد تسجيل الدخول إضافة تسجيل.",sign_in:"تسجيل الدخول",reg_add_title:"إضافة إلى السجل",add:"إضافة",reg_added:"تمت إضافة التسجيل إلى السجل.",
+quran_title:"دروس القرآن",quran_lead:"القراءة والتجويد والحفظ، للكبار والصغار، عن بُعد أو حضوريًا.",schedule:"المواعيد",c_kids_t:"الأطفال (من 6 إلى 14 سنة)",c_kids_d:"السبت والأحد، من 10:00 إلى 12:00، حضوريًا. الأربعاء من 18:30 إلى 19:30، عن بُعد.",c_sis_t:"الكبار، الأخوات",c_sis_d:"الثلاثاء من 19:00 إلى 20:30، عن بُعد. الأحد من 14:00 إلى 15:30، حضوريًا.",c_bro_t:"الكبار، الإخوة",c_bro_d:"الخميس من 19:00 إلى 20:30، عن بُعد. السبت من 14:00 إلى 15:30، حضوريًا.",c_online_note:"تُقام الدروس عن بُعد بالفيديو، ويُرسل الرابط بعد التسجيل.",register:"التسجيل",participant:"المشارك",adult:"بالغ",child:"طفل",format:"الصيغة",online:"عن بُعد",inperson:"حضوري",p_name:"الاسم الكامل للمشارك",parent:"اسم الولي",phone:"الهاتف",email:"البريد الإلكتروني",level:"المستوى",levels:["مبتدئ (الحروف العربية)","القراءة","التجويد","الحفظ"],send_reg:"إرسال التسجيل",reg_recv_t:"تم استلام التسجيل",reg_recv:(n,e,o)=>`<p>شكرًا، تم تسجيل <b>${n}</b>.</p><p class="muted">سيتواصل معك أحد المسؤولين عبر ${e} لإرسال المواعيد${o?" ورابط الصف الافتراضي":""}.</p>`,close:"إغلاق",
+proj_title:"مشاريعنا",proj_up:"القادمة والجارية",proj_done:"المنجزة",
+don_title:"تقدم التبرعات الخيرية",don_lead:"يُعرض هنا كل دولار نتلقاه، أمام الجميع، من أجل إدارة شفافة.",of_goal:g=>`من أصل هدف قدره ${g}`,pct:(p,n)=>`تحقق ${p}٪، ${n} متبرعًا`,donate:"تبرّع",donate_t:x=>`تبرع: ${x}`,
+pay_contrib:"دفع مساهمتي",amount:"المبلغ (دولار كندي)",pay_method:"طريقة الدفع",interac:"تحويل إنتراك",credit:"بطاقة ائتمان",debit:"بطاقة خصم",interac_note:"من حسابك البنكي، أرسل تحويل إنتراك إلى <b>paiement@mu-umin.ca</b>. الإيداع التلقائي مفعّل، فلا حاجة لسؤال أمان. اكتب اسمك في الرسالة ثم أدخل رقم المرجع أدناه.",interac_ref:"رقم مرجع إنتراك",card_name:"الاسم على البطاقة",card_num:"رقم البطاقة",expiry:"تاريخ الانتهاء",cvc:"CVC",confirm_pay:"تأكيد الدفع",thanks_t:"شكرًا، جزاكم الله خيرًا",pay_pending:"ستؤكد أمينة الصندوق تحويلك فور وصوله.",pay_ok:"تم قبول الدفع.",by:"عبر",reference:"المرجع",receipt:"سيُرسل إيصال عبر البريد الإلكتروني.",
+prayer_title:"مواقيت الصلاة، مدينة كيبك",prayer_lead:"محسوبة لمدينة كيبك (46.81° شمالًا، 71.21° غربًا)، بزاوية 15° للفجر والعشاء (طريقة ISNA المعتمدة في أمريكا الشمالية).",asr_calc:"حساب العصر",asr_std:"الجمهور (الشافعي، المالكي، الحنبلي)",asr_han:"الحنفي",from_date:"ابتداءً من",date:"التاريخ",prayer_note:"المواقيت محسوبة فلكيًا. راجع المسجد المحلي لمعرفة وقت الإقامة وصلاة الجمعة.",
+p_fajr:"الفجر",p_lever:"الشروق",p_dhuhr:"الظهر",p_asr:"العصر",p_maghrib:"المغرب",p_isha:"العشاء",
+adhan_title:"التذكير بالأذان",adhan_desc:"استقبل إشعارًا واستمع إلى الأذان عند دخول وقت كل صلاة. سيطلب متصفحك الإذن بعرض الإشعارات.",adhan_enable:"تفعيل التذكير بالأذان",adhan_disable:"إيقاف التذكير",adhan_on:"التذكير مفعّل. أبقِ الموقع مفتوحًا ولو في الخلفية.",adhan_nonotif:"الإشعارات محظورة في هذا المتصفح، لكن الأذان سيُرفع في هذه الصفحة.",adhan_off:"التذكير متوقف.",adhan_test:"تجربة الصوت",adhan_which:"الصلوات المطلوب التذكير بها",adhan_now:n=>`حان الآن وقت صلاة ${n}`,adhan_body:"حيّ على الصلاة. مدينة كيبك.",adhan_stop:"إيقاف الأذان",
+listen_title:"استمع",tab_qaudio:"تلاوات القرآن",tab_maw:"المواعظ والخطب",qaudio_note:"تلاوات كاملة ومجانية. تُفتح كل سورة في مشغّل Quran.com.",listen:"استمع",all_surahs:"عرض السور الـ114",maw_note:"مواعظ وخطب أئمتنا ومعلمينا بالفرنسية والسواحيلية والكينيارواندية والكيروندية.",rec_soon:"سيضيف مشرف الموقع التسجيلات قريبًا.",
+leaders_title:"المسؤولون",leaders_lead:"ينتخب الجمع العام للأعضاء مجلس الإدارة.",origin:"من",
+join_title:"انضم إلينا",first:"الاسم",last:"اللقب",address:"العنوان",country:"البلد الأصلي",password:"كلمة المرور",consent:"أوافق على أن تكون بيانات الاتصال الخاصة بي مرئية لباقي الأعضاء.",create:"إنشاء حسابي",already:"عضو بالفعل؟",demo_note:(e,p)=>`حساب تجريبي: <b>${e}</b>، كلمة المرور <b>${p}</b>`,why:"لماذا تنضم",why_text:"الوصول إلى دليل الأعضاء، ومتابعة شفافة للمالية والكشوف البنكية، والدردشة والمكالمات، إضافة إلى التذكيرات عبر الرسائل النصية أو واتساب أو البريد الإلكتروني.",exists:"يوجد حساب بهذا البريد بالفعل. سجّل الدخول.",welcome:n=>`أهلًا بك في الجمعية يا ${n}!`,bad_login:"البريد الإلكتروني أو كلمة المرور غير صحيحة.",login_ok:n=>`تم تسجيل الدخول. السلام عليكم يا ${n}.`,
+members_only:"للأعضاء فقط",members_only_text:"قائمة الأعضاء والمساهمات والمصاريف والكشوف البنكية والدردشة والمكالمات متاحة بعد تسجيل الدخول.",login_or_join:"سجّل الدخول أو أنشئ حسابًا",salam:n=>`السلام عليكم يا ${n}`,logout:"تسجيل الخروج",tab_dir:"الأعضاء",tab_fin:"المساهمات والمصاريف",tab_bank:"الكشوف البنكية",tab_chat:"الدردشة والمكالمات",tab_notifs:"الإشعارات",search_m:"ابحث عن عضو",search_ph:"الاسم أو الحي أو البلد",col_name:"الاسم",col_area:"الحي",no_match:"لا يوجد عضو يطابق هذا البحث.",contribs:"المساهمات",expenses:"المصاريف",balance:"رصيد الفترة",source:"المصدر",object:"البيان",amount_col:"المبلغ",
+bank_title:"الكشوف البنكية الشهرية",bank_lead:"تنشر أمينة الصندوق كشف حساب الجمعية كل شهر. للأعضاء فقط.",account:"الحساب الجاري للجمعية، ••••4417",month:"الشهر",opening:"الرصيد الافتتاحي",deposits:"الإيداعات",withdrawals:"السحوبات",closing:"الرصيد الختامي",view_st:"عرض الكشف",st_of:m=>`كشف حساب ${m}`,desc:"الوصف",running:"الرصيد",bank_pdf:"الكشف الرسمي من البنك (PDF)",latest:"الأحدث",
+chat_ph:"اكتب رسالة",send:"إرسال",call_title:"مكالمة عبر الإنترنت",call_text:"ابدأ مكالمة صوتية أو مرئية مع الأعضاء. تُفتح المكالمة في علامة تبويب جديدة، ثم شارك رابط الغرفة.",audio_call:"مكالمة صوتية",video_call:"مكالمة مرئية",call_room:"الغرفة",
+notif_title:"استقبال الإشعارات",notif_text:"اختر طريقة إعلامك بالفعاليات والوفيات والمواليد وتذكيرات المساهمة.",sms:"رسالة نصية (SMS)",mobile:"رقم الهاتف المحمول",topics:"المواضيع",t_ev:"الفعاليات والزيارات",t_dc:"الوفيات والمواليد",t_dn:"حملات التبرع والمساهمات",save_prefs:"حفظ تفضيلاتي",prefs_saved:"تم حفظ التفضيلات.",need_phone:"أضف رقم الهاتف المحمول للرسائل النصية وواتساب.",
+foot_name:"جمعية مؤمن لدول البحيرات العظمى",foot_founded:"تأسست سنة 2005، كيبك",theme:"تغيير المظهر",
+dues:n=>`الاشتراكات الشهرية (${n} عضوًا)`,friday:"تبرعات يوم الجمعة",picnic:"بيع الوجبات في النزهة",contrib_of:n=>`مساهمة من ${n}`,rent:m=>`إيجار القاعة (${m})`,kits:"حقائب ترحيب للقادمين الجدد",picnic_cost:"النزهة: الطعام والتصريح",funeral:"مساعدة جنائزية، عائلة بيزيمانا",fees:"رسوم بنكية",online_dons:"إيداع التبرعات عبر الإنترنت",
+lang_fr:"الفرنسية",lang_sw:"السواحيلية",lang_rw:"الكينيارواندية / الكيروندية"}
+};
+I18N.fr.whatsapp=I18N.en.whatsapp=I18N.sw.whatsapp="WhatsApp";I18N.ar.whatsapp="واتساب";
+
+const COUNTRIES={
+ cd:{fr:"République démocratique du Congo",en:"Democratic Republic of the Congo",sw:"Jamhuri ya Kidemokrasia ya Kongo",ar:"جمهورية الكونغو الديمقراطية",s:{fr:"RD Congo",en:"DR Congo",sw:"DR Kongo",ar:"الكونغو الديمقراطية"}},
+ bi:{fr:"Burundi",en:"Burundi",sw:"Burundi",ar:"بوروندي"},
+ tz:{fr:"Tanzanie",en:"Tanzania",sw:"Tanzania",ar:"تنزانيا"},
+ rw:{fr:"Rwanda",en:"Rwanda",sw:"Rwanda",ar:"رواندا"},
+ ug:{fr:"Ouganda",en:"Uganda",sw:"Uganda",ar:"أوغندا"},
+ ke:{fr:"Kenya",en:"Kenya",sw:"Kenya",ar:"كينيا"}
+};
+
+/* ===================== Outils ===================== */
+const store={
+  get(k,d){try{const v=localStorage.getItem("mu_"+k);return v?JSON.parse(v):d}catch(e){return d}},
+  set(k,v){try{localStorage.setItem("mu_"+k,JSON.stringify(v))}catch(e){}}
+};
+const LANGS=["fr","en","sw","ar"];
+let lang=store.get("lang",null)||(()=>{const n=(navigator.language||"fr").slice(0,2);return LANGS.includes(n)?n:"fr"})();
+const LOC={fr:"fr-CA",en:"en-CA",sw:"sw",ar:"ar-u-nu-latn"};
+const t=(k,...a)=>{const v=I18N[lang][k]??I18N.fr[k];return typeof v==="function"?v(...a):v};
+const L=v=>v&&typeof v==="object"&&!Array.isArray(v)?(v[lang]??v.fr):v;
+const ctry=(c,short)=>{const x=COUNTRIES[c];if(!x)return c;return short&&x.s?x.s[lang]:x[lang]};
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const $=s=>document.querySelector(s);
+const money=n=>n.toLocaleString(LOC[lang],{style:"currency",currency:"CAD",maximumFractionDigits:n%1?2:0});
+const money2=n=>n.toLocaleString(LOC[lang],{style:"currency",currency:"CAD",minimumFractionDigits:2});
+const fmtDate=d=>new Date(d+"T12:00").toLocaleDateString(LOC[lang],{day:"numeric",month:"long",year:"numeric"});
+const monthName=ym=>new Date(ym+"-15T12:00").toLocaleDateString(LOC[lang],{month:"long",year:"numeric"});
+function toast(m){const el=$("#toast");el.textContent=m;el.classList.add("show");clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove("show"),3400)}
+const dlg=$("#dlg");$("#dlgClose").onclick=()=>dlg.close();
+function openDlg(title,html){$("#dlgTitle").textContent=title;$("#dlgBody").innerHTML=html;$("#dlgClose").setAttribute("aria-label",t("close"));dlg.showModal()}
+const QC={lat:46.8139,lng:-71.2080,tz:"America/Toronto"};
+const qcDateStr=(d=new Date())=>d.toLocaleDateString("en-CA",{timeZone:QC.tz});
+const TODAY=qcDateStr();
+
+/* ===================== Données (exemples) ===================== */
+const HALL={fr:"Salle communautaire",en:"Community hall",sw:"Ukumbi wa jamii",ar:"القاعة المجتمعية"};
+const DATA={
+ evenements:[
+  {id:"e1",date:"2026-10-17",titre:{fr:"Soirée d'accueil des nouveaux arrivants",en:"Welcome evening for newcomers",sw:"Jioni ya kuwakaribisha wageni wapya",ar:"أمسية ترحيب بالقادمين الجدد"},lieu:{fr:"Salle communautaire, Limoilou",en:"Community hall, Limoilou",sw:"Ukumbi wa jamii, Limoilou",ar:"القاعة المجتمعية، ليموالو"},desc:{fr:"Repas partagé, présentation des services et parrainage des familles.",en:"Shared meal, overview of services and family sponsorship.",sw:"Chakula cha pamoja, maelezo ya huduma na udhamini wa familia.",ar:"وجبة مشتركة، تعريف بالخدمات وكفالة العائلات."}},
+  {id:"e2",date:"2026-11-14",titre:{fr:"Conférence : la famille en Islam",en:"Lecture: the family in Islam",sw:"Mhadhara: familia katika Uislamu",ar:"محاضرة: الأسرة في الإسلام"},lieu:{fr:"En ligne et en salle",en:"Online and in the hall",sw:"Mtandaoni na ukumbini",ar:"عبر الإنترنت وفي القاعة"},desc:{fr:"Avec l'imam invité, suivie d'une période de questions.",en:"With a guest imam, followed by questions.",sw:"Pamoja na imamu mgeni, ikifuatiwa na maswali.",ar:"مع إمام ضيف، يليها وقت للأسئلة."}},
+  {id:"e3",date:"2026-12-26",titre:{fr:"Journée sportive des jeunes",en:"Youth sports day",sw:"Siku ya michezo ya vijana",ar:"يوم رياضي للشباب"},lieu:{fr:"Centre sportif Sainte-Foy",en:"Sainte-Foy sports centre",sw:"Kituo cha michezo Sainte-Foy",ar:"المركز الرياضي في سانت-فوا"},desc:{fr:"Soccer, basketball et activités pour enfants.",en:"Soccer, basketball and children's activities.",sw:"Mpira wa miguu, mpira wa kikapu na shughuli za watoto.",ar:"كرة القدم وكرة السلة وأنشطة للأطفال."}},
+  {id:"e4",date:"2026-08-22",titre:{fr:"Pique-nique annuel de la communauté",en:"Annual community picnic",sw:"Pikiniki ya kila mwaka ya jamii",ar:"النزهة السنوية للجالية"},lieu:{fr:"Parc de la Plage-Jacques-Cartier",en:"Parc de la Plage-Jacques-Cartier",sw:"Parc de la Plage-Jacques-Cartier",ar:"حديقة شاطئ جاك كارتييه"},desc:{fr:"Plus de 180 participants.",en:"Over 180 participants.",sw:"Zaidi ya washiriki 180.",ar:"أكثر من 180 مشاركًا."}},
+  {id:"e5",date:"2026-05-27",titre:{fr:"Célébration de l'Aïd al-Adha",en:"Eid al-Adha celebration",sw:"Sherehe ya Idd al-Adha",ar:"الاحتفال بعيد الأضحى"},lieu:HALL,desc:{fr:"Prière, repas et cadeaux pour les enfants.",en:"Prayer, meal and gifts for the children.",sw:"Swala, chakula na zawadi kwa watoto.",ar:"صلاة ووجبة وهدايا للأطفال."}},
+  {id:"e6",date:"2026-03-20",titre:{fr:"Iftar collectif et célébration de l'Aïd al-Fitr",en:"Community iftar and Eid al-Fitr celebration",sw:"Futari ya pamoja na sherehe ya Idd al-Fitr",ar:"إفطار جماعي والاحتفال بعيد الفطر"},lieu:HALL,desc:{fr:"Un moment fort du Ramadan 1447.",en:"A highlight of Ramadan 1447.",sw:"Tukio kubwa la Ramadhani 1447.",ar:"من أبرز لحظات رمضان 1447."}}
+ ],
+ visites:[
+  {id:"v1",date:"2026-10-04",titre:{fr:"Visite aux malades, CHU de Québec",en:"Visiting the sick, CHU de Québec",sw:"Kuwatembelea wagonjwa, CHU de Québec",ar:"زيارة المرضى، المستشفى الجامعي في كيبك"},lieu:{fr:"Hôpital de l'Enfant-Jésus",en:"Hôpital de l'Enfant-Jésus",sw:"Hôpital de l'Enfant-Jésus",ar:"مستشفى لانفان-جيزو"},desc:{fr:"Délégation de 6 membres. Inscription requise.",en:"Delegation of 6 members. Registration required.",sw:"Ujumbe wa wanachama 6. Usajili unahitajika.",ar:"وفد من 6 أعضاء. التسجيل مطلوب."}},
+  {id:"v2",date:"2026-11-01",titre:{fr:"Visite de la communauté de Trois-Rivières",en:"Visit to the Trois-Rivières community",sw:"Ziara kwa jamii ya Trois-Rivières",ar:"زيارة جالية تروا-ريفيير"},lieu:{fr:"Trois-Rivières",en:"Trois-Rivières",sw:"Trois-Rivières",ar:"تروا-ريفيير"},desc:{fr:"Covoiturage organisé depuis Québec.",en:"Carpooling organized from Québec City.",sw:"Usafiri wa pamoja kutoka Québec.",ar:"تنظيم مشاركة السيارات من كيبك."}},
+  {id:"v3",date:"2026-09-06",titre:{fr:"Visite aux familles nouvellement arrivées",en:"Visiting newly arrived families",sw:"Kuzitembelea familia zilizowasili hivi karibuni",ar:"زيارة العائلات الوافدة حديثًا"},lieu:{fr:"Québec",en:"Québec City",sw:"Québec",ar:"كيبك"},desc:{fr:"12 familles visitées, trousses d'accueil remises.",en:"12 families visited, welcome kits handed out.",sw:"Familia 12 zilitembelewa, vifurushi vya makaribisho vilitolewa.",ar:"زيارة 12 عائلة وتوزيع حقائب الترحيب."}},
+  {id:"v4",date:"2026-06-14",titre:{fr:"Visite de la communauté de Montréal",en:"Visit to the Montréal community",sw:"Ziara kwa jamii ya Montréal",ar:"زيارة جالية مونتريال"},lieu:{fr:"Montréal",en:"Montréal",sw:"Montréal",ar:"مونتريال"},desc:{fr:"Échange avec des associations sœurs.",en:"Exchange with sister associations.",sw:"Mabadilishano na jumuiya dada.",ar:"تبادل مع جمعيات شقيقة."}}
+ ],
+ naissances:[
+  {date:"2026-09-12",nom:"Amina",famille:"Famille Ndayishimiye",note:{fr:"Fille",en:"Girl",sw:"Msichana",ar:"بنت"}},
+  {date:"2026-08-03",nom:"Yusuf",famille:"Famille Mugisha",note:{fr:"Garçon",en:"Boy",sw:"Mvulana",ar:"ولد"}},
+  {date:"2026-06-21",nom:"Khadija",famille:"Famille Kabila-Salum",note:{fr:"Fille",en:"Girl",sw:"Msichana",ar:"بنت"}}
+ ],
+ arrivants:[
+  {date:"2026-09-01",nom:"Famille Hakizimana",famille:"bi",note:{fr:"5 personnes",en:"5 people",sw:"Watu 5",ar:"5 أشخاص"}},
+  {date:"2026-08-18",nom:"Ibrahim Mwinyi",famille:"tz",note:{fr:"Étudiant, Université Laval",en:"Student, Université Laval",sw:"Mwanafunzi, Université Laval",ar:"طالب، جامعة لافال"}},
+  {date:"2026-07-09",nom:"Famille Uwimana",famille:"rw",note:{fr:"4 personnes",en:"4 people",sw:"Watu 4",ar:"4 أشخاص"}}
+ ],
+ deces:[
+  {date:"2026-07-28",nom:"Hadja Mariam Bizimana",famille:{fr:"Mère de sœur Aïcha",en:"Mother of sister Aïcha",sw:"Mama wa dada Aïcha",ar:"والدة الأخت عائشة"},note:{fr:"Inhumée à Bujumbura",en:"Buried in Bujumbura",sw:"Alizikwa Bujumbura",ar:"دُفنت في بوجمبورا"}},
+  {date:"2026-04-02",nom:"Omar Lukusa",famille:{fr:"Membre fondateur",en:"Founding member",sw:"Mwanachama mwanzilishi",ar:"عضو مؤسس"},note:{fr:"Inhumé à Québec",en:"Buried in Québec City",sw:"Alizikwa Québec",ar:"دُفن في كيبك"}}
+ ],
+ projets:[
+  {etat:"futur",titre:{fr:"Puits d'eau potable au Sud-Kivu",en:"Drinking water well in South Kivu",sw:"Kisima cha maji safi Kivu Kusini",ar:"بئر مياه شرب في جنوب كيفو"},date:{fr:"Printemps 2027",en:"Spring 2027",sw:"Masika 2027",ar:"ربيع 2027"},desc:{fr:"Forage d'un puits pour un village de 600 habitants près d'Uvira.",en:"Drilling a well for a village of 600 people near Uvira.",sw:"Kuchimba kisima kwa kijiji cha watu 600 karibu na Uvira.",ar:"حفر بئر لقرية يسكنها 600 شخص قرب أوفيرا."}},
+  {etat:"futur",titre:{fr:"Local permanent de l'association",en:"A permanent home for the association",sw:"Ofisi ya kudumu ya jumuiya",ar:"مقر دائم للجمعية"},date:"2027",desc:{fr:"Achat ou location d'un local pour les cours de Coran et les rencontres.",en:"Buying or renting a space for Quran classes and gatherings.",sw:"Kununua au kukodi jengo kwa madarasa ya Qur'ani na mikutano.",ar:"شراء أو استئجار مكان لدروس القرآن واللقاءات."}},
+  {etat:"futur",titre:{fr:"Paniers d'hiver pour nouveaux arrivants",en:"Winter baskets for newcomers",sw:"Vikapu vya majira ya baridi kwa wageni wapya",ar:"سلال الشتاء للقادمين الجدد"},date:{fr:"Novembre 2026",en:"November 2026",sw:"Novemba 2026",ar:"نوفمبر 2026"},desc:{fr:"Manteaux, bottes et denrées pour 40 familles.",en:"Coats, boots and food for 40 families.",sw:"Makoti, buti na chakula kwa familia 40.",ar:"معاطف وأحذية ومواد غذائية لـ40 عائلة."}},
+  {etat:"passe",titre:{fr:"Soutien à l'orphelinat de Bujumbura",en:"Support for the Bujumbura orphanage",sw:"Msaada kwa kituo cha yatima Bujumbura",ar:"دعم دار الأيتام في بوجمبورا"},date:"2025",desc:{fr:"Fournitures scolaires pour 85 enfants.",en:"School supplies for 85 children.",sw:"Vifaa vya shule kwa watoto 85.",ar:"لوازم مدرسية لـ85 طفلًا."}},
+  {etat:"passe",titre:{fr:"Paniers du Ramadan 1447",en:"Ramadan 1447 food baskets",sw:"Vikapu vya Ramadhani 1447",ar:"سلال رمضان 1447"},date:{fr:"Mars 2026",en:"March 2026",sw:"Machi 2026",ar:"مارس 2026"},desc:{fr:"120 paniers distribués à Québec.",en:"120 baskets distributed in Québec City.",sw:"Vikapu 120 vilisambazwa Québec.",ar:"توزيع 120 سلة في كيبك."}},
+  {etat:"passe",titre:{fr:"Bibliothèque islamique en français",en:"French-language Islamic library",sw:"Maktaba ya Kiislamu kwa Kifaransa",ar:"مكتبة إسلامية باللغة الفرنسية"},date:"2024",desc:{fr:"Plus de 300 livres mis à la disposition des membres.",en:"Over 300 books available to members.",sw:"Zaidi ya vitabu 300 kwa wanachama.",ar:"أكثر من 300 كتاب في متناول الأعضاء."}}
+ ],
+ campagnes:[
+  {id:"k1",titre:{fr:"Puits d'eau potable au Sud-Kivu",en:"Drinking water well in South Kivu",sw:"Kisima cha maji safi Kivu Kusini",ar:"بئر مياه شرب في جنوب كيفو"},objectif:25000,recu:18450,donateurs:142},
+  {id:"k2",titre:{fr:"Paniers d'hiver pour nouveaux arrivants",en:"Winter baskets for newcomers",sw:"Vikapu vya majira ya baridi kwa wageni wapya",ar:"سلال الشتاء للقادمين الجدد"},objectif:8000,recu:3120,donateurs:57},
+  {id:"k3",titre:{fr:"Fonds d'entraide funéraire",en:"Funeral assistance fund",sw:"Mfuko wa kusaidia mazishi",ar:"صندوق التكافل للجنائز"},objectif:15000,recu:11980,donateurs:96}
+ ],
+ responsables:[
+  {nom:"Hassani Mbaraka",role:{fr:"Président",en:"President",sw:"Mwenyekiti",ar:"الرئيس"},pays:"tz"},
+  {nom:"Fatuma Niyonzima",role:{fr:"Vice-présidente",en:"Vice-president",sw:"Makamu Mwenyekiti",ar:"نائبة الرئيس"},pays:"bi"},
+  {nom:"Ismaël Kalonji",role:{fr:"Secrétaire général",en:"General secretary",sw:"Katibu Mkuu",ar:"الأمين العام"},pays:"cd"},
+  {nom:"Zainabu Mukamana",role:{fr:"Trésorière",en:"Treasurer",sw:"Mweka Hazina",ar:"أمينة الصندوق"},pays:"rw"},
+  {nom:"Imam Abdoul Karim Habimana",role:{fr:"Responsable religieux et cours de Coran",en:"Religious lead and Quran classes",sw:"Kiongozi wa dini na madarasa ya Qur'ani",ar:"المسؤول الديني ودروس القرآن"},pays:"rw"},
+  {nom:"Rehema Salumu",role:{fr:"Responsable des sœurs",en:"Sisters' coordinator",sw:"Mratibu wa akina dada",ar:"مسؤولة الأخوات"},pays:"cd"},
+  {nom:"Moussa Ndikumana",role:{fr:"Responsable de la jeunesse",en:"Youth coordinator",sw:"Mratibu wa vijana",ar:"مسؤول الشباب"},pays:"bi"}
+ ],
+ membres:[
+  {prenom:"Hassani",nom:"Mbaraka",tel:"418 555-0101",email:"h.mbaraka@exemple.ca",adresse:"Charlesbourg",pays:"tz"},
+  {prenom:"Fatuma",nom:"Niyonzima",tel:"418 555-0102",email:"f.niyonzima@exemple.ca",adresse:"Sainte-Foy",pays:"bi"},
+  {prenom:"Ismaël",nom:"Kalonji",tel:"418 555-0103",email:"i.kalonji@exemple.ca",adresse:"Limoilou",pays:"cd"},
+  {prenom:"Zainabu",nom:"Mukamana",tel:"418 555-0104",email:"z.mukamana@exemple.ca",adresse:"Lévis",pays:"rw"},
+  {prenom:"Rehema",nom:"Salumu",tel:"418 555-0105",email:"r.salumu@exemple.ca",adresse:"Beauport",pays:"cd"},
+  {prenom:"Moussa",nom:"Ndikumana",tel:"418 555-0106",email:"m.ndikumana@exemple.ca",adresse:"Vanier",pays:"bi"},
+  {prenom:"Joseph Ali",nom:"Okello",tel:"418 555-0107",email:"j.okello@exemple.ca",adresse:"Saint-Roch",pays:"ug"},
+  {prenom:"Halima",nom:"Wanjiru",tel:"418 555-0108",email:"h.wanjiru@exemple.ca",adresse:"Duberger",pays:"ke"}
+ ],
+ contributions:[
+  {date:"2026-09-15",k:"dues",n:48,montant:1440},
+  {date:"2026-09-02",k:"friday",montant:615},
+  {date:"2026-08-22",k:"picnic",montant:980},
+  {date:"2026-08-15",k:"dues",n:46,montant:1380},
+  {date:"2026-07-15",k:"dues",n:45,montant:1350}
+ ],
+ depenses:[
+  {date:"2026-09-10",k:"rent",montant:650},
+  {date:"2026-09-06",k:"kits",montant:420},
+  {date:"2026-08-22",k:"picnic_cost",montant:1120},
+  {date:"2026-08-10",k:"rent",montant:650},
+  {date:"2026-07-28",k:"funeral",montant:1500},
+  {date:"2026-07-10",k:"rent",montant:650}
+ ],
+ /* Relevés : la trésorière ajoute chaque mois une ligne ; "pdf" pointe vers le relevé officiel déposé dans le dossier releves/ */
+ releves:[
+  {mois:"2026-07",ouverture:9650.00,extra:[{date:"2026-07-31",k:"online_dons",montant:2310},{date:"2026-07-31",k:"fees",montant:-12.5}],pdf:null},
+  {mois:"2026-08",extra:[{date:"2026-08-31",k:"online_dons",montant:3045},{date:"2026-08-31",k:"fees",montant:-12.5}],pdf:null},
+  {mois:"2026-09",extra:[{date:"2026-09-30",k:"online_dons",montant:2780},{date:"2026-09-30",k:"fees",montant:-12.5}],pdf:null}
+ ]
+};
+["naissances","arrivants","deces","membres","contributions"].forEach(k=>{DATA[k]=[...store.get("add_"+k,[]),...DATA[k]]});
+store.get("camp",[]).forEach(u=>{const c=DATA.campagnes.find(x=>x.id===u.id);if(c){c.recu+=u.montant;c.donateurs+=u.n}});
+
+const lineLabel=x=>{
+  if(x.label)return x.label;
+  if(x.k==="dues")return t("dues",x.n);
+  if(x.k==="rent")return t("rent",new Date(x.date+"T12:00").toLocaleDateString(LOC[lang],{month:"long"}));
+  if(x.k==="contrib_of")return t("contrib_of",x.who);
+  return t(x.k);
+};
+
+let session=store.get("session",null);
+const accounts=()=>[{email:"demo@mu-umin.ca",pass:"salam2005",prenom:"Membre",nom:"Démo"},...store.get("accounts",[])];
+
+/* ===================== Langue ===================== */
+function applyLang(){
+  const h=document.documentElement;h.lang=lang;h.dir=lang==="ar"?"rtl":"ltr";
+  document.querySelectorAll("[data-i]").forEach(el=>{el.textContent=t(el.dataset.i)});
+  document.querySelectorAll("#langSwitch button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.lang===lang));
+  $("#langSwitch").setAttribute("aria-label",t("lang_label"));
+  $("#basmalaTr").hidden=lang==="ar";
+  $("#demoNote").innerHTML=t("demo_note","demo@mu-umin.ca","salam2005");
+  $("#countryList").innerHTML=Object.keys(COUNTRIES).map(c=>`<li>${esc(ctry(c))}</li>`).join("");
+  $("#c-niveau").innerHTML=t("levels").map((l,i)=>`<option value="${i}">${esc(l)}</option>`).join("");
+  updateNav();renderAll();
+}
+document.querySelectorAll("#langSwitch button").forEach(b=>b.onclick=()=>{lang=b.dataset.lang;store.set("lang",lang);applyLang()});
+
+/* ===================== Routage ===================== */
+const pages=["accueil","activites","registres","coran","projets","dons","priere","ecouter","responsables","adhesion","membres"];
+function route(){
+  let p=location.hash.slice(1)||"accueil";if(!pages.includes(p))p="accueil";
+  document.querySelectorAll("section.page").forEach(s=>s.classList.toggle("active",s.id==="p-"+p));
+  document.querySelectorAll("nav.main a").forEach(a=>a.getAttribute("href")==="#"+p?a.setAttribute("aria-current","page"):a.removeAttribute("aria-current"));
+  $("#mainNav").classList.remove("open");$("#menuBtn").setAttribute("aria-expanded","false");
+  if(p==="membres")renderMember();
+  window.scrollTo(0,0);
+}
+window.addEventListener("hashchange",route);
+$("#menuBtn").onclick=()=>{const n=$("#mainNav");n.classList.toggle("open");$("#menuBtn").setAttribute("aria-expanded",n.classList.contains("open"))};
+
+const tabState={act:"evenements",reg:"naissances",aud:"coran",mem:"annuaire"};
+function bindTabs(root){
+  root.querySelectorAll("[data-tabs]").forEach(tb=>{
+    tb.querySelectorAll("button").forEach(b=>b.onclick=()=>{
+      tb.querySelectorAll("button").forEach(x=>x.setAttribute("aria-selected",x===b));
+      tabState[tb.dataset.tabs]=b.dataset.val;render[tb.dataset.tabs]();
+    });
+  });
+}
+const render={};
+
+/* ===================== Activités ===================== */
+const dateBox=d=>{const x=new Date(d+"T12:00");return `<div class="date"><b>${x.getDate()}</b><small>${x.toLocaleDateString(LOC[lang],{month:"short"})} ${x.getFullYear()}</small></div>`};
+const rsvps=()=>store.get("rsvp",{});
+function actItem(e,future){
+  const count=(rsvps()[e.id]||[]).reduce((s,x)=>s+x.n,0);
+  return `<div class="item">${dateBox(e.date)}<div><h3>${esc(L(e.titre))}</h3><p>${esc(L(e.lieu))}. ${esc(L(e.desc))}</p>
+  ${future?`<button class="btn small" type="button" onclick="rsvp('${e.id}')">${t("confirm_presence")}</button> ${count?`<span class="muted" style="font-size:.9rem;margin-inline-start:8px">${t("confirmed",count)}</span>`:""}`:`<span class="tag past">${t("finished")}</span>`}</div></div>`;
+}
+render.act=()=>{
+  const list=DATA[tabState.act];
+  const up=list.filter(e=>e.date>=TODAY).sort((a,b)=>a.date.localeCompare(b.date));
+  const past=list.filter(e=>e.date<TODAY).sort((a,b)=>b.date.localeCompare(a.date));
+  $("#actUpcoming").innerHTML=up.map(e=>actItem(e,true)).join("")||`<p class="muted">${t("none_up")}</p>`;
+  $("#actPast").innerHTML=past.map(e=>actItem(e,false)).join("")||`<p class="muted">${t("none_past")}</p>`;
+};
+function rsvp(id){
+  const e=[...DATA.evenements,...DATA.visites].find(x=>x.id===id);
+  openDlg(t("confirm_presence"),`<p><b>${esc(L(e.titre))}</b><br><span class="muted">${fmtDate(e.date)}, ${esc(L(e.lieu))}</span></p>
+  <form id="rsvpForm"><div class="field"><label for="r-nom">${t("your_name")}</label><input id="r-nom" required value="${session?esc(session.prenom+" "+session.nom):""}"></div>
+  <div class="grid2"><div class="field"><label for="r-n">${t("n_people")}</label><input id="r-n" type="number" min="1" max="20" value="1" required></div>
+  <div class="field"><label for="r-tel">${t("phone_rem")}</label><input id="r-tel" type="tel"></div></div>
+  <button class="btn" type="submit">${t("confirm")}</button></form>`);
+  $("#rsvpForm").onsubmit=ev=>{ev.preventDefault();const all=rsvps();(all[id]=all[id]||[]).push({nom:$("#r-nom").value,n:+$("#r-n").value});store.set("rsvp",all);dlg.close();render.act();renderHome();toast(t("rsvp_ok"))};
+}
+function renderHome(){
+  const up=[...DATA.evenements.map(e=>({...e,k:"k_event"})),...DATA.visites.map(e=>({...e,k:"k_visit"}))].filter(e=>e.date>=TODAY).sort((a,b)=>a.date.localeCompare(b.date)).slice(0,3);
+  $("#homeUpcoming").innerHTML=up.map(e=>`<div class="item">${dateBox(e.date)}<div><span class="tag">${t(e.k)}</span><h3 style="margin-top:6px">${esc(L(e.titre))}</h3><p>${esc(L(e.lieu))}</p><button class="btn small ghost" type="button" onclick="rsvp('${e.id}')">${t("confirm_presence")}</button></div></div>`).join("")+`<p style="margin:14px 0 0"><a href="#activites">${t("see_all")}</a></p>`;
+}
+
+/* ===================== Registres ===================== */
+render.reg=()=>{
+  const k=tabState.reg,cols=t("cols_"+k);
+  $("#regIntro").textContent=t("intro_"+k);
+  $("#regTable").innerHTML=`<thead><tr>${cols.map(c=>`<th>${c}</th>`).join("")}</tr></thead><tbody>${DATA[k].map(r=>`<tr><td>${fmtDate(r.date)}</td><td>${esc(L(r.nom))}</td><td>${esc(k==="arrivants"?ctry(L(r.famille)):L(r.famille))}</td><td>${esc(L(r.note))}</td></tr>`).join("")}</tbody>`;
+  $("#regAdd").innerHTML=session?`<button class="btn small" type="button" onclick="addReg()">${t("reg_add_btn")}</button>`:`<p class="muted" style="margin:0">${t("reg_login")} <a href="#adhesion">${t("sign_in")}</a></p>`;
+};
+function addReg(){
+  const k=tabState.reg,c=t("cols_"+k);
+  openDlg(t("reg_add_title"),`<form id="regForm"><div class="field"><label for="g-d">${c[0]}</label><input id="g-d" type="date" required value="${TODAY}"></div>
+  <div class="field"><label for="g-n">${c[1]}</label><input id="g-n" required></div>
+  <div class="field"><label for="g-f">${c[2]}</label><input id="g-f" required></div>
+  <div class="field"><label for="g-x">${c[3]}</label><input id="g-x"></div><button class="btn" type="submit">${t("add")}</button></form>`);
+  $("#regForm").onsubmit=e=>{e.preventDefault();const r={date:$("#g-d").value,nom:$("#g-n").value,famille:$("#g-f").value,note:$("#g-x").value};
+    const a=store.get("add_"+k,[]);a.unshift(r);store.set("add_"+k,a);DATA[k].unshift(r);DATA[k].sort((x,y)=>y.date.localeCompare(x.date));dlg.close();render.reg();toast(t("reg_added"))};
+}
+
+/* ===================== Coran ===================== */
+document.querySelectorAll('input[name="age"]').forEach(r=>r.onchange=()=>{const kid=$("#c-enfant").checked;$("#parentField").hidden=!kid;$("#c-parent").required=kid});
+$("#courseForm").onsubmit=e=>{e.preventDefault();const f=e.target;
+  const d={nom:$("#c-nom").value,age:f.age.value,mode:f.mode.value,niveau:$("#c-niveau").value,email:$("#c-email").value};
+  const a=store.get("cours",[]);a.push(d);store.set("cours",a);f.reset();$("#parentField").hidden=true;
+  openDlg(t("reg_recv_t"),t("reg_recv",esc(d.nom),esc(d.email),d.mode==="online")+`<button class="btn" type="button" onclick="dlg.close()">${t("close")}</button>`)};
+
+/* ===================== Projets & dons ===================== */
+function renderProjects(){
+  const item=p=>`<div class="item"><div><span class="tag${p.etat==="passe"?" past":""}">${esc(L(p.date))}</span><h3 style="margin-top:6px">${esc(L(p.titre))}</h3><p>${esc(L(p.desc))}</p></div></div>`;
+  $("#projUpcoming").innerHTML=DATA.projets.filter(p=>p.etat==="futur").map(item).join("");
+  $("#projPast").innerHTML=DATA.projets.filter(p=>p.etat==="passe").map(item).join("");
+}
+function renderCampaigns(){
+  $("#campaigns").innerHTML=DATA.campagnes.map(c=>{const pct=Math.min(100,Math.round(c.recu/c.objectif*100));
+    return `<div class="panel"><h3>${esc(L(c.titre))}</h3><div class="big">${money(c.recu)}</div><div class="muted">${t("of_goal",money(c.objectif))}</div>
+    <div class="progress" role="progressbar" aria-valuenow="${pct}" aria-valuemin="0" aria-valuemax="100"><i style="width:${pct}%"></i></div>
+    <p class="muted" style="font-size:.92rem">${t("pct",pct,c.donateurs)}</p><button class="btn gold" type="button" onclick="pay('don','${c.id}')">${t("donate")}</button></div>`}).join("");
+}
+
+/* ===================== Paiement ===================== */
+function pay(kind,campId){
+  const camp=DATA.campagnes.find(c=>c.id===campId);
+  openDlg(kind==="don"?t("donate_t",L(camp.titre)):t("pay_contrib"),`<form id="payForm">
+  <div class="field"><label for="p-m">${t("amount")}</label><input id="p-m" type="number" min="1" step="1" value="${kind==="don"?50:30}" required></div>
+  <label>${t("pay_method")}</label>
+  <div class="seg"><input type="radio" name="pm" id="pm-i" value="interac" checked><label for="pm-i">${t("interac")}</label>
+  <input type="radio" name="pm" id="pm-c" value="credit"><label for="pm-c">${t("credit")}</label>
+  <input type="radio" name="pm" id="pm-d" value="debit"><label for="pm-d">${t("debit")}</label></div>
+  <div id="pmBox"></div><button class="btn" type="submit">${t("confirm_pay")}</button></form>`);
+  const draw=()=>{const m=$("#payForm").pm.value;
+    $("#pmBox").innerHTML=m==="interac"?`<div class="note" style="margin-top:0">${t("interac_note")}</div><div class="field"><label for="p-ref">${t("interac_ref")}</label><input id="p-ref" required placeholder="CA1xxxxxxx" dir="ltr"></div>`
+    :`<div class="field"><label for="p-nom">${t("card_name")}</label><input id="p-nom" required autocomplete="cc-name"></div>
+    <div class="field"><label for="p-num">${t("card_num")}</label><input id="p-num" required inputmode="numeric" autocomplete="cc-number" pattern="[0-9 ]{12,23}" placeholder="4242 4242 4242 4242" dir="ltr"></div>
+    <div class="grid2"><div class="field"><label for="p-exp">${t("expiry")}</label><input id="p-exp" required placeholder="MM/AA" autocomplete="cc-exp" dir="ltr"></div><div class="field"><label for="p-cvc">${t("cvc")}</label><input id="p-cvc" required inputmode="numeric" maxlength="4" autocomplete="cc-csc" dir="ltr"></div></div>`};
+  document.querySelectorAll('input[name="pm"]').forEach(r=>r.onchange=draw);draw();
+  $("#payForm").onsubmit=e=>{e.preventDefault();const amt=+$("#p-m").value;const m=e.target.pm.value;const ref="MU-"+Date.now().toString(36).toUpperCase();
+    if(kind==="don"){const u=store.get("camp",[]);u.push({id:campId,montant:amt,n:1});store.set("camp",u);camp.recu+=amt;camp.donateurs++;renderCampaigns()}
+    else{const r={date:TODAY,k:"contrib_of",who:session.prenom+" "+session.nom,montant:amt};const a=store.get("add_contributions",[]);a.unshift(r);store.set("add_contributions",a);DATA.contributions.unshift(r);renderMember()}
+    $("#dlgTitle").textContent=t("thanks_t");
+    $("#dlgBody").innerHTML=`<p>${m==="interac"?t("pay_pending"):t("pay_ok")}</p><p><b>${money(amt)}</b> ${t("by")} ${t(m)}<br><span class="muted">${t("reference")} : <span dir="ltr">${ref}</span></span></p><p class="muted">${t("receipt")}</p><button class="btn" type="button" onclick="dlg.close()">${t("close")}</button>`};
+}
+
+/* ===================== Responsables ===================== */
+function renderLeaders(){
+  const ini=n=>n.replace("Imam ","").split(" ").map(w=>w[0]).slice(0,2).join("");
+  $("#leaders").innerHTML=DATA.responsables.map(r=>`<div class="panel person"><div class="avatar" aria-hidden="true">${ini(r.nom)}</div><div><h3 style="margin:0">${esc(r.nom)}</h3><div>${esc(L(r.role))}</div><div class="muted" style="font-size:.9rem">${t("origin")} : ${esc(ctry(r.pays))}</div></div></div>`).join("");
+}
+
+/* ===================== Heures de prière ===================== */
+const dtr=d=>d*Math.PI/180,rtd=r=>r*180/Math.PI;
+const sin=d=>Math.sin(dtr(d)),cos=d=>Math.cos(dtr(d)),tan=d=>Math.tan(dtr(d));
+const asin=x=>rtd(Math.asin(x)),acos=x=>rtd(Math.acos(x)),atan2=(y,x)=>rtd(Math.atan2(y,x)),acot=x=>rtd(Math.atan(1/x));
+const fix=(a,b)=>{a=a-b*Math.floor(a/b);return a<0?a+b:a};
+function julian(y,m,d){if(m<=2){y--;m+=12}const A=Math.floor(y/100),B=2-A+Math.floor(A/4);return Math.floor(365.25*(y+4716))+Math.floor(30.6001*(m+1))+d+B-1524.5}
+function sunPos(jd){const D=jd-2451545,g=fix(357.529+.98560028*D,360),q=fix(280.459+.98564736*D,360),Lg=fix(q+1.915*sin(g)+.02*sin(2*g),360),e=23.439-.00000036*D;
+  const RA=fix(atan2(cos(e)*sin(Lg),cos(Lg))/15,24);return{decl:asin(sin(e)*sin(Lg)),eqt:q/15-RA}}
+function prayerTimes(date,asrF){
+  const y=date.getFullYear(),m=date.getMonth()+1,d=date.getDate();const jd=julian(y,m,d)-QC.lng/(15*24);
+  const mid=x=>fix(12-sunPos(jd+x).eqt,24);
+  const ang=(a,x,ccw)=>{const {decl}=sunPos(jd+x),noon=mid(x);const T=acos((-sin(a)-sin(decl)*sin(QC.lat))/(cos(decl)*cos(QC.lat)))/15;return noon+(ccw?-T:T)};
+  const asr=(f,x)=>{const {decl}=sunPos(jd+x);return ang(-acot(f+tan(Math.abs(QC.lat-decl))),x)};
+  const h={fajr:ang(15,5/24,true),lever:ang(.833,6/24,true),dhuhr:mid(12/24)+2/60,asr:asr(asrF,13/24),maghrib:ang(.833,18/24),isha:ang(15,18/24)};
+  const out={};for(const k in h){out[k]=new Date(Date.UTC(y,m-1,d)+(h[k]-QC.lng/15)*3600000)}return out;
+}
+const fmtT=dt=>isNaN(dt)?"—":dt.toLocaleTimeString(LOC[lang],{hour:"2-digit",minute:"2-digit",timeZone:QC.tz});
+const PR=[["fajr","الفجر"],["lever","الشروق"],["dhuhr","الظهر"],["asr","العصر"],["maghrib","المغرب"],["isha","العشاء"]];
+const FIVE=["fajr","dhuhr","asr","maghrib","isha"];
+const pn=k=>t("p_"+k);
+function qcToday(){const [y,m,d]=qcDateStr().split("-").map(Number);return new Date(y,m-1,d)}
+const asrF=()=>+$("#asrMethod").value||1;
+function renderHeroPrayers(){
+  const tm=prayerTimes(qcToday(),asrF());const now=new Date();
+  const next=PR.find(([k])=>k!=="lever"&&tm[k]>now);
+  $("#heroDate").textContent=t("city")+", "+now.toLocaleDateString(LOC[lang],{weekday:"long",day:"numeric",month:"long",timeZone:QC.tz});
+  $("#heroPrayers").innerHTML=PR.map(([k,a])=>`<div class="prayer-row${next&&next[0]===k?" next":""}"><span>${pn(k)}${lang==="ar"?"":`<small lang="ar">${a}</small>`}</span><span>${fmtT(tm[k])}</span></div>`).join("");
+  if(next){const mins=Math.max(0,Math.round((tm[next[0]]-now)/60000));$("#countdown").textContent=t("next_prayer",pn(next[0]),Math.floor(mins/60),mins%60)}
+  else $("#countdown").textContent=t("tomorrow_fajr")+fmtT(prayerTimes(new Date(qcToday().getTime()+864e5),asrF()).fajr);
+}
+function renderPrayerTable(){
+  const start=$("#weekStart").value?new Date($("#weekStart").value+"T12:00"):qcToday();
+  let rows="";for(let i=0;i<7;i++){const d=new Date(start.getFullYear(),start.getMonth(),start.getDate()+i);const tm=prayerTimes(d,asrF());
+    rows+=`<tr><td>${d.toLocaleDateString(LOC[lang],{weekday:"short",day:"numeric",month:"short"})}</td>${PR.map(([k])=>`<td class="num">${fmtT(tm[k])}</td>`).join("")}</tr>`}
+  $("#prayerTable").innerHTML=`<thead><tr><th>${t("date")}</th>${PR.map(([k])=>`<th class="num">${pn(k)}</th>`).join("")}</tr></thead><tbody>${rows}</tbody>`;
+}
+$("#asrMethod").onchange=()=>{store.set("asr",$("#asrMethod").value);renderPrayerTable();renderHeroPrayers()};
+$("#weekStart").onchange=renderPrayerTable;
+$("#asrMethod").value=store.get("asr","1");
+
+/* ===================== Rappels d'adhan ===================== */
+const ADHAN_SRC="adhan.mp3"; /* déposez votre enregistrement d'adhan à côté de index.html */
+const adhan={on:store.get("adhan_on",false),which:store.get("adhan_which",FIVE),audio:null,ctx:null,fired:new Set(store.get("adhan_fired",[]))};
+function ensureAudioCtx(){try{adhan.ctx=adhan.ctx||new (window.AudioContext||window.webkitAudioContext)();adhan.ctx.resume()}catch(e){}}
+function chime(){ /* son de secours si adhan.mp3 est absent */
+  ensureAudioCtx();const c=adhan.ctx;if(!c)return;const now=c.currentTime;
+  [[0,523.25],[0.9,659.25],[1.8,783.99],[3.2,659.25],[4.1,523.25]].forEach(([at,f])=>{
+    const o=c.createOscillator(),g=c.createGain();o.type="sine";o.frequency.value=f;
+    g.gain.setValueAtTime(0,now+at);g.gain.linearRampToValueAtTime(.22,now+at+.08);g.gain.exponentialRampToValueAtTime(.001,now+at+1.6);
+    o.connect(g).connect(c.destination);o.start(now+at);o.stop(now+at+1.7)});
+}
+function playAdhan(){
+  stopAdhanSound();
+  const a=new Audio(ADHAN_SRC);adhan.audio=a;
+  a.play().catch(()=>{adhan.audio=null;chime()});
+  a.onerror=()=>{if(adhan.audio===a){adhan.audio=null;chime()}};
+  a.onended=()=>{$("#adhanBar").hidden=true};
+}
+function stopAdhanSound(){if(adhan.audio){adhan.audio.pause();adhan.audio=null}}
+function fireAdhan(k){
+  $("#adhanBarTitle").textContent=t("adhan_now",pn(k));$("#adhanBarBody").textContent=t("adhan_body");$("#adhanStop").textContent=t("adhan_stop");
+  $("#adhanBar").hidden=false;playAdhan();
+  try{if("Notification" in window&&Notification.permission==="granted")new Notification(t("adhan_now",pn(k)),{body:t("adhan_body"),tag:"adhan-"+k,lang})}catch(e){}
+}
+$("#adhanStop").onclick=()=>{stopAdhanSound();$("#adhanBar").hidden=true};
+function checkAdhan(){
+  if(!adhan.on)return;const tm=prayerTimes(qcToday(),asrF()),now=Date.now(),day=qcDateStr();
+  for(const k of adhan.which){const due=tm[k].getTime(),key=day+"-"+k;
+    if(now>=due&&now-due<120000&&!adhan.fired.has(key)){adhan.fired.add(key);store.set("adhan_fired",[...adhan.fired].slice(-20));fireAdhan(k)}}
+}
+async function setAdhan(on){
+  adhan.on=on;store.set("adhan_on",on);
+  if(on){ensureAudioCtx();
+    let perm="unsupported";
+    try{if("Notification" in window){perm=Notification.permission==="default"?await Notification.requestPermission():Notification.permission}}catch(e){perm="denied"}
+    adhan.perm=perm;toast(perm==="granted"?t("adhan_on"):t("adhan_nonotif"));
+    /* ne pas rejouer une prière déjà passée aujourd'hui */
+    const tm=prayerTimes(qcToday(),asrF()),day=qcDateStr();FIVE.forEach(k=>{if(tm[k].getTime()<Date.now()-120000)adhan.fired.add(day+"-"+k)});
+  }else toast(t("adhan_off"));
+  renderAdhanUI();
+}
+function renderAdhanUI(){
+  const label=adhan.on?t("adhan_disable"):t("adhan_enable");
+  $("#adhanToggle").textContent=label;$("#heroAdhan").textContent=label;
+  $("#adhanToggle").classList.toggle("ghost",adhan.on);
+  const perm=("Notification" in window)?Notification.permission:"unsupported";
+  $("#adhanState").textContent=adhan.on?(perm==="granted"?t("adhan_on"):t("adhan_nonotif")):t("adhan_off");
+  $("#adhanPrayers").innerHTML=FIVE.map(k=>`<label class="check"><input type="checkbox" id="ad-${k}" value="${k}" ${adhan.which.includes(k)?"checked":""}> ${pn(k)}</label>`).join("");
+  $("#adhanPrayers").querySelectorAll("input").forEach(i=>i.onchange=()=>{adhan.which=[...$("#adhanPrayers").querySelectorAll("input:checked")].map(x=>x.value);store.set("adhan_which",adhan.which)});
+}
+$("#adhanToggle").onclick=()=>setAdhan(!adhan.on);
+$("#heroAdhan").onclick=()=>setAdhan(!adhan.on);
+$("#adhanTest").onclick=()=>{ensureAudioCtx();const tm=prayerTimes(qcToday(),asrF());const k=(PR.find(([x])=>x!=="lever"&&tm[x]>new Date())||["fajr"])[0];fireAdhan(k)};
+
+/* ===================== Audio ===================== */
+const SOURATES=[[1,"Al-Fatiha","الفاتحة"],[2,"Al-Baqara","البقرة"],[18,"Al-Kahf","الكهف"],[36,"Ya-Sin","يس"],[55,"Ar-Rahman","الرحمن"],[56,"Al-Waqi'a","الواقعة"],[67,"Al-Mulk","الملك"],[112,"Al-Ikhlas","الإخلاص"]];
+const SERMONS=[
+  {date:"2026-09-18",titre:"La patience face aux épreuves de l'immigration",par:"Imam Abdoul Karim Habimana",duree:32,langue:"lang_fr"},
+  {date:"2026-09-11",titre:"Umuryango mu Busilamu",par:"Imam Abdoul Karim Habimana",duree:41,langue:"lang_rw"},
+  {date:"2026-09-04",titre:"Haki za jirani",par:"Ustadh Hassani Mbaraka",duree:28,langue:"lang_sw"},
+  {date:"2026-08-28",titre:"Élever nos enfants dans la foi au Canada",par:"Rehema Salumu",duree:36,langue:"lang_fr"}
+];
+const qlink=n=>`https://quran.com/${lang==="en"?"":lang+"/"}${n}`;
+render.aud=()=>{
+  if(tabState.aud==="coran"){
+    $("#audioBox").innerHTML=`<p class="muted">${t("qaudio_note")}</p>
+    <ul class="audio-list">${SOURATES.map(([n,lat,ar])=>`<li><span><b>${n}. ${lang==="ar"?"سورة "+ar:lat}</b> ${lang==="ar"?"":`<span class="arname" lang="ar">${ar}</span>`}</span><a class="btn small ghost" href="${qlink(n)}" target="_blank" rel="noopener">${t("listen")}</a></li>`).join("")}</ul>
+    <p style="margin-top:14px"><a href="${qlink("")}" target="_blank" rel="noopener">${t("all_surahs")}</a></p>`;
+  }else{
+    $("#audioBox").innerHTML=`<p class="muted">${t("maw_note")}</p>
+    ${SERMONS.map(s=>`<div class="item">${dateBox(s.date)}<div><h3>${esc(s.titre)}</h3><p>${esc(s.par)}, ${s.duree} min, ${t(s.langue)}</p><button class="btn small ghost" type="button" onclick="toast(t('rec_soon'))">${t("listen")}</button></div></div>`).join("")}`;
+  }
+};
+
+/* ===================== Adhésion / connexion ===================== */
+$("#joinForm").onsubmit=e=>{e.preventDefault();
+  const m={prenom:$("#j-prenom").value.trim(),nom:$("#j-nom").value.trim(),tel:$("#j-tel").value,email:$("#j-email").value.trim().toLowerCase(),adresse:$("#j-adresse").value,pays:$("#j-pays").value};
+  if(accounts().some(a=>a.email===m.email)){toast(t("exists"));return}
+  const acc=store.get("accounts",[]);acc.push({...m,pass:$("#j-pass").value});store.set("accounts",acc);
+  const am=store.get("add_membres",[]);am.unshift(m);store.set("add_membres",am);DATA.membres.unshift(m);
+  login({prenom:m.prenom,nom:m.nom,email:m.email});e.target.reset();toast(t("welcome",m.prenom))};
+$("#loginForm").onsubmit=e=>{e.preventDefault();const em=$("#l-email").value.trim().toLowerCase(),pw=$("#l-pass").value;
+  const a=accounts().find(x=>x.email===em&&x.pass===pw);if(!a){toast(t("bad_login"));return}
+  login({prenom:a.prenom,nom:a.nom,email:a.email});toast(t("login_ok",a.prenom))};
+function login(s){session=s;store.set("session",s);updateNav();location.hash="#membres";render.reg()}
+function logout(){session=null;store.set("session",null);updateNav();render.reg();location.hash="#accueil"}
+function updateNav(){$("#navMember").textContent=session?`${t("nav_members")} (${session.prenom})`:t("nav_members")}
+
+/* ===================== Relevés bancaires ===================== */
+function buildStatements(){
+  let bal=DATA.releves[0].ouverture;
+  return DATA.releves.map(r=>{
+    const lines=[...DATA.contributions.filter(c=>c.date.startsWith(r.mois)).map(c=>({...c,montant:+c.montant})),
+                 ...DATA.depenses.filter(c=>c.date.startsWith(r.mois)).map(c=>({...c,montant:-c.montant})),
+                 ...r.extra].sort((a,b)=>a.date.localeCompare(b.date));
+    const open=bal;let dep=0,wd=0;
+    lines.forEach(l=>{bal+=l.montant;l.solde=bal;l.montant>=0?dep+=l.montant:wd-=l.montant});
+    return {...r,open,dep,wd,close:bal,lines};
+  });
+}
+function showStatement(i){
+  const s=buildStatements()[i];
+  openDlg(t("st_of",monthName(s.mois)),`<p class="muted" style="margin-bottom:6px">${t("account")}</p>
+  <div class="scroll"><table><thead><tr><th>${t("date")}</th><th>${t("desc")}</th><th class="num">${t("deposits")}</th><th class="num">${t("withdrawals")}</th><th class="num">${t("running")}</th></tr></thead><tbody>
+  <tr><td></td><td><b>${t("opening")}</b></td><td></td><td></td><td class="num"><b>${money2(s.open)}</b></td></tr>
+  ${s.lines.map(l=>`<tr><td style="white-space:nowrap">${new Date(l.date+"T12:00").toLocaleDateString(LOC[lang],{day:"numeric",month:"short"})}</td><td class="st-desc">${esc(lineLabel(l))}</td><td class="num pos">${l.montant>0?money2(l.montant):""}</td><td class="num neg">${l.montant<0?money2(-l.montant):""}</td><td class="num">${money2(l.solde)}</td></tr>`).join("")}
+  <tr><td></td><td><b>${t("closing")}</b></td><td class="num"><b>${money2(s.dep)}</b></td><td class="num"><b>${money2(s.wd)}</b></td><td class="num"><b>${money2(s.close)}</b></td></tr>
+  </tbody></table></div>${s.pdf?`<p style="margin-top:14px"><a class="btn ghost small" href="${esc(s.pdf)}" target="_blank" rel="noopener">${t("bank_pdf")}</a></p>`:""}`);
+}
+
+/* ===================== Espace membres ===================== */
+function renderMember(){
+  const box=$("#memberArea");
+  if(!session){box.innerHTML=`<div class="panel lock"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="var(--lake)" stroke-width="1.6" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+    <h2>${t("members_only")}</h2><p class="muted" style="margin-bottom:18px">${t("members_only_text")}</p><a class="btn" href="#adhesion">${t("login_or_join")}</a></div>`;return}
+  box.innerHTML=`<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:10px">
+    <h2 style="margin:0">${esc(t("salam",session.prenom))}</h2>
+    <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn gold" type="button" onclick="pay('contrib')">${t("pay_contrib")}</button><button class="btn ghost" type="button" onclick="logout()">${t("logout")}</button></div></div>
+    <div class="tabs" role="tablist" data-tabs="mem">
+      ${[["annuaire","tab_dir"],["finances","tab_fin"],["releves","tab_bank"],["chat","tab_chat"],["notifs","tab_notifs"]].map(([v,l])=>`<button role="tab" aria-selected="${tabState.mem===v}" data-val="${v}">${t(l)}</button>`).join("")}
+    </div><div id="memBody"></div>`;
+  bindTabs(box);render.mem();
+}
+render.mem=()=>{
+  const b=$("#memBody");if(!b)return;
+  if(tabState.mem==="annuaire"){
+    b.innerHTML=`<div class="panel"><div class="field" style="max-width:360px"><label for="mSearch">${t("search_m")}</label><input id="mSearch" placeholder="${t("search_ph")}"></div><div class="scroll"><table id="mTable"></table></div></div>`;
+    const draw=()=>{const q=$("#mSearch").value.toLowerCase();const rows=DATA.membres.filter(m=>(JSON.stringify(m)+ctry(m.pays)).toLowerCase().includes(q));
+      $("#mTable").innerHTML=`<thead><tr><th>${t("col_name")}</th><th>${t("phone")}</th><th>${t("email")}</th><th>${t("col_area")}</th><th>${t("country")}</th></tr></thead><tbody>${rows.map(m=>`<tr><td>${esc(m.prenom)} ${esc(m.nom)}</td><td dir="ltr" style="white-space:nowrap"><a href="tel:${esc(m.tel)}">${esc(m.tel)}</a></td><td><a href="mailto:${esc(m.email)}">${esc(m.email)}</a></td><td>${esc(m.adresse)}</td><td>${esc(ctry(m.pays,true))}</td></tr>`).join("")||`<tr><td colspan="5" class="muted">${t("no_match")}</td></tr>`}</tbody>`};
+    $("#mSearch").oninput=draw;draw();
+  }else if(tabState.mem==="finances"){
+    const tc=DATA.contributions.reduce((s,x)=>s+x.montant,0),td=DATA.depenses.reduce((s,x)=>s+x.montant,0);
+    b.innerHTML=`<div class="cols" style="margin-bottom:18px">
+      <div class="panel"><div class="muted">${t("contribs")}</div><div class="big">${money(tc)}</div></div>
+      <div class="panel"><div class="muted">${t("expenses")}</div><div class="big">${money(td)}</div></div>
+      <div class="panel"><div class="muted">${t("balance")}</div><div class="big ${tc-td>=0?"pos":"neg"}">${money(tc-td)}</div></div></div>
+      <div class="cols"><div class="panel"><h3>${t("contribs")}</h3><div class="scroll"><table style="min-width:360px"><thead><tr><th>${t("date")}</th><th>${t("source")}</th><th class="num">${t("amount_col")}</th></tr></thead><tbody>${DATA.contributions.map(c=>`<tr><td>${fmtDate(c.date)}</td><td>${esc(lineLabel(c))}</td><td class="num">${money(c.montant)}</td></tr>`).join("")}</tbody></table></div></div>
+      <div class="panel"><h3>${t("expenses")}</h3><div class="scroll"><table style="min-width:360px"><thead><tr><th>${t("date")}</th><th>${t("object")}</th><th class="num">${t("amount_col")}</th></tr></thead><tbody>${DATA.depenses.map(c=>`<tr><td>${fmtDate(c.date)}</td><td>${esc(lineLabel(c))}</td><td class="num">${money(c.montant)}</td></tr>`).join("")}</tbody></table></div></div></div>`;
+  }else if(tabState.mem==="releves"){
+    const st=buildStatements();
+    b.innerHTML=`<div class="panel"><h3>${t("bank_title")}</h3><p class="muted" style="margin-bottom:4px">${t("bank_lead")}</p><p style="font-size:.92rem;margin-bottom:10px">${t("account")}</p>
+    <div class="st-row head"><span>${t("month")}</span><span class="n">${t("opening")}</span><span class="n">${t("deposits")}</span><span class="n">${t("withdrawals")}</span><span class="n">${t("closing")}</span><span></span></div>
+    ${st.map((s,i)=>({s,i})).reverse().map(({s,i},j)=>`<div class="st-row"><span><b>${monthName(s.mois)}</b>${j===0?` <span class="tag">${t("latest")}</span>`:""}</span>
+      <span class="n" data-l="${t("opening")}">${money2(s.open)}</span><span class="n pos" data-l="${t("deposits")}">+${money2(s.dep)}</span><span class="n neg" data-l="${t("withdrawals")}">−${money2(s.wd)}</span><span class="n" data-l="${t("closing")}"><b>${money2(s.close)}</b></span>
+      <button class="btn small ghost" type="button" onclick="showStatement(${i})">${t("view_st")}</button></div>`).join("")}</div>`;
+  }else if(tabState.mem==="chat"){
+    const room=()=>"MuUminGrandsLacs-"+Math.random().toString(36).slice(2,8);
+    const ra=room(),rv=room();
+    b.innerHTML=`<div class="cols"><div class="panel chat" style="grid-column:span 2"><div class="msgs" id="msgs" aria-live="polite"></div>
+      <form id="chatForm"><input id="chatIn" placeholder="${t("chat_ph")}" aria-label="${t("chat_ph")}" autocomplete="off"><button class="btn" type="submit">${t("send")}</button></form></div>
+      <div class="panel"><h3>${t("call_title")}</h3><p class="muted">${t("call_text")}</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap"><a class="btn" href="https://meet.jit.si/${ra}#config.startWithVideoMuted=true" target="_blank" rel="noopener">${t("audio_call")}</a><a class="btn ghost" href="https://meet.jit.si/${rv}" target="_blank" rel="noopener">${t("video_call")}</a></div>
+      <p class="muted" style="font-size:.85rem;margin-top:10px;word-break:break-all">${t("call_room")} : meet.jit.si/${rv}</p></div></div>`;
+    const seed=[{de:"Fatuma Niyonzima",t:"As-salamu alaykum ! N'oubliez pas la visite à l'hôpital le 4 octobre.",h:"09:12"},{de:"Ismaël Kalonji",t:"Wa alaykum salam. Ninaweza kuendesha, nina nafasi 3.",h:"09:30"}];
+    const draw=()=>{const ms=store.get("chat",seed);$("#msgs").innerHTML=ms.map(m=>`<div class="msg${m.de===session.prenom+" "+session.nom?" me":""}" dir="auto"><small>${esc(m.de)}, ${m.h}</small>${esc(m.t)}</div>`).join("");$("#msgs").scrollTop=1e6};
+    $("#chatForm").onsubmit=e=>{e.preventDefault();const v=$("#chatIn").value.trim();if(!v)return;const ms=store.get("chat",seed);ms.push({de:session.prenom+" "+session.nom,t:v,h:new Date().toLocaleTimeString("fr-CA",{hour:"2-digit",minute:"2-digit"})});store.set("chat",ms.slice(-200));$("#chatIn").value="";draw()};
+    draw();
+  }else{
+    const p=store.get("notifs",{sms:true,wa:false,email:true,tel:"",mail:session.email,ev:true,deces:true,dons:false});
+    b.innerHTML=`<form class="panel" id="notifForm" style="max-width:640px"><h3>${t("notif_title")}</h3>
+      <p class="muted">${t("notif_text")}</p>
+      <div class="checks"><label class="check"><input type="checkbox" id="n-sms" ${p.sms?"checked":""}> ${t("sms")}</label>
+      <label class="check"><input type="checkbox" id="n-wa" ${p.wa?"checked":""}> ${t("whatsapp")}</label>
+      <label class="check"><input type="checkbox" id="n-email" ${p.email?"checked":""}> ${t("email")}</label></div>
+      <div class="grid2"><div class="field"><label for="n-tel">${t("mobile")}</label><input id="n-tel" type="tel" value="${esc(p.tel)}" placeholder="418 555-0000" dir="ltr"></div>
+      <div class="field"><label for="n-mail">${t("email")}</label><input id="n-mail" type="email" value="${esc(p.mail)}" dir="ltr"></div></div>
+      <label>${t("topics")}</label>
+      <label class="check"><input type="checkbox" id="n-ev" ${p.ev?"checked":""}> ${t("t_ev")}</label>
+      <label class="check"><input type="checkbox" id="n-dc" ${p.deces?"checked":""}> ${t("t_dc")}</label>
+      <label class="check" style="margin-bottom:16px"><input type="checkbox" id="n-dn" ${p.dons?"checked":""}> ${t("t_dn")}</label>
+      <button class="btn" type="submit">${t("save_prefs")}</button></form>`;
+    $("#notifForm").onsubmit=e=>{e.preventDefault();const n={sms:$("#n-sms").checked,wa:$("#n-wa").checked,email:$("#n-email").checked,tel:$("#n-tel").value,mail:$("#n-mail").value,ev:$("#n-ev").checked,deces:$("#n-dc").checked,dons:$("#n-dn").checked};
+      if((n.sms||n.wa)&&!n.tel){toast(t("need_phone"));return}store.set("notifs",n);toast(t("prefs_saved"))};
+  }
+};
+
+/* ===================== Thème & démarrage ===================== */
+$("#themeBtn").onclick=()=>{const r=document.documentElement;const dark=r.dataset.theme?r.dataset.theme==="dark":matchMedia("(prefers-color-scheme: dark)").matches;r.dataset.theme=dark?"light":"dark";store.set("theme",r.dataset.theme)};
+const th=store.get("theme",null);if(th)document.documentElement.dataset.theme=th;
+
+function renderAll(){
+  render.act();render.reg();render.aud();renderHome();renderProjects();renderCampaigns();renderLeaders();
+  renderHeroPrayers();renderPrayerTable();renderAdhanUI();
+  if(location.hash==="#membres")renderMember();
+}
+bindTabs(document);applyLang();route();
+setInterval(()=>{renderHeroPrayers();checkAdhan()},15000);
+document.addEventListener("visibilitychange",()=>{if(!document.hidden){renderHeroPrayers();checkAdhan()}});
+</script>
+</body>
+</html>
