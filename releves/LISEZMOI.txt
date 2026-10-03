@@ -1,0 +1,2 @@
+Déposez ici le relevé PDF officiel de chaque mois, par exemple 2026-09.pdf,
+puis indiquez son chemin dans index.html, dans DATA.releves : pdf:"releves/2026-09.pdf".
