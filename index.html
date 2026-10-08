@@ -275,8 +275,6 @@ footer b{color:var(--ink);font-family:var(--display);font-weight:400;font-size:1
       <div>
         <h2 data-i="about_title"></h2>
         <p data-i="about_text"></p>
-        <h3 data-i="countries_label" style="margin-top:18px"></h3>
-        <ul class="countries" id="countryList"></ul>
       </div>
       <div class="panel" style="align-self:start">
         <h3 data-i="find_title"></h3>
@@ -720,7 +718,6 @@ function applyLang(){
   $("#langSwitch").setAttribute("aria-label",t("lang_label"));
   $("#basmalaTr").hidden=lang==="ar";
   $("#demoNote").innerHTML=t("demo_note","demo@mu-umin.ca","salam2005");
-  $("#countryList").innerHTML=Object.keys(COUNTRIES).map(c=>`<li>${esc(ctry(c))}</li>`).join("");
   $("#c-niveau").innerHTML=t("levels").map((l,i)=>`<option value="${i}">${esc(l)}</option>`).join("");
   updateNav();renderAll();
 }
