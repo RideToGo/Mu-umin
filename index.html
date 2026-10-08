@@ -215,7 +215,7 @@ footer b{color:var(--ink);font-family:var(--display);font-weight:400;font-size:1
         <path d="M25 11.83A10 10 0 1 0 25 30.17A9.5 9.5 0 1 1 25 11.83z" fill="#E7D38E"/>
         <path d="M7 28c4-3 8-3 12 0s8 3 12 0 6-2 5-1" stroke="#9CC7C9" stroke-width="2" fill="none"/>
       </svg>
-      <span><b>Mu-umin</b><small data-i="brand_sub"></small></span>
+      <span><b>Mu-umin</b></span>
     </a>
     <div class="lang" role="group" id="langSwitch">
       <button type="button" data-lang="fr" lang="fr">FR</button>
@@ -283,6 +283,8 @@ footer b{color:var(--ink);font-family:var(--display);font-weight:400;font-size:1
         <p class="muted" style="margin:0" data-i="find_members"></p>
       </div>
     </div>
+    <h2 style="margin-top:40px" data-i="ann_title"></h2>
+    <div class="panel" id="homeAnnonces"></div>
     <h2 style="margin-top:40px" data-i="upcoming_title"></h2>
     <div class="panel" id="homeUpcoming"></div>
   </div>
@@ -478,7 +480,7 @@ footer b{color:var(--ink);font-family:var(--display);font-weight:400;font-size:1
 <script>
 /* ===================== Traductions ===================== */
 const I18N={
-fr:{iqama:"Iqama",jumua:"Joumou'a (vendredi)",empty:"Rien pour le moment.",card_soon:"Le paiement par carte sera bientôt disponible. Utilisez le virement Interac pour le moment.",lang_label:"Langue",basmala_tr:"Au nom d'Allah, le Tout Miséricordieux, le Très Miséricordieux.",nav_home:"Accueil",nav_act:"Activités",nav_reg:"Registres",nav_quran:"Cours de Coran",nav_proj:"Projets",nav_don:"Dons",nav_prayer:"Prière",nav_listen:"Audio et mawaidha",nav_leaders:"Responsables",nav_members:"Espace membres",brand_sub:"des pays des Grands Lacs",menu:"Menu",
+fr:{ann_title:"Annonces",ann_none:"Aucune annonce pour le moment.",iqama:"Iqama",jumua:"Joumou'a (vendredi)",empty:"Rien pour le moment.",card_soon:"Le paiement par carte sera bientôt disponible. Utilisez le virement Interac pour le moment.",lang_label:"Langue",basmala_tr:"Au nom d'Allah, le Tout Miséricordieux, le Très Miséricordieux.",nav_home:"Accueil",nav_act:"Activités",nav_reg:"Registres",nav_quran:"Cours de Coran",nav_proj:"Projets",nav_don:"Dons",nav_prayer:"Prière",nav_listen:"Audio et mawaidha",nav_leaders:"Responsables",nav_members:"Espace membres",brand_sub:"des pays des Grands Lacs",menu:"Menu",
 hero_title:"Une famille pour tous",hero_lead:"Fondée en 2005 à Québec par des musulmans originaires du Congo, du Burundi, de la Tanzanie et du Rwanda, l'association Mu-umin rassemble, accueille et soutient chaque musulman et musulmane, quel que soit son pays d'origine.",btn_join:"Devenir membre",btn_support:"Soutenir nos causes",
 prayer_today:"Heures de prière aujourd'hui",city:"Ville de Québec",next_prayer:(n,h,m)=>`Prochaine prière : ${n} dans ${h?h+" h ":""}${m} min`,tomorrow_fajr:"Fajr de demain : ",
 about_title:"Qui sommes-nous",about_text:"Mu-umin est une association à but non lucratif ouverte à toutes et à tous. Nous accompagnons les familles aux moments importants de la vie : la naissance d'un enfant, l'arrivée dans un nouveau pays, le deuil. Nous organisons des visites, des événements, des cours de Coran et des projets de charité ici et dans la région des Grands Lacs.",countries_label:"Nos membres viennent de",find_title:"Ce que vous trouverez ici",find_public:"Ouvert à tous les visiteurs : activités et événements, registres communautaires, cours de Coran, projets, avancement des dons, heures de prière, audio du Coran et mawaidha.",find_members:"Réservé aux membres : liste des membres et coordonnées, contributions et dépenses, relevés bancaires mensuels, discussion et appels en ligne.",upcoming_title:"Prochainement",see_all:"Voir toutes les activités",
@@ -502,7 +504,7 @@ foot_name:"Association Mu-umin des pays des Grands Lacs",foot_founded:"Fondée e
 dues:n=>`Cotisations mensuelles (${n} membres)`,friday:"Collecte du vendredi",picnic:"Vente de repas au pique-nique",contrib_of:n=>`Contribution de ${n}`,rent:m=>`Location de la salle (${m})`,kits:"Trousses d'accueil nouveaux arrivants",picnic_cost:"Pique-nique : nourriture et permis",funeral:"Aide funéraire, famille Bizimana",fees:"Frais bancaires",online_dons:"Dépôt des dons en ligne",
 lang_fr:"Français",lang_sw:"Swahili",lang_rw:"Kinyarwanda / Kirundi"},
 
-en:{iqama:"Iqama",jumua:"Jumu'ah (Friday)",empty:"Nothing here yet.",card_soon:"Card payment will be available soon. Please use Interac e-Transfer for now.",lang_label:"Language",basmala_tr:"In the name of Allah, the Most Gracious, the Most Merciful.",nav_home:"Home",nav_act:"Activities",nav_reg:"Registers",nav_quran:"Quran classes",nav_proj:"Projects",nav_don:"Donations",nav_prayer:"Prayer",nav_listen:"Audio and mawaidha",nav_leaders:"Leadership",nav_members:"Members area",brand_sub:"of the Great Lakes countries",menu:"Menu",
+en:{ann_title:"Announcements",ann_none:"No announcements yet.",iqama:"Iqama",jumua:"Jumu'ah (Friday)",empty:"Nothing here yet.",card_soon:"Card payment will be available soon. Please use Interac e-Transfer for now.",lang_label:"Language",basmala_tr:"In the name of Allah, the Most Gracious, the Most Merciful.",nav_home:"Home",nav_act:"Activities",nav_reg:"Registers",nav_quran:"Quran classes",nav_proj:"Projects",nav_don:"Donations",nav_prayer:"Prayer",nav_listen:"Audio and mawaidha",nav_leaders:"Leadership",nav_members:"Members area",brand_sub:"of the Great Lakes countries",menu:"Menu",
 hero_title:"A family for all",hero_lead:"Founded in 2005 in Québec City by Muslims from Congo, Burundi, Tanzania and Rwanda, the Mu-umin association brings together, welcomes and supports every Muslim, whatever their country of origin.",btn_join:"Become a member",btn_support:"Support our causes",
 prayer_today:"Today's prayer times",city:"Québec City",next_prayer:(n,h,m)=>`Next prayer: ${n} in ${h?h+" h ":""}${m} min`,tomorrow_fajr:"Tomorrow's Fajr: ",
 about_title:"Who we are",about_text:"Mu-umin is a non-profit association open to everyone. We stand with families at life's important moments: the birth of a child, arriving in a new country, the loss of a loved one. We organize visits, events, Quran classes and charity projects here and in the Great Lakes region.",countries_label:"Our members come from",find_title:"What you'll find here",find_public:"Open to all visitors: activities and events, community registers, Quran classes, projects, donation progress, prayer times, Quran audio and mawaidha.",find_members:"Members only: member directory and contact details, contributions and expenses, monthly bank statements, chat and online calls.",upcoming_title:"Coming up",see_all:"See all activities",
@@ -526,7 +528,7 @@ foot_name:"Mu-umin Association of the Great Lakes Countries",foot_founded:"Found
 dues:n=>`Monthly dues (${n} members)`,friday:"Friday collection",picnic:"Meal sales at the picnic",contrib_of:n=>`Contribution from ${n}`,rent:m=>`Hall rental (${m})`,kits:"Welcome kits for newcomers",picnic_cost:"Picnic: food and permit",funeral:"Funeral assistance, Bizimana family",fees:"Bank fees",online_dons:"Online donations deposit",
 lang_fr:"French",lang_sw:"Swahili",lang_rw:"Kinyarwanda / Kirundi"},
 
-sw:{iqama:"Iqama",jumua:"Ijumaa",empty:"Hakuna kitu kwa sasa.",card_soon:"Malipo kwa kadi yatapatikana hivi karibuni. Kwa sasa tumia uhamisho wa Interac.",lang_label:"Lugha",basmala_tr:"Kwa jina la Mwenyezi Mungu, Mwingi wa Rehema, Mwenye Kurehemu.",nav_home:"Mwanzo",nav_act:"Shughuli",nav_reg:"Rejista",nav_quran:"Madarasa ya Qur'ani",nav_proj:"Miradi",nav_don:"Michango",nav_prayer:"Swala",nav_listen:"Sauti na mawaidha",nav_leaders:"Viongozi",nav_members:"Eneo la wanachama",brand_sub:"wa nchi za Maziwa Makuu",menu:"Menyu",
+sw:{ann_title:"Matangazo",ann_none:"Hakuna matangazo kwa sasa.",iqama:"Iqama",jumua:"Ijumaa",empty:"Hakuna kitu kwa sasa.",card_soon:"Malipo kwa kadi yatapatikana hivi karibuni. Kwa sasa tumia uhamisho wa Interac.",lang_label:"Lugha",basmala_tr:"Kwa jina la Mwenyezi Mungu, Mwingi wa Rehema, Mwenye Kurehemu.",nav_home:"Mwanzo",nav_act:"Shughuli",nav_reg:"Rejista",nav_quran:"Madarasa ya Qur'ani",nav_proj:"Miradi",nav_don:"Michango",nav_prayer:"Swala",nav_listen:"Sauti na mawaidha",nav_leaders:"Viongozi",nav_members:"Eneo la wanachama",brand_sub:"wa nchi za Maziwa Makuu",menu:"Menyu",
 hero_title:"Familia kwa wote",hero_lead:"Ilianzishwa mwaka 2005 mjini Québec na Waislamu kutoka Kongo, Burundi, Tanzania na Rwanda. Jumuiya ya Mu-umin inaunganisha, inakaribisha na kumsaidia kila Muislamu, bila kujali nchi anayotoka.",btn_join:"Kuwa mwanachama",btn_support:"Saidia malengo yetu",
 prayer_today:"Nyakati za swala leo",city:"Jiji la Québec",next_prayer:(n,h,m)=>`Swala ijayo: ${n} baada ya ${h?"saa "+h+" na ":""}dakika ${m}`,tomorrow_fajr:"Alfajiri ya kesho: ",
 about_title:"Sisi ni nani",about_text:"Mu-umin ni jumuiya isiyo ya kibiashara iliyo wazi kwa kila mtu. Tunasimama na familia katika nyakati muhimu za maisha: kuzaliwa kwa mtoto, kuwasili katika nchi mpya, na msiba. Tunaandaa ziara, matukio, madarasa ya Qur'ani na miradi ya hisani hapa na katika eneo la Maziwa Makuu.",countries_label:"Wanachama wetu wanatoka",find_title:"Utakachopata hapa",find_public:"Wazi kwa wageni wote: shughuli na matukio, rejista za jamii, madarasa ya Qur'ani, miradi, maendeleo ya michango, nyakati za swala, sauti ya Qur'ani na mawaidha.",find_members:"Kwa wanachama pekee: orodha ya wanachama na mawasiliano yao, michango na matumizi, taarifa za benki za kila mwezi, mazungumzo na simu za mtandaoni.",upcoming_title:"Yanayokuja",see_all:"Tazama shughuli zote",
@@ -550,7 +552,7 @@ foot_name:"Jumuiya ya Mu-umin ya Nchi za Maziwa Makuu",foot_founded:"Ilianzishwa
 dues:n=>`Ada za kila mwezi (wanachama ${n})`,friday:"Mchango wa Ijumaa",picnic:"Mauzo ya chakula kwenye pikiniki",contrib_of:n=>`Mchango wa ${n}`,rent:m=>`Kodi ya ukumbi (${m})`,kits:"Vifurushi vya makaribisho kwa wageni wapya",picnic_cost:"Pikiniki: chakula na kibali",funeral:"Msaada wa mazishi, familia ya Bizimana",fees:"Ada za benki",online_dons:"Amana ya michango ya mtandaoni",
 lang_fr:"Kifaransa",lang_sw:"Kiswahili",lang_rw:"Kinyarwanda / Kirundi"},
 
-ar:{iqama:"الإقامة",jumua:"الجمعة",empty:"لا يوجد شيء حاليًا.",card_soon:"سيتوفر الدفع بالبطاقة قريبًا. استخدم تحويل إنتراك حاليًا.",lang_label:"اللغة",basmala_tr:"",nav_home:"الرئيسية",nav_act:"الأنشطة",nav_reg:"السجلات",nav_quran:"دروس القرآن",nav_proj:"المشاريع",nav_don:"التبرعات",nav_prayer:"الصلاة",nav_listen:"الصوتيات والمواعظ",nav_leaders:"المسؤولون",nav_members:"فضاء الأعضاء",brand_sub:"من دول البحيرات العظمى",menu:"القائمة",
+ar:{ann_title:"الإعلانات",ann_none:"لا توجد إعلانات حاليًا.",iqama:"الإقامة",jumua:"الجمعة",empty:"لا يوجد شيء حاليًا.",card_soon:"سيتوفر الدفع بالبطاقة قريبًا. استخدم تحويل إنتراك حاليًا.",lang_label:"اللغة",basmala_tr:"",nav_home:"الرئيسية",nav_act:"الأنشطة",nav_reg:"السجلات",nav_quran:"دروس القرآن",nav_proj:"المشاريع",nav_don:"التبرعات",nav_prayer:"الصلاة",nav_listen:"الصوتيات والمواعظ",nav_leaders:"المسؤولون",nav_members:"فضاء الأعضاء",brand_sub:"من دول البحيرات العظمى",menu:"القائمة",
 hero_title:"عائلة للجميع",hero_lead:"تأسست جمعية مؤمن سنة 2005 في مدينة كيبك على يد مسلمين من الكونغو وبوروندي وتنزانيا ورواندا، وهي تجمع كل مسلم ومسلمة وترحب بهم وتدعمهم، أيًّا كان بلدهم الأصلي.",btn_join:"انضم إلينا",btn_support:"ادعم مشاريعنا",
 prayer_today:"مواقيت الصلاة اليوم",city:"مدينة كيبك",next_prayer:(n,h,m)=>`الصلاة القادمة: ${n} بعد ${h?h+" س و":""}${m} د`,tomorrow_fajr:"فجر الغد: ",
 about_title:"من نحن",about_text:"مؤمن جمعية غير ربحية مفتوحة للجميع. نقف إلى جانب العائلات في لحظات الحياة المهمة: ولادة طفل، والوصول إلى بلد جديد، وفقدان عزيز. ننظم الزيارات والفعاليات ودروس القرآن والمشاريع الخيرية هنا وفي منطقة البحيرات العظمى.",countries_label:"أعضاؤنا من",find_title:"ما ستجده هنا",find_public:"متاح لجميع الزوار: الأنشطة والفعاليات، سجلات الجالية، دروس القرآن، المشاريع، تقدم التبرعات، مواقيت الصلاة، تلاوات القرآن والمواعظ.",find_members:"للأعضاء فقط: قائمة الأعضاء وبيانات الاتصال، المساهمات والمصاريف، الكشوف البنكية الشهرية، الدردشة والمكالمات عبر الإنترنت.",upcoming_title:"قريبًا",see_all:"عرض كل الأنشطة",
@@ -613,6 +615,7 @@ const TODAY=qcDateStr();
 const HALL={fr:"Salle communautaire",en:"Community hall",sw:"Ukumbi wa jamii",ar:"القاعة المجتمعية"};
 const DATA={
  /* Ajoutez ici les vraies données de l'association. Chaque liste est vide au départ. */
+ annonces:[], /* {date:"2026-10-08",titre:{fr:"...",en:"..."},texte:{fr:"...",en:"..."}} */
  evenements:[],visites:[],naissances:[],arrivants:[],deces:[],projets:[],campagnes:[],
  responsables:[],membres:[],contributions:[],depenses:[],
  /* Relevés : {mois:"2026-10",ouverture:0,extra:[],pdf:"releves/2026-10.pdf"} */
@@ -692,7 +695,12 @@ function rsvp(id){
   <button class="btn" type="submit">${t("confirm")}</button></form>`);
   $("#rsvpForm").onsubmit=ev=>{ev.preventDefault();const all=rsvps();(all[id]=all[id]||[]).push({nom:$("#r-nom").value,n:+$("#r-n").value});store.set("rsvp",all);dlg.close();render.act();renderHome();toast(t("rsvp_ok"))};
 }
+function renderAnnonces(){
+  const a=[...DATA.annonces].sort((x,y)=>y.date.localeCompare(x.date));
+  $("#homeAnnonces").innerHTML=a.map(n=>`<div class="item">${dateBox(n.date)}<div><h3>${esc(L(n.titre))}</h3><p style="white-space:pre-line">${esc(L(n.texte))}</p></div></div>`).join("")||`<p class="muted" style="margin:0">${t("ann_none")}</p>`;
+}
 function renderHome(){
+  renderAnnonces();
   const up=[...DATA.evenements.map(e=>({...e,k:"k_event"})),...DATA.visites.map(e=>({...e,k:"k_visit"}))].filter(e=>e.date>=TODAY).sort((a,b)=>a.date.localeCompare(b.date)).slice(0,3);
   $("#homeUpcoming").innerHTML=(up.map(e=>`<div class="item">${dateBox(e.date)}<div><span class="tag">${t(e.k)}</span><h3 style="margin-top:6px">${esc(L(e.titre))}</h3><p>${esc(L(e.lieu))}</p><button class="btn small ghost" type="button" onclick="rsvp('${e.id}')">${t("confirm_presence")}</button></div></div>`).join("")||`<p class="muted">${t("none_up")}</p>`)+`<p style="margin:14px 0 0"><a href="#activites">${t("see_all")}</a></p>`;
 }
@@ -818,7 +826,7 @@ function renderPrayerTable(){
 $("#weekStart").onchange=renderPrayerTable;
 
 /* ===================== Rappels d'adhan ===================== */
-const ADHAN_SRC="adhan.mp3"; /* déposez votre enregistrement d'adhan à côté de index.html */
+const ADHAN_SRC="https://cdn.aladhan.com/audio/adhans/a9.mp3"; /* Adhan par Mishary Rashid Alafasy, fourni gratuitement par AlAdhan.com */
 const adhan={on:store.get("adhan_on",false),which:store.get("adhan_which",FIVE),audio:null,ctx:null,fired:new Set(store.get("adhan_fired",[]))};
 function ensureAudioCtx(){try{adhan.ctx=adhan.ctx||new (window.AudioContext||window.webkitAudioContext)();adhan.ctx.resume()}catch(e){}}
 function chime(){ /* son de secours si adhan.mp3 est absent */
