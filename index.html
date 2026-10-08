@@ -593,7 +593,7 @@ const store={
   set(k,v){try{localStorage.setItem("mu1_"+k,JSON.stringify(v))}catch(e){}}
 };
 const LANGS=["fr","en","sw","ar"];
-let lang=store.get("lang",null)||(()=>{const n=(navigator.language||"fr").slice(0,2);return LANGS.includes(n)?n:"fr"})();
+let lang=store.get("lang",null);if(!LANGS.includes(lang))lang="fr";
 const LOC={fr:"fr-CA",en:"en-CA",sw:"sw",ar:"ar-u-nu-latn"};
 const t=(k,...a)=>{const v=I18N[lang][k]??I18N.fr[k];return typeof v==="function"?v(...a):v};
 const L=v=>v&&typeof v==="object"&&!Array.isArray(v)?(v[lang]??v.fr):v;
