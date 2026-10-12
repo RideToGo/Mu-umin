@@ -140,6 +140,13 @@ td.num,th.num{text-align:end;font-variant-numeric:tabular-nums;white-space:nowra
 .prayer-card .btn{font-size:.9rem;padding:6px 12px}
 
 .prayer-row small.iq{display:block;font-size:.72rem;opacity:.75;text-align:end}
+.admin-ctl{display:inline-flex;gap:6px;margin-inline-start:8px;vertical-align:middle;flex-wrap:wrap}
+.admin-ctl .btn{padding:3px 10px;font-size:.8rem}
+.btn.danger{color:#B4362B;border-color:#B4362B}
+.admin-add{margin:0 0 12px}
+.linkbtn{background:none;border:0;padding:0;color:var(--lake);text-decoration:underline;cursor:pointer;font:inherit}
+.admin-box{margin-bottom:18px}
+.admin-box table td,.admin-box table th{font-size:.9rem}
 .countries{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0;padding:0;list-style:none}
 .countries li{padding:6px 14px;border:1px solid var(--line);border-radius:999px;background:var(--card)}
 
@@ -449,6 +456,7 @@ footer b{color:var(--ink);font-family:var(--display);font-weight:400;font-size:1
             <div class="field"><label for="l-email" data-i="email"></label><input id="l-email" type="email" required></div>
             <div class="field"><label for="l-pass" data-i="password"></label><input id="l-pass" type="password" required></div>
             <button class="btn" type="submit" data-i="sign_in"></button>
+            <p style="margin:12px 0 0"><button class="linkbtn" type="button" id="forgotBtn" data-i="forgot"></button></p>
           </form>
         </div>
         <div class="panel" style="margin-top:18px">
@@ -477,10 +485,11 @@ footer b{color:var(--ink);font-family:var(--display);font-weight:400;font-size:1
 <div class="toast" id="toast" role="status"></div>
 <div class="adhan-bar" id="adhanBar" hidden role="alert"><span><b id="adhanBarTitle"></b><br><span id="adhanBarBody"></span></span><button class="btn" type="button" id="adhanStop"></button></div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
 <script>
 /* ===================== Traductions ===================== */
 const I18N={
-fr:{ann_title:"Annonces",ann_none:"Aucune annonce pour le moment.",iqama:"Iqama",jumua:"Joumou'a (vendredi)",empty:"Rien pour le moment.",card_soon:"Le paiement par carte sera bientôt disponible. Utilisez le virement Interac pour le moment.",lang_label:"Langue",basmala_tr:"Au nom d'Allah, le Tout Miséricordieux, le Très Miséricordieux.",nav_home:"Accueil",nav_act:"Activités",nav_reg:"Registres",nav_quran:"Cours de Coran",nav_proj:"Projets",nav_don:"Dons",nav_prayer:"Prière",nav_listen:"Audio et mawaidha",nav_leaders:"Responsables",nav_members:"Espace membres",brand_sub:"des pays des Grands Lacs",menu:"Menu",
+fr:{net_err:"Une erreur est survenue. Réessayez.",check_email_t:"Vérifiez vos courriels",check_email:e=>`Un courriel de confirmation a été envoyé à <b>${e}</b>. Cliquez sur le lien qu'il contient pour activer votre compte, puis connectez-vous.`,not_confirmed:"Votre courriel n'est pas encore confirmé. Cliquez sur le lien reçu par courriel.",forgot:"Mot de passe oublié ?",forgot_need:"Entrez d'abord votre courriel ci-dessus.",reset_sent:"Si ce courriel existe, un lien de réinitialisation vient d'être envoyé.",new_pass_t:"Choisir un nouveau mot de passe",pass_updated:"Mot de passe mis à jour.",reg_contact:"Pour ajouter une inscription au registre, contactez un responsable.",tab_admin:"Administration",ann_title:"Annonces",ann_none:"Aucune annonce pour le moment.",iqama:"Iqama",jumua:"Joumou'a (vendredi)",empty:"Rien pour le moment.",card_soon:"Le paiement par carte sera bientôt disponible. Utilisez le virement Interac pour le moment.",lang_label:"Langue",basmala_tr:"Au nom d'Allah, le Tout Miséricordieux, le Très Miséricordieux.",nav_home:"Accueil",nav_act:"Activités",nav_reg:"Registres",nav_quran:"Cours de Coran",nav_proj:"Projets",nav_don:"Dons",nav_prayer:"Prière",nav_listen:"Audio et mawaidha",nav_leaders:"Responsables",nav_members:"Espace membres",brand_sub:"des pays des Grands Lacs",menu:"Menu",
 hero_title:"Une famille pour tous",hero_lead:"Fondée en 2011 à Québec par des musulmans originaires du Congo, du Burundi, de la Tanzanie et du Rwanda, l'association Mu-umin rassemble, accueille et soutient chaque musulman et musulmane, quel que soit son pays d'origine.",btn_join:"Devenir membre",btn_support:"Soutenir nos causes",
 prayer_today:"Heures de prière aujourd'hui",city:"Ville de Québec",next_prayer:(n,h,m)=>`Prochaine prière : ${n} dans ${h?h+" h ":""}${m} min`,tomorrow_fajr:"Fajr de demain : ",
 about_title:"Qui sommes-nous",about_text:"Mu-umin est une association à but non lucratif ouverte à toutes et à tous. Nous accompagnons les familles aux moments importants de la vie : la naissance d'un enfant, l'arrivée dans un nouveau pays, le deuil. Nous organisons des visites, des événements, des cours de Coran et des projets de charité ici et dans la région des Grands Lacs.",countries_label:"Nos membres viennent de",find_title:"Ce que vous trouverez ici",find_public:"Ouvert à tous les visiteurs : activités et événements, registres communautaires, cours de Coran, projets, avancement des dons, heures de prière, audio du Coran et mawaidha.",find_members:"Réservé aux membres : liste des membres et coordonnées, contributions et dépenses, relevés bancaires mensuels, discussion et appels en ligne.",upcoming_title:"Prochainement",see_all:"Voir toutes les activités",
@@ -504,7 +513,7 @@ foot_name:"Association Mu-umin des pays des Grands Lacs",foot_founded:"Fondée e
 dues:n=>`Cotisations mensuelles (${n} membres)`,friday:"Collecte du vendredi",picnic:"Vente de repas au pique-nique",contrib_of:n=>`Contribution de ${n}`,rent:m=>`Location de la salle (${m})`,kits:"Trousses d'accueil nouveaux arrivants",picnic_cost:"Pique-nique : nourriture et permis",funeral:"Aide funéraire, famille Bizimana",fees:"Frais bancaires",online_dons:"Dépôt des dons en ligne",
 lang_fr:"Français",lang_sw:"Swahili",lang_rw:"Kinyarwanda / Kirundi"},
 
-en:{ann_title:"Announcements",ann_none:"No announcements yet.",iqama:"Iqama",jumua:"Jumu'ah (Friday)",empty:"Nothing here yet.",card_soon:"Card payment will be available soon. Please use Interac e-Transfer for now.",lang_label:"Language",basmala_tr:"In the name of Allah, the Most Gracious, the Most Merciful.",nav_home:"Home",nav_act:"Activities",nav_reg:"Registers",nav_quran:"Quran classes",nav_proj:"Projects",nav_don:"Donations",nav_prayer:"Prayer",nav_listen:"Audio and mawaidha",nav_leaders:"Leadership",nav_members:"Members area",brand_sub:"of the Great Lakes countries",menu:"Menu",
+en:{net_err:"Something went wrong. Please try again.",check_email_t:"Check your email",check_email:e=>`A confirmation email was sent to <b>${e}</b>. Click the link inside to activate your account, then sign in.`,not_confirmed:"Your email isn't confirmed yet. Click the link we emailed you.",forgot:"Forgot your password?",forgot_need:"Enter your email above first.",reset_sent:"If this email exists, a reset link has just been sent.",new_pass_t:"Choose a new password",pass_updated:"Password updated.",reg_contact:"To add an entry to the register, contact a board member.",tab_admin:"Administration",ann_title:"Announcements",ann_none:"No announcements yet.",iqama:"Iqama",jumua:"Jumu'ah (Friday)",empty:"Nothing here yet.",card_soon:"Card payment will be available soon. Please use Interac e-Transfer for now.",lang_label:"Language",basmala_tr:"In the name of Allah, the Most Gracious, the Most Merciful.",nav_home:"Home",nav_act:"Activities",nav_reg:"Registers",nav_quran:"Quran classes",nav_proj:"Projects",nav_don:"Donations",nav_prayer:"Prayer",nav_listen:"Audio and mawaidha",nav_leaders:"Leadership",nav_members:"Members area",brand_sub:"of the Great Lakes countries",menu:"Menu",
 hero_title:"A family for all",hero_lead:"Founded in 2011 in Québec City by Muslims from Congo, Burundi, Tanzania and Rwanda, the Mu-umin association brings together, welcomes and supports every Muslim, whatever their country of origin.",btn_join:"Become a member",btn_support:"Support our causes",
 prayer_today:"Today's prayer times",city:"Québec City",next_prayer:(n,h,m)=>`Next prayer: ${n} in ${h?h+" h ":""}${m} min`,tomorrow_fajr:"Tomorrow's Fajr: ",
 about_title:"Who we are",about_text:"Mu-umin is a non-profit association open to everyone. We stand with families at life's important moments: the birth of a child, arriving in a new country, the loss of a loved one. We organize visits, events, Quran classes and charity projects here and in the Great Lakes region.",countries_label:"Our members come from",find_title:"What you'll find here",find_public:"Open to all visitors: activities and events, community registers, Quran classes, projects, donation progress, prayer times, Quran audio and mawaidha.",find_members:"Members only: member directory and contact details, contributions and expenses, monthly bank statements, chat and online calls.",upcoming_title:"Coming up",see_all:"See all activities",
@@ -528,7 +537,7 @@ foot_name:"Mu-umin Association of the Great Lakes Countries",foot_founded:"Found
 dues:n=>`Monthly dues (${n} members)`,friday:"Friday collection",picnic:"Meal sales at the picnic",contrib_of:n=>`Contribution from ${n}`,rent:m=>`Hall rental (${m})`,kits:"Welcome kits for newcomers",picnic_cost:"Picnic: food and permit",funeral:"Funeral assistance, Bizimana family",fees:"Bank fees",online_dons:"Online donations deposit",
 lang_fr:"French",lang_sw:"Swahili",lang_rw:"Kinyarwanda / Kirundi"},
 
-sw:{ann_title:"Matangazo",ann_none:"Hakuna matangazo kwa sasa.",iqama:"Iqama",jumua:"Ijumaa",empty:"Hakuna kitu kwa sasa.",card_soon:"Malipo kwa kadi yatapatikana hivi karibuni. Kwa sasa tumia uhamisho wa Interac.",lang_label:"Lugha",basmala_tr:"Kwa jina la Mwenyezi Mungu, Mwingi wa Rehema, Mwenye Kurehemu.",nav_home:"Mwanzo",nav_act:"Shughuli",nav_reg:"Rejista",nav_quran:"Madarasa ya Qur'ani",nav_proj:"Miradi",nav_don:"Michango",nav_prayer:"Swala",nav_listen:"Sauti na mawaidha",nav_leaders:"Viongozi",nav_members:"Eneo la wanachama",brand_sub:"wa nchi za Maziwa Makuu",menu:"Menyu",
+sw:{net_err:"Hitilafu imetokea. Jaribu tena.",check_email_t:"Angalia barua pepe yako",check_email:e=>`Barua pepe ya uthibitisho imetumwa kwa <b>${e}</b>. Bofya kiungo kilichomo ili kuwezesha akaunti yako, kisha uingie.`,not_confirmed:"Barua pepe yako bado haijathibitishwa. Bofya kiungo ulichotumiwa.",forgot:"Umesahau nenosiri?",forgot_need:"Kwanza andika barua pepe yako hapo juu.",reset_sent:"Ikiwa barua pepe hii ipo, kiungo cha kubadilisha nenosiri kimetumwa.",new_pass_t:"Chagua nenosiri jipya",pass_updated:"Nenosiri limebadilishwa.",reg_contact:"Ili kuongeza kwenye daftari, wasiliana na kiongozi.",tab_admin:"Utawala",ann_title:"Matangazo",ann_none:"Hakuna matangazo kwa sasa.",iqama:"Iqama",jumua:"Ijumaa",empty:"Hakuna kitu kwa sasa.",card_soon:"Malipo kwa kadi yatapatikana hivi karibuni. Kwa sasa tumia uhamisho wa Interac.",lang_label:"Lugha",basmala_tr:"Kwa jina la Mwenyezi Mungu, Mwingi wa Rehema, Mwenye Kurehemu.",nav_home:"Mwanzo",nav_act:"Shughuli",nav_reg:"Rejista",nav_quran:"Madarasa ya Qur'ani",nav_proj:"Miradi",nav_don:"Michango",nav_prayer:"Swala",nav_listen:"Sauti na mawaidha",nav_leaders:"Viongozi",nav_members:"Eneo la wanachama",brand_sub:"wa nchi za Maziwa Makuu",menu:"Menyu",
 hero_title:"Familia kwa wote",hero_lead:"Ilianzishwa mwaka 2011 mjini Québec na Waislamu kutoka Kongo, Burundi, Tanzania na Rwanda. Jumuiya ya Mu-umin inaunganisha, inakaribisha na kumsaidia kila Muislamu, bila kujali nchi anayotoka.",btn_join:"Kuwa mwanachama",btn_support:"Saidia malengo yetu",
 prayer_today:"Nyakati za swala leo",city:"Jiji la Québec",next_prayer:(n,h,m)=>`Swala ijayo: ${n} baada ya ${h?"saa "+h+" na ":""}dakika ${m}`,tomorrow_fajr:"Alfajiri ya kesho: ",
 about_title:"Sisi ni nani",about_text:"Mu-umin ni jumuiya isiyo ya kibiashara iliyo wazi kwa kila mtu. Tunasimama na familia katika nyakati muhimu za maisha: kuzaliwa kwa mtoto, kuwasili katika nchi mpya, na msiba. Tunaandaa ziara, matukio, madarasa ya Qur'ani na miradi ya hisani hapa na katika eneo la Maziwa Makuu.",countries_label:"Wanachama wetu wanatoka",find_title:"Utakachopata hapa",find_public:"Wazi kwa wageni wote: shughuli na matukio, rejista za jamii, madarasa ya Qur'ani, miradi, maendeleo ya michango, nyakati za swala, sauti ya Qur'ani na mawaidha.",find_members:"Kwa wanachama pekee: orodha ya wanachama na mawasiliano yao, michango na matumizi, taarifa za benki za kila mwezi, mazungumzo na simu za mtandaoni.",upcoming_title:"Yanayokuja",see_all:"Tazama shughuli zote",
@@ -552,7 +561,7 @@ foot_name:"Jumuiya ya Mu-umin ya Nchi za Maziwa Makuu",foot_founded:"Ilianzishwa
 dues:n=>`Ada za kila mwezi (wanachama ${n})`,friday:"Mchango wa Ijumaa",picnic:"Mauzo ya chakula kwenye pikiniki",contrib_of:n=>`Mchango wa ${n}`,rent:m=>`Kodi ya ukumbi (${m})`,kits:"Vifurushi vya makaribisho kwa wageni wapya",picnic_cost:"Pikiniki: chakula na kibali",funeral:"Msaada wa mazishi, familia ya Bizimana",fees:"Ada za benki",online_dons:"Amana ya michango ya mtandaoni",
 lang_fr:"Kifaransa",lang_sw:"Kiswahili",lang_rw:"Kinyarwanda / Kirundi"},
 
-ar:{ann_title:"الإعلانات",ann_none:"لا توجد إعلانات حاليًا.",iqama:"الإقامة",jumua:"الجمعة",empty:"لا يوجد شيء حاليًا.",card_soon:"سيتوفر الدفع بالبطاقة قريبًا. استخدم تحويل إنتراك حاليًا.",lang_label:"اللغة",basmala_tr:"",nav_home:"الرئيسية",nav_act:"الأنشطة",nav_reg:"السجلات",nav_quran:"دروس القرآن",nav_proj:"المشاريع",nav_don:"التبرعات",nav_prayer:"الصلاة",nav_listen:"الصوتيات والمواعظ",nav_leaders:"المسؤولون",nav_members:"فضاء الأعضاء",brand_sub:"من دول البحيرات العظمى",menu:"القائمة",
+ar:{net_err:"حدث خطأ. حاول مرة أخرى.",check_email_t:"تحقق من بريدك الإلكتروني",check_email:e=>`أُرسلت رسالة تأكيد إلى <b>${e}</b>. اضغط على الرابط فيها لتفعيل حسابك، ثم سجّل الدخول.`,not_confirmed:"لم يتم تأكيد بريدك الإلكتروني بعد. اضغط على الرابط المرسل إليك.",forgot:"نسيت كلمة المرور؟",forgot_need:"أدخل بريدك الإلكتروني أعلاه أولًا.",reset_sent:"إذا كان هذا البريد مسجلًا، فقد أُرسل رابط إعادة التعيين.",new_pass_t:"اختر كلمة مرور جديدة",pass_updated:"تم تحديث كلمة المرور.",reg_contact:"لإضافة تسجيل إلى السجل، تواصل مع أحد المسؤولين.",tab_admin:"الإدارة",ann_title:"الإعلانات",ann_none:"لا توجد إعلانات حاليًا.",iqama:"الإقامة",jumua:"الجمعة",empty:"لا يوجد شيء حاليًا.",card_soon:"سيتوفر الدفع بالبطاقة قريبًا. استخدم تحويل إنتراك حاليًا.",lang_label:"اللغة",basmala_tr:"",nav_home:"الرئيسية",nav_act:"الأنشطة",nav_reg:"السجلات",nav_quran:"دروس القرآن",nav_proj:"المشاريع",nav_don:"التبرعات",nav_prayer:"الصلاة",nav_listen:"الصوتيات والمواعظ",nav_leaders:"المسؤولون",nav_members:"فضاء الأعضاء",brand_sub:"من دول البحيرات العظمى",menu:"القائمة",
 hero_title:"عائلة للجميع",hero_lead:"تأسست جمعية مؤمن سنة 2011 في مدينة كيبك على يد مسلمين من الكونغو وبوروندي وتنزانيا ورواندا، وهي تجمع كل مسلم ومسلمة وترحب بهم وتدعمهم، أيًّا كان بلدهم الأصلي.",btn_join:"انضم إلينا",btn_support:"ادعم مشاريعنا",
 prayer_today:"مواقيت الصلاة اليوم",city:"مدينة كيبك",next_prayer:(n,h,m)=>`الصلاة القادمة: ${n} بعد ${h?h+" س و":""}${m} د`,tomorrow_fajr:"فجر الغد: ",
 about_title:"من نحن",about_text:"مؤمن جمعية غير ربحية مفتوحة للجميع. نقف إلى جانب العائلات في لحظات الحياة المهمة: ولادة طفل، والوصول إلى بلد جديد، وفقدان عزيز. ننظم الزيارات والفعاليات ودروس القرآن والمشاريع الخيرية هنا وفي منطقة البحيرات العظمى.",countries_label:"أعضاؤنا من",find_title:"ما ستجده هنا",find_public:"متاح لجميع الزوار: الأنشطة والفعاليات، سجلات الجالية، دروس القرآن، المشاريع، تقدم التبرعات، مواقيت الصلاة، تلاوات القرآن والمواعظ.",find_members:"للأعضاء فقط: قائمة الأعضاء وبيانات الاتصال، المساهمات والمصاريف، الكشوف البنكية الشهرية، الدردشة والمكالمات عبر الإنترنت.",upcoming_title:"قريبًا",see_all:"عرض كل الأنشطة",
@@ -617,12 +626,10 @@ const DATA={
  /* Ajoutez ici les vraies données de l'association. Chaque liste est vide au départ. */
  annonces:[], /* {date:"2026-10-08",titre:{fr:"...",en:"..."},texte:{fr:"...",en:"..."}} */
  evenements:[],visites:[],naissances:[],arrivants:[],deces:[],projets:[],campagnes:[],
- responsables:[],membres:[],contributions:[],depenses:[],
+ responsables:[],membres:[],contributions:[],depenses:[],sermons:[],
  /* Relevés : {mois:"2026-10",ouverture:0,extra:[],pdf:"releves/2026-10.pdf"} */
  releves:[]
 };
-["naissances","arrivants","deces","membres","contributions"].forEach(k=>{DATA[k]=[...store.get("add_"+k,[]),...DATA[k]]});
-store.get("camp",[]).forEach(u=>{const c=DATA.campagnes.find(x=>x.id===u.id);if(c){c.recu+=u.montant;c.donateurs+=u.n}});
 
 const lineLabel=x=>{
   if(x.label)return x.label;
@@ -632,8 +639,94 @@ const lineLabel=x=>{
   return t(x.k);
 };
 
-let session=store.get("session",null);
-const accounts=()=>store.get("accounts",[]);
+/* ===================== Supabase (comptes et données) ===================== */
+const SB_URL="https://ldkcwmkwrusbaiywmvow.supabase.co";
+const SB_KEY="sb_publishable_LNsr-50k7RXxFxZjx92zMQ_KVENFLq3"; /* clé publique, faite pour être dans le site */
+const sb=window.supabase?window.supabase.createClient(SB_URL,SB_KEY):null;
+let session=null,isAdmin=false,myId=null,RSVPC={};
+const TYPES={annonce:"annonces",evenement:"evenements",visite:"visites",naissance:"naissances",arrivant:"arrivants",deces:"deces",projet:"projets",campagne:"campagnes",responsable:"responsables",sermon:"sermons",contribution:"contributions",depense:"depenses",releve:"releves"};
+const KEY2TYPE=Object.fromEntries(Object.entries(TYPES).map(([a,b])=>[b,a]));
+function toEntry(it){
+  const d=it.data||{};const e={...d,id:it.id,_type:it.type};if(it.date)e.date=it.date;
+  if(it.type==="releve"){e.extra=[];e.ouverture=+d.ouverture||0;e.mois=d.mois||(it.date||"").slice(0,7)}
+  if(it.type==="contribution"||it.type==="depense")e.montant=+d.montant||0;
+  if(it.type==="campagne"){e.objectif=+d.objectif||0;e.recu=+d.recu||0;e.donateurs=+d.donateurs||0}
+  return e;
+}
+async function loadData(){
+  if(!sb){renderAll();return}
+  const {data,error}=await sb.from("items").select("*").order("date",{ascending:false,nullsFirst:false}).limit(3000);
+  if(error){console.error(error);toast(t("net_err"));return}
+  Object.values(TYPES).forEach(k=>DATA[k]=[]);
+  data.forEach(it=>{const k=TYPES[it.type];if(k)DATA[k].push(toEntry(it))});
+  DATA.releves.sort((a,b)=>a.mois.localeCompare(b.mois));
+  const r=await sb.rpc("rsvp_counts");RSVPC={};(r.data||[]).forEach(x=>RSVPC[x.item_id]=+x.total);
+  renderAll();
+}
+async function refreshSession(){
+  if(!sb)return;
+  const {data:{session:s}}=await sb.auth.getSession();
+  if(!s){session=null;isAdmin=false;myId=null;DATA.membres=[]}
+  else{
+    myId=s.user.id;
+    const {data:p}=await sb.from("profiles").select("*").eq("id",myId).maybeSingle();
+    const md=s.user.user_metadata||{};
+    session={prenom:p?.prenom||md.prenom||"",nom:p?.nom||md.nom||"",email:s.user.email,profile:p||{}};
+    const a=await sb.rpc("is_admin");isAdmin=!!a.data;
+    const m=await sb.from("profiles").select("*").order("nom");DATA.membres=m.data||[];
+  }
+  updateNav();await loadData();
+}
+
+/* ----- Administration du contenu (réservé aux administrateurs) ----- */
+const FIELDS={
+ annonce:[["date","date","Date"],["titre","text","Titre"],["texte","textarea","Texte"]],
+ evenement:[["date","date","Date"],["titre","text","Titre"],["lieu","text","Lieu"],["desc","textarea","Description"]],
+ visite:[["date","date","Date"],["titre","text","Titre"],["lieu","text","Lieu"],["desc","textarea","Description"]],
+ naissance:[["date","date","Date"],["nom","text","Prénom de l'enfant"],["famille","text","Famille"],["note","text","Détail"]],
+ arrivant:[["date","date","Date d'arrivée"],["nom","text","Nom"],["famille","text","Pays d'origine"],["note","text","Détail"]],
+ deces:[["date","date","Date"],["nom","text","Défunt(e)"],["famille","text","Lien"],["note","text","Détail"]],
+ projet:[["etat","select:futur=À venir ou en cours,passe=Réalisé","État"],["date","text","Période (ex. : printemps 2027)"],["titre","text","Titre"],["desc","textarea","Description"]],
+ campagne:[["titre","text","Titre"],["objectif","number","Objectif ($)"],["recu","number","Montant reçu ($)"],["donateurs","number","Nombre de donateurs"]],
+ responsable:[["nom","text","Nom"],["role","text","Rôle"],["pays","text","Pays d'origine"]],
+ sermon:[["date","date","Date"],["titre","text","Titre"],["par","text","Par"],["duree","number","Durée (minutes)"],["langue","text","Langue"],["url","url","Lien audio ou vidéo (facultatif)"]],
+ contribution:[["date","date","Date"],["label","text","Source"],["montant","number","Montant ($)"]],
+ depense:[["date","date","Date"],["label","text","Objet"],["montant","number","Montant ($)"]],
+ releve:[["mois","month","Mois"],["ouverture","number","Solde d'ouverture ($)"],["pdf","url","Lien du relevé PDF (facultatif)"]]
+};
+const TYPE_LBL={annonce:"une annonce",evenement:"un événement",visite:"une visite",naissance:"une naissance",arrivant:"un nouvel arrivant",deces:"un décès",projet:"un projet",campagne:"une campagne de dons",responsable:"un responsable",sermon:"un sermon",contribution:"une contribution",depense:"une dépense",releve:"un relevé mensuel"};
+const REQ=["date","titre","nom","montant","mois","objectif"];
+const addBtn=type=>isAdmin?`<p class="admin-add"><button class="btn small" type="button" onclick="editItem('${type}')">+ Ajouter ${TYPE_LBL[type]}</button></p>`:"";
+const ctl=e=>isAdmin&&e&&e.id?`<span class="admin-ctl"><button class="btn small ghost" type="button" onclick="editItem('${e._type}','${e.id}')">Modifier</button><button class="btn small ghost danger" type="button" onclick="delItem('${e.id}')">Supprimer</button></span>`:"";
+function findEntry(id){for(const k of Object.values(TYPES)){const e=DATA[k].find(x=>x.id===id);if(e)return e}return null}
+function editItem(type,id){
+  const e=id?findEntry(id)||{}:{};const f=FIELDS[type];
+  const inp=([k,kind,lbl])=>{
+    let v=e[k];if(v==null)v=kind==="date"?TODAY:kind==="month"?TODAY.slice(0,7):"";
+    if(kind==="textarea")return `<div class="field"><label for="f-${k}">${lbl}</label><textarea id="f-${k}" rows="5">${esc(L(v))}</textarea></div>`;
+    if(kind.startsWith("select:")){const opts=kind.slice(7).split(",").map(o=>o.split("="));
+      return `<div class="field"><label for="f-${k}">${lbl}</label><select id="f-${k}">${opts.map(([val,l])=>`<option value="${val}" ${v===val?"selected":""}>${l}</option>`).join("")}</select></div>`}
+    return `<div class="field"><label for="f-${k}">${lbl}</label><input id="f-${k}" type="${kind}" ${kind==="number"?'step="0.01" min="0"':""} value="${esc(L(v))}" ${REQ.includes(k)?"required":""}></div>`};
+  openDlg((id?"Modifier ":"Ajouter ")+TYPE_LBL[type],`<form id="itemForm">${f.map(inp).join("")}<button class="btn" type="submit">Enregistrer</button></form>`);
+  $("#itemForm").onsubmit=async ev=>{ev.preventDefault();
+    const data={};let date=null;
+    f.forEach(([k,kind])=>{const v=$("#f-"+k).value.trim();
+      if(k==="date"&&kind==="date")date=v||null;
+      else if(type==="releve"&&k==="mois"){data.mois=v;date=v?v+"-01":null}
+      else data[k]=kind==="number"?(v===""?0:+v):v});
+    const btn=ev.target.querySelector("button[type=submit]");btn.disabled=true;
+    const {error}=id?await sb.from("items").update({date,data}).eq("id",id):await sb.from("items").insert({type,date,data});
+    btn.disabled=false;
+    if(error){toast("Erreur : "+error.message);return}
+    dlg.close();toast("Enregistré.");loadData();
+  };
+}
+async function delItem(id){
+  if(!confirm("Supprimer définitivement cet élément ?"))return;
+  const {error}=await sb.from("items").delete().eq("id",id);
+  if(error){toast("Erreur : "+error.message);return}
+  toast("Supprimé.");loadData();
+}
 
 /* ===================== Langue ===================== */
 function applyLang(){
@@ -655,6 +748,7 @@ function route(){
   document.querySelectorAll("nav.main a").forEach(a=>a.getAttribute("href")==="#"+p?a.setAttribute("aria-current","page"):a.removeAttribute("aria-current"));
   $("#mainNav").classList.remove("open");$("#menuBtn").setAttribute("aria-expanded","false");
   if(p==="membres")renderMember();
+  if(p==="adhesion"&&session)location.hash="#membres";
   window.scrollTo(0,0);
 }
 window.addEventListener("hashchange",route);
@@ -673,31 +767,33 @@ const render={};
 
 /* ===================== Activités ===================== */
 const dateBox=d=>{const x=new Date(d+"T12:00");return `<div class="date"><b>${x.getDate()}</b><small>${x.toLocaleDateString(LOC[lang],{month:"short"})} ${x.getFullYear()}</small></div>`};
-const rsvps=()=>store.get("rsvp",{});
 function actItem(e,future){
-  const count=(rsvps()[e.id]||[]).reduce((s,x)=>s+x.n,0);
-  return `<div class="item">${dateBox(e.date)}<div><h3>${esc(L(e.titre))}</h3><p>${esc(L(e.lieu))}. ${esc(L(e.desc))}</p>
-  ${future?`<button class="btn small" type="button" onclick="rsvp('${e.id}')">${t("confirm_presence")}</button> ${count?`<span class="muted" style="font-size:.9rem;margin-inline-start:8px">${t("confirmed",count)}</span>`:""}`:`<span class="tag past">${t("finished")}</span>`}</div></div>`;
+  const count=RSVPC[e.id]||0;
+  return `<div class="item">${dateBox(e.date)}<div><h3>${esc(L(e.titre))}</h3><p>${esc(L(e.lieu))}${e.lieu&&e.desc?". ":""}${esc(L(e.desc))}</p>
+  ${future?`<button class="btn small" type="button" onclick="rsvp('${e.id}')">${t("confirm_presence")}</button> ${count?`<span class="muted" style="font-size:.9rem;margin-inline-start:8px">${t("confirmed",count)}</span>`:""}`:`<span class="tag past">${t("finished")}</span>`}${ctl(e)}</div></div>`;
 }
 render.act=()=>{
   const list=DATA[tabState.act];
   const up=list.filter(e=>e.date>=TODAY).sort((a,b)=>a.date.localeCompare(b.date));
   const past=list.filter(e=>e.date<TODAY).sort((a,b)=>b.date.localeCompare(a.date));
-  $("#actUpcoming").innerHTML=up.map(e=>actItem(e,true)).join("")||`<p class="muted">${t("none_up")}</p>`;
+  $("#actUpcoming").innerHTML=addBtn(KEY2TYPE[tabState.act])+(up.map(e=>actItem(e,true)).join("")||`<p class="muted">${t("none_up")}</p>`);
   $("#actPast").innerHTML=past.map(e=>actItem(e,false)).join("")||`<p class="muted">${t("none_past")}</p>`;
 };
 function rsvp(id){
-  const e=[...DATA.evenements,...DATA.visites].find(x=>x.id===id);
-  openDlg(t("confirm_presence"),`<p><b>${esc(L(e.titre))}</b><br><span class="muted">${fmtDate(e.date)}, ${esc(L(e.lieu))}</span></p>
-  <form id="rsvpForm"><div class="field"><label for="r-nom">${t("your_name")}</label><input id="r-nom" required value="${session?esc(session.prenom+" "+session.nom):""}"></div>
+  const e=[...DATA.evenements,...DATA.visites].find(x=>x.id===id);if(!e)return;
+  openDlg(t("confirm_presence"),`<p><b>${esc(L(e.titre))}</b><br><span class="muted">${fmtDate(e.date)}${e.lieu?", "+esc(L(e.lieu)):""}</span></p>
+  <form id="rsvpForm"><div class="field"><label for="r-nom">${t("your_name")}</label><input id="r-nom" required maxlength="120" value="${session?esc(session.prenom+" "+session.nom):""}"></div>
   <div class="grid2"><div class="field"><label for="r-n">${t("n_people")}</label><input id="r-n" type="number" min="1" max="20" value="1" required></div>
-  <div class="field"><label for="r-tel">${t("phone_rem")}</label><input id="r-tel" type="tel"></div></div>
+  <div class="field"><label for="r-tel">${t("phone_rem")}</label><input id="r-tel" type="tel" maxlength="40"></div></div>
   <button class="btn" type="submit">${t("confirm")}</button></form>`);
-  $("#rsvpForm").onsubmit=ev=>{ev.preventDefault();const all=rsvps();(all[id]=all[id]||[]).push({nom:$("#r-nom").value,n:+$("#r-n").value});store.set("rsvp",all);dlg.close();render.act();renderHome();toast(t("rsvp_ok"))};
+  $("#rsvpForm").onsubmit=async ev=>{ev.preventDefault();
+    const {error}=await sb.from("rsvps").insert({item_id:id,nom:$("#r-nom").value.trim(),n:+$("#r-n").value,tel:$("#r-tel").value.trim()});
+    if(error){toast(t("net_err"));return}
+    RSVPC[id]=(RSVPC[id]||0)+(+$("#r-n").value);dlg.close();render.act();renderHome();toast(t("rsvp_ok"))};
 }
 function renderAnnonces(){
-  const a=[...DATA.annonces].sort((x,y)=>y.date.localeCompare(x.date));
-  $("#homeAnnonces").innerHTML=a.map(n=>`<div class="item">${dateBox(n.date)}<div><h3>${esc(L(n.titre))}</h3><p style="white-space:pre-line">${esc(L(n.texte))}</p></div></div>`).join("")||`<p class="muted" style="margin:0">${t("ann_none")}</p>`;
+  const a=[...DATA.annonces].sort((x,y)=>(y.date||"").localeCompare(x.date||""));
+  $("#homeAnnonces").innerHTML=addBtn("annonce")+(a.map(n=>`<div class="item">${dateBox(n.date)}<div><h3>${esc(L(n.titre))}${ctl(n)}</h3><p style="white-space:pre-line">${esc(L(n.texte))}</p></div></div>`).join("")||`<p class="muted" style="margin:0">${t("ann_none")}</p>`);
 }
 function renderHome(){
   renderAnnonces();
@@ -709,37 +805,32 @@ function renderHome(){
 render.reg=()=>{
   const k=tabState.reg,cols=t("cols_"+k);
   $("#regIntro").textContent=t("intro_"+k);
-  $("#regTable").innerHTML=`<thead><tr>${cols.map(c=>`<th>${c}</th>`).join("")}</tr></thead><tbody>${DATA[k].map(r=>`<tr><td>${fmtDate(r.date)}</td><td>${esc(L(r.nom))}</td><td>${esc(k==="arrivants"?ctry(L(r.famille)):L(r.famille))}</td><td>${esc(L(r.note))}</td></tr>`).join("")||`<tr><td colspan="4" class="muted">${t("empty")}</td></tr>`}</tbody>`;
-  $("#regAdd").innerHTML=session?`<button class="btn small" type="button" onclick="addReg()">${t("reg_add_btn")}</button>`:`<p class="muted" style="margin:0">${t("reg_login")} <a href="#adhesion">${t("sign_in")}</a></p>`;
+  $("#regTable").innerHTML=`<thead><tr>${cols.map(c=>`<th>${c}</th>`).join("")}${isAdmin?"<th></th>":""}</tr></thead><tbody>${DATA[k].map(r=>`<tr><td>${r.date?fmtDate(r.date):""}</td><td>${esc(L(r.nom))}</td><td>${esc(k==="arrivants"?ctry(L(r.famille)):L(r.famille))}</td><td>${esc(L(r.note))}</td>${isAdmin?`<td>${ctl(r)}</td>`:""}</tr>`).join("")||`<tr><td colspan="${isAdmin?5:4}" class="muted">${t("empty")}</td></tr>`}</tbody>`;
+  $("#regAdd").innerHTML=isAdmin?addBtn(KEY2TYPE[k]):`<p class="muted" style="margin:0">${t("reg_contact")}</p>`;
 };
-function addReg(){
-  const k=tabState.reg,c=t("cols_"+k);
-  openDlg(t("reg_add_title"),`<form id="regForm"><div class="field"><label for="g-d">${c[0]}</label><input id="g-d" type="date" required value="${TODAY}"></div>
-  <div class="field"><label for="g-n">${c[1]}</label><input id="g-n" required></div>
-  <div class="field"><label for="g-f">${c[2]}</label><input id="g-f" required></div>
-  <div class="field"><label for="g-x">${c[3]}</label><input id="g-x"></div><button class="btn" type="submit">${t("add")}</button></form>`);
-  $("#regForm").onsubmit=e=>{e.preventDefault();const r={date:$("#g-d").value,nom:$("#g-n").value,famille:$("#g-f").value,note:$("#g-x").value};
-    const a=store.get("add_"+k,[]);a.unshift(r);store.set("add_"+k,a);DATA[k].unshift(r);DATA[k].sort((x,y)=>y.date.localeCompare(x.date));dlg.close();render.reg();toast(t("reg_added"))};
-}
 
 /* ===================== Coran ===================== */
 document.querySelectorAll('input[name="age"]').forEach(r=>r.onchange=()=>{const kid=$("#c-enfant").checked;$("#parentField").hidden=!kid;$("#c-parent").required=kid});
-$("#courseForm").onsubmit=e=>{e.preventDefault();const f=e.target;
-  const d={nom:$("#c-nom").value,age:f.age.value,mode:f.mode.value,niveau:$("#c-niveau").value,email:$("#c-email").value};
-  const a=store.get("cours",[]);a.push(d);store.set("cours",a);f.reset();$("#parentField").hidden=true;
+$("#courseForm").onsubmit=async e=>{e.preventDefault();const f=e.target;
+  const d={nom:$("#c-nom").value.trim(),parent:$("#c-parent").value.trim(),age:f.age.value,mode:f.mode.value,niveau:$("#c-niveau").selectedOptions[0]?.text||"",tel:$("#c-tel").value.trim(),email:$("#c-email").value.trim()};
+  const btn=f.querySelector("button[type=submit]");btn.disabled=true;
+  const {error}=sb?await sb.from("cours").insert(d):{error:true};btn.disabled=false;
+  if(error){toast(t("net_err"));return}
+  f.reset();$("#parentField").hidden=true;
   openDlg(t("reg_recv_t"),t("reg_recv",esc(d.nom),esc(d.email),d.mode==="online")+`<button class="btn" type="button" onclick="dlg.close()">${t("close")}</button>`)};
 
 /* ===================== Projets & dons ===================== */
 function renderProjects(){
-  const item=p=>`<div class="item"><div><span class="tag${p.etat==="passe"?" past":""}">${esc(L(p.date))}</span><h3 style="margin-top:6px">${esc(L(p.titre))}</h3><p>${esc(L(p.desc))}</p></div></div>`;
-  $("#projUpcoming").innerHTML=DATA.projets.filter(p=>p.etat==="futur").map(item).join("")||`<p class="muted">${t("empty")}</p>`;
+  const item=p=>`<div class="item"><div><span class="tag${p.etat==="passe"?" past":""}">${esc(L(p.date))}</span>${ctl(p)}<h3 style="margin-top:6px">${esc(L(p.titre))}</h3><p>${esc(L(p.desc))}</p></div></div>`;
+  $("#projUpcoming").innerHTML=addBtn("projet")+(DATA.projets.filter(p=>p.etat!=="passe").map(item).join("")||`<p class="muted">${t("empty")}</p>`);
   $("#projPast").innerHTML=DATA.projets.filter(p=>p.etat==="passe").map(item).join("")||`<p class="muted">${t("empty")}</p>`;
 }
 function renderCampaigns(){
-  $("#campaigns").innerHTML=DATA.campagnes.map(c=>{const pct=Math.min(100,Math.round(c.recu/c.objectif*100));
+  $("#campaigns").innerHTML=DATA.campagnes.map(c=>{const pct=c.objectif?Math.min(100,Math.round(c.recu/c.objectif*100)):0;
     return `<div class="panel"><h3>${esc(L(c.titre))}</h3><div class="big">${money(c.recu)}</div><div class="muted">${t("of_goal",money(c.objectif))}</div>
     <div class="progress" role="progressbar" aria-valuenow="${pct}" aria-valuemin="0" aria-valuemax="100"><i style="width:${pct}%"></i></div>
-    <p class="muted" style="font-size:.92rem">${t("pct",pct,c.donateurs)}</p><button class="btn gold" type="button" onclick="pay('don','${c.id}')">${t("donate")}</button></div>`}).join("")||`<div class="panel"><p class="muted">${t("empty")}</p></div>`;
+    <p class="muted" style="font-size:.92rem">${t("pct",pct,c.donateurs)}</p><button class="btn gold" type="button" onclick="pay('don','${c.id}')">${t("donate")}</button>${ctl(c)}</div>`}).join("")
+    +(DATA.campagnes.length?"":`<div class="panel"><p class="muted">${t("empty")}</p></div>`)+(isAdmin?`<div class="panel">${addBtn("campagne")}</div>`:"");
 }
 
 /* ===================== Paiement ===================== */
@@ -753,21 +844,21 @@ function pay(kind,campId){
   <input type="radio" name="pm" id="pm-d" value="debit"><label for="pm-d">${t("debit")}</label></div>
   <div id="pmBox"></div><button class="btn" type="submit">${t("confirm_pay")}</button></form>`);
   const draw=()=>{const m=$("#payForm").pm.value;
-    $("#pmBox").innerHTML=m==="interac"?`<div class="note" style="margin-top:0">${t("interac_note")}</div><div class="field"><label for="p-ref">${t("interac_ref")}</label><input id="p-ref" required placeholder="CA1xxxxxxx" dir="ltr"></div>`
+    $("#pmBox").innerHTML=m==="interac"?`<div class="note" style="margin-top:0">${t("interac_note")}</div><div class="field"><label for="p-ref">${t("interac_ref")}</label><input id="p-ref" required maxlength="60" placeholder="CA1xxxxxxx" dir="ltr"></div>`
     :`<div class="note" style="margin-top:0">${t("card_soon")}</div>`};
   document.querySelectorAll('input[name="pm"]').forEach(r=>r.onchange=draw);draw();
   $("#payForm").addEventListener("change",()=>{$("#payForm").querySelector("button[type=submit]").disabled=$("#payForm").pm.value!=="interac"});
-  $("#payForm").onsubmit=e=>{e.preventDefault();const amt=+$("#p-m").value;const m=e.target.pm.value;const ref="MU-"+Date.now().toString(36).toUpperCase();
-    if(kind==="don"){const u=store.get("camp",[]);u.push({id:campId,montant:amt,n:1});store.set("camp",u);camp.recu+=amt;camp.donateurs++;renderCampaigns()}
-    else{const r={date:TODAY,k:"contrib_of",who:session.prenom+" "+session.nom,montant:amt};const a=store.get("add_contributions",[]);a.unshift(r);store.set("add_contributions",a);DATA.contributions.unshift(r);renderMember()}
+  $("#payForm").onsubmit=async e=>{e.preventDefault();const amt=+$("#p-m").value;const ref=$("#p-ref").value.trim();
+    if(session&&sb){const {error}=await sb.from("paiements").insert({kind,campagne:kind==="don"?campId:null,montant:amt,reference:ref});if(error){toast(t("net_err"));return}}
     $("#dlgTitle").textContent=t("thanks_t");
-    $("#dlgBody").innerHTML=`<p>${m==="interac"?t("pay_pending"):t("pay_ok")}</p><p><b>${money(amt)}</b> ${t("by")} ${t(m)}<br><span class="muted">${t("reference")} : <span dir="ltr">${ref}</span></span></p><p class="muted">${t("receipt")}</p><button class="btn" type="button" onclick="dlg.close()">${t("close")}</button>`};
+    $("#dlgBody").innerHTML=`<p>${t("pay_pending")}</p><p><b>${money(amt)}</b> ${t("by")} ${t("interac")}<br><span class="muted">${t("reference")} : <span dir="ltr">${esc(ref)}</span></span></p><button class="btn" type="button" onclick="dlg.close()">${t("close")}</button>`};
 }
 
 /* ===================== Responsables ===================== */
 function renderLeaders(){
-  const ini=n=>n.replace("Imam ","").split(" ").map(w=>w[0]).slice(0,2).join("");
-  $("#leaders").innerHTML=DATA.responsables.map(r=>`<div class="panel person"><div class="avatar" aria-hidden="true">${ini(r.nom)}</div><div><h3 style="margin:0">${esc(r.nom)}</h3><div>${esc(L(r.role))}</div><div class="muted" style="font-size:.9rem">${t("origin")} : ${esc(ctry(r.pays))}</div></div></div>`).join("")||`<div class="panel"><p class="muted">${t("empty")}</p></div>`;
+  const ini=n=>String(n||"").replace("Imam ","").split(" ").filter(Boolean).map(w=>w[0]).slice(0,2).join("");
+  $("#leaders").innerHTML=DATA.responsables.map(r=>`<div class="panel person"><div class="avatar" aria-hidden="true">${esc(ini(r.nom))}</div><div><h3 style="margin:0">${esc(r.nom)}</h3><div>${esc(L(r.role))}</div>${r.pays?`<div class="muted" style="font-size:.9rem">${t("origin")} : ${esc(ctry(r.pays))}</div>`:""}${ctl(r)}</div></div>`).join("")
+    +(DATA.responsables.length?"":`<div class="panel"><p class="muted">${t("empty")}</p></div>`)+(isAdmin?`<div class="panel">${addBtn("responsable")}</div>`:"");
 }
 
 /* ===================== Heures de prière ===================== */
@@ -881,7 +972,6 @@ $("#adhanTest").onclick=()=>{ensureAudioCtx();const tm=prayerTimes(qcToday(),asr
 
 /* ===================== Audio ===================== */
 const SOURATES=[[1,"Al-Fatiha","الفاتحة"],[2,"Al-Baqara","البقرة"],[18,"Al-Kahf","الكهف"],[36,"Ya-Sin","يس"],[55,"Ar-Rahman","الرحمن"],[56,"Al-Waqi'a","الواقعة"],[67,"Al-Mulk","الملك"],[112,"Al-Ikhlas","الإخلاص"]];
-const SERMONS=[];
 const qlink=n=>`https://quran.com/${lang==="en"?"":lang+"/"}${n}`;
 render.aud=()=>{
   if(tabState.aud==="coran"){
@@ -890,22 +980,41 @@ render.aud=()=>{
     <p style="margin-top:14px"><a href="${qlink("")}" target="_blank" rel="noopener">${t("all_surahs")}</a></p>`;
   }else{
     $("#audioBox").innerHTML=`<p class="muted">${t("maw_note")}</p>
-    ${SERMONS.length?"":`<p class="muted">${t("empty")}</p>`}${SERMONS.map(s=>`<div class="item">${dateBox(s.date)}<div><h3>${esc(s.titre)}</h3><p>${esc(s.par)}, ${s.duree} min, ${t(s.langue)}</p><button class="btn small ghost" type="button" onclick="toast(t('rec_soon'))">${t("listen")}</button></div></div>`).join("")}`;
+    ${addBtn("sermon")}${DATA.sermons.length?"":`<p class="muted">${t("empty")}</p>`}${DATA.sermons.map(s=>`<div class="item">${s.date?dateBox(s.date):""}<div><h3>${esc(s.titre)}</h3><p>${[s.par,s.duree?s.duree+" min":"",s.langue].filter(Boolean).map(esc).join(", ")}</p>${s.url?`<a class="btn small ghost" href="${esc(s.url)}" target="_blank" rel="noopener">${t("listen")}</a>`:`<button class="btn small ghost" type="button" onclick="toast(t('rec_soon'))">${t("listen")}</button>`}${ctl(s)}</div></div>`).join("")}`;
   }
 };
 
 /* ===================== Adhésion / connexion ===================== */
-$("#joinForm").onsubmit=e=>{e.preventDefault();
-  const m={prenom:$("#j-prenom").value.trim(),nom:$("#j-nom").value.trim(),tel:$("#j-tel").value,email:$("#j-email").value.trim().toLowerCase(),adresse:$("#j-adresse").value,pays:$("#j-pays").value};
-  if(accounts().some(a=>a.email===m.email)){toast(t("exists"));return}
-  const acc=store.get("accounts",[]);acc.push({...m,pass:$("#j-pass").value});store.set("accounts",acc);
-  const am=store.get("add_membres",[]);am.unshift(m);store.set("add_membres",am);DATA.membres.unshift(m);
-  login({prenom:m.prenom,nom:m.nom,email:m.email});e.target.reset();toast(t("welcome",m.prenom))};
-$("#loginForm").onsubmit=e=>{e.preventDefault();const em=$("#l-email").value.trim().toLowerCase(),pw=$("#l-pass").value;
-  const a=accounts().find(x=>x.email===em&&x.pass===pw);if(!a){toast(t("bad_login"));return}
-  login({prenom:a.prenom,nom:a.nom,email:a.email});toast(t("login_ok",a.prenom))};
-function login(s){session=s;store.set("session",s);updateNav();location.hash="#membres";render.reg()}
-function logout(){session=null;store.set("session",null);updateNav();render.reg();location.hash="#accueil"}
+$("#joinForm").onsubmit=async e=>{e.preventDefault();
+  if(!sb){toast(t("net_err"));return}
+  const m={prenom:$("#j-prenom").value.trim(),nom:$("#j-nom").value.trim(),tel:$("#j-tel").value.trim(),adresse:$("#j-adresse").value.trim(),pays:$("#j-pays").value.trim()};
+  const email=$("#j-email").value.trim().toLowerCase();
+  const btn=e.target.querySelector("button[type=submit]");btn.disabled=true;
+  const {data,error}=await sb.auth.signUp({email,password:$("#j-pass").value,options:{data:m,emailRedirectTo:location.origin+"/#membres"}});
+  btn.disabled=false;
+  if(error){toast(/registered/i.test(error.message)?t("exists"):t("net_err")+" ("+error.message+")");return}
+  e.target.reset();
+  if(data.session){toast(t("welcome",m.prenom));location.hash="#membres"}
+  else openDlg(t("check_email_t"),`<p>${t("check_email",esc(email))}</p><button class="btn" type="button" onclick="dlg.close()">${t("close")}</button>`);
+};
+$("#loginForm").onsubmit=async e=>{e.preventDefault();
+  if(!sb){toast(t("net_err"));return}
+  const {data,error}=await sb.auth.signInWithPassword({email:$("#l-email").value.trim().toLowerCase(),password:$("#l-pass").value});
+  if(error){toast(/confirm/i.test(error.message)?t("not_confirmed"):t("bad_login"));return}
+  e.target.reset();toast(t("login_ok",data.user.user_metadata?.prenom||""));location.hash="#membres";
+};
+$("#forgotBtn").onclick=async()=>{
+  const em=$("#l-email").value.trim().toLowerCase();
+  if(!em){toast(t("forgot_need"));$("#l-email").focus();return}
+  const {error}=await sb.auth.resetPasswordForEmail(em,{redirectTo:location.origin+"/#adhesion"});
+  toast(error?t("net_err"):t("reset_sent"));
+};
+function askNewPassword(){
+  openDlg(t("new_pass_t"),`<form id="npForm"><div class="field"><label for="np">${t("password")}</label><input id="np" type="password" minlength="6" required></div><button class="btn" type="submit">${t("save_prefs")}</button></form>`);
+  $("#npForm").onsubmit=async e=>{e.preventDefault();const {error}=await sb.auth.updateUser({password:$("#np").value});
+    if(error){toast(t("net_err"));return}dlg.close();toast(t("pass_updated"))};
+}
+async function logout(){if(sb)await sb.auth.signOut();location.hash="#accueil"}
 function updateNav(){$("#navMember").textContent=session?`${t("nav_members")} (${session.prenom})`:t("nav_members")}
 
 /* ===================== Relevés bancaires ===================== */
@@ -939,8 +1048,9 @@ function renderMember(){
     <h2 style="margin:0">${esc(t("salam",session.prenom))}</h2>
     <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn gold" type="button" onclick="pay('contrib')">${t("pay_contrib")}</button><button class="btn ghost" type="button" onclick="logout()">${t("logout")}</button></div></div>
     <div class="tabs" role="tablist" data-tabs="mem">
-      ${[["annuaire","tab_dir"],["finances","tab_fin"],["releves","tab_bank"],["chat","tab_chat"],["notifs","tab_notifs"]].map(([v,l])=>`<button role="tab" aria-selected="${tabState.mem===v}" data-val="${v}">${t(l)}</button>`).join("")}
+      ${[["annuaire","tab_dir"],["finances","tab_fin"],["releves","tab_bank"],["chat","tab_chat"],["notifs","tab_notifs"],...(isAdmin?[["admin","tab_admin"]]:[])].map(([v,l])=>`<button role="tab" aria-selected="${tabState.mem===v}" data-val="${v}">${t(l)}</button>`).join("")}
     </div><div id="memBody"></div>`;
+  if(tabState.mem==="admin"&&!isAdmin)tabState.mem="annuaire";
   bindTabs(box);render.mem();
 }
 render.mem=()=>{
@@ -956,15 +1066,15 @@ render.mem=()=>{
       <div class="panel"><div class="muted">${t("contribs")}</div><div class="big">${money(tc)}</div></div>
       <div class="panel"><div class="muted">${t("expenses")}</div><div class="big">${money(td)}</div></div>
       <div class="panel"><div class="muted">${t("balance")}</div><div class="big ${tc-td>=0?"pos":"neg"}">${money(tc-td)}</div></div></div>
-      <div class="cols"><div class="panel"><h3>${t("contribs")}</h3><div class="scroll"><table style="min-width:360px"><thead><tr><th>${t("date")}</th><th>${t("source")}</th><th class="num">${t("amount_col")}</th></tr></thead><tbody>${DATA.contributions.map(c=>`<tr><td>${fmtDate(c.date)}</td><td>${esc(lineLabel(c))}</td><td class="num">${money(c.montant)}</td></tr>`).join("")||`<tr><td colspan="3" class="muted">${t("empty")}</td></tr>`}</tbody></table></div></div>
-      <div class="panel"><h3>${t("expenses")}</h3><div class="scroll"><table style="min-width:360px"><thead><tr><th>${t("date")}</th><th>${t("object")}</th><th class="num">${t("amount_col")}</th></tr></thead><tbody>${DATA.depenses.map(c=>`<tr><td>${fmtDate(c.date)}</td><td>${esc(lineLabel(c))}</td><td class="num">${money(c.montant)}</td></tr>`).join("")||`<tr><td colspan="3" class="muted">${t("empty")}</td></tr>`}</tbody></table></div></div></div>`;
+      <div class="cols"><div class="panel"><h3>${t("contribs")}</h3>${addBtn("contribution")}<div class="scroll"><table style="min-width:360px"><thead><tr><th>${t("date")}</th><th>${t("source")}</th><th class="num">${t("amount_col")}</th></tr></thead><tbody>${DATA.contributions.map(c=>`<tr><td>${fmtDate(c.date)}</td><td>${esc(lineLabel(c))}${ctl(c)}</td><td class="num">${money(c.montant)}</td></tr>`).join("")||`<tr><td colspan="3" class="muted">${t("empty")}</td></tr>`}</tbody></table></div></div>
+      <div class="panel"><h3>${t("expenses")}</h3>${addBtn("depense")}<div class="scroll"><table style="min-width:360px"><thead><tr><th>${t("date")}</th><th>${t("object")}</th><th class="num">${t("amount_col")}</th></tr></thead><tbody>${DATA.depenses.map(c=>`<tr><td>${fmtDate(c.date)}</td><td>${esc(lineLabel(c))}${ctl(c)}</td><td class="num">${money(c.montant)}</td></tr>`).join("")||`<tr><td colspan="3" class="muted">${t("empty")}</td></tr>`}</tbody></table></div></div></div>`;
   }else if(tabState.mem==="releves"){
     const st=buildStatements();
-    b.innerHTML=`<div class="panel"><h3>${t("bank_title")}</h3><p class="muted" style="margin-bottom:4px">${t("bank_lead")}</p><p style="font-size:.92rem;margin-bottom:10px">${t("account")}</p>
+    b.innerHTML=`<div class="panel"><h3>${t("bank_title")}</h3><p class="muted" style="margin-bottom:4px">${t("bank_lead")}</p><p style="font-size:.92rem;margin-bottom:10px">${t("account")}</p>${addBtn("releve")}
     <div class="st-row head"><span>${t("month")}</span><span class="n">${t("opening")}</span><span class="n">${t("deposits")}</span><span class="n">${t("withdrawals")}</span><span class="n">${t("closing")}</span><span></span></div>
     ${st.length?"":`<p class="muted">${t("empty")}</p>`}${st.map((s,i)=>({s,i})).reverse().map(({s,i},j)=>`<div class="st-row"><span><b>${monthName(s.mois)}</b>${j===0?` <span class="tag">${t("latest")}</span>`:""}</span>
       <span class="n" data-l="${t("opening")}">${money2(s.open)}</span><span class="n pos" data-l="${t("deposits")}">+${money2(s.dep)}</span><span class="n neg" data-l="${t("withdrawals")}">−${money2(s.wd)}</span><span class="n" data-l="${t("closing")}"><b>${money2(s.close)}</b></span>
-      <button class="btn small ghost" type="button" onclick="showStatement(${i})">${t("view_st")}</button></div>`).join("")}</div>`;
+      <span><button class="btn small ghost" type="button" onclick="showStatement(${i})">${t("view_st")}</button>${ctl(s)}</span></div>`).join("")}</div>`;
   }else if(tabState.mem==="chat"){
     const room=()=>"MuUminGrandsLacs-"+Math.random().toString(36).slice(2,8);
     const ra=room(),rv=room();
@@ -973,28 +1083,66 @@ render.mem=()=>{
       <div class="panel"><h3>${t("call_title")}</h3><p class="muted">${t("call_text")}</p>
       <div style="display:flex;gap:8px;flex-wrap:wrap"><a class="btn" href="https://meet.jit.si/${ra}#config.startWithVideoMuted=true" target="_blank" rel="noopener">${t("audio_call")}</a><a class="btn ghost" href="https://meet.jit.si/${rv}" target="_blank" rel="noopener">${t("video_call")}</a></div>
       <p class="muted" style="font-size:.85rem;margin-top:10px;word-break:break-all">${t("call_room")} : meet.jit.si/${rv}</p></div></div>`;
-    const seed=[];
-    const draw=()=>{const ms=store.get("chat",seed);$("#msgs").innerHTML=ms.map(m=>`<div class="msg${m.de===session.prenom+" "+session.nom?" me":""}" dir="auto"><small>${esc(m.de)}, ${m.h}</small>${esc(m.t)}</div>`).join("");$("#msgs").scrollTop=1e6};
-    $("#chatForm").onsubmit=e=>{e.preventDefault();const v=$("#chatIn").value.trim();if(!v)return;const ms=store.get("chat",seed);ms.push({de:session.prenom+" "+session.nom,t:v,h:new Date().toLocaleTimeString("fr-CA",{hour:"2-digit",minute:"2-digit"})});store.set("chat",ms.slice(-200));$("#chatIn").value="";draw()};
+    const draw=async()=>{if(!$("#msgs"))return;const {data}=await sb.from("messages").select("*").order("created_at",{ascending:false}).limit(200);
+      const ms=(data||[]).reverse();const box=$("#msgs");if(!box)return;
+      box.innerHTML=ms.map(m=>`<div class="msg${m.user_id===myId?" me":""}" dir="auto"><small>${esc(m.auteur)}, ${new Date(m.created_at).toLocaleString(LOC[lang],{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"})}</small>${esc(m.texte)}${(m.user_id===myId||isAdmin)?` <button class="linkbtn" type="button" onclick="delMsg('${m.id}')">×</button>`:""}</div>`).join("")||`<p class="muted">${t("empty")}</p>`;box.scrollTop=1e6};
+    window.delMsg=async id=>{await sb.from("messages").delete().eq("id",id);draw()};
+    $("#chatForm").onsubmit=async e=>{e.preventDefault();const v=$("#chatIn").value.trim();if(!v)return;
+      const {error}=await sb.from("messages").insert({auteur:session.prenom+" "+session.nom,texte:v.slice(0,2000)});if(error){toast(t("net_err"));return}$("#chatIn").value="";draw()};
+    clearInterval(window._chatT);window._chatT=setInterval(()=>{if(tabState.mem==="chat"&&location.hash==="#membres")draw();else clearInterval(window._chatT)},10000);
     draw();
+  }else if(tabState.mem==="admin"){
+    renderAdmin(b);
   }else{
-    const p=store.get("notifs",{sms:true,wa:false,email:true,tel:"",mail:session.email,ev:true,deces:true,dons:false});
+    const pr=session.profile||{};const p={sms:false,wa:false,email:true,ev:true,deces:true,dons:false,...(pr.notif||{}),tel:pr.tel||"",mail:pr.email||session.email};
     b.innerHTML=`<form class="panel" id="notifForm" style="max-width:640px"><h3>${t("notif_title")}</h3>
       <p class="muted">${t("notif_text")}</p>
       <div class="checks"><label class="check"><input type="checkbox" id="n-sms" ${p.sms?"checked":""}> ${t("sms")}</label>
       <label class="check"><input type="checkbox" id="n-wa" ${p.wa?"checked":""}> ${t("whatsapp")}</label>
       <label class="check"><input type="checkbox" id="n-email" ${p.email?"checked":""}> ${t("email")}</label></div>
       <div class="grid2"><div class="field"><label for="n-tel">${t("mobile")}</label><input id="n-tel" type="tel" value="${esc(p.tel)}" placeholder="418 555-0000" dir="ltr"></div>
-      <div class="field"><label for="n-mail">${t("email")}</label><input id="n-mail" type="email" value="${esc(p.mail)}" dir="ltr"></div></div>
+      <div class="field"><label for="n-mail">${t("email")}</label><input id="n-mail" type="email" value="${esc(p.mail)}" dir="ltr" readonly></div></div>
       <label>${t("topics")}</label>
       <label class="check"><input type="checkbox" id="n-ev" ${p.ev?"checked":""}> ${t("t_ev")}</label>
       <label class="check"><input type="checkbox" id="n-dc" ${p.deces?"checked":""}> ${t("t_dc")}</label>
       <label class="check" style="margin-bottom:16px"><input type="checkbox" id="n-dn" ${p.dons?"checked":""}> ${t("t_dn")}</label>
       <button class="btn" type="submit">${t("save_prefs")}</button></form>`;
-    $("#notifForm").onsubmit=e=>{e.preventDefault();const n={sms:$("#n-sms").checked,wa:$("#n-wa").checked,email:$("#n-email").checked,tel:$("#n-tel").value,mail:$("#n-mail").value,ev:$("#n-ev").checked,deces:$("#n-dc").checked,dons:$("#n-dn").checked};
-      if((n.sms||n.wa)&&!n.tel){toast(t("need_phone"));return}store.set("notifs",n);toast(t("prefs_saved"))};
+    $("#notifForm").onsubmit=async e=>{e.preventDefault();const n={sms:$("#n-sms").checked,wa:$("#n-wa").checked,email:$("#n-email").checked,tel:$("#n-tel").value,mail:$("#n-mail").value,ev:$("#n-ev").checked,deces:$("#n-dc").checked,dons:$("#n-dn").checked};
+      if((n.sms||n.wa)&&!n.tel){toast(t("need_phone"));return}
+      const {mail,tel,...notif}=n;const {error}=await sb.from("profiles").update({notif,tel}).eq("id",myId);
+      if(error){toast(t("net_err"));return}session.profile={...session.profile,notif,tel};toast(t("prefs_saved"))};
   }
 };
+
+/* ===================== Panneau d'administration ===================== */
+async function renderAdmin(b){
+  b.innerHTML=`<p class="muted">Chargement…</p>`;
+  const [ad,pa,rv,co]=await Promise.all([
+    sb.from("admin_emails").select("*").order("email"),
+    sb.from("paiements").select("*").order("created_at",{ascending:false}).limit(200),
+    sb.from("rsvps").select("*").order("created_at",{ascending:false}).limit(500),
+    sb.from("cours").select("*").order("created_at",{ascending:false}).limit(500)]);
+  const who=id=>{const m=DATA.membres.find(x=>x.id===id);return m?m.prenom+" "+m.nom:"—"};
+  const title=id=>{const e=findEntry(id);return e?L(e.titre):"—"};
+  const dt=d=>new Date(d).toLocaleDateString(LOC[lang],{day:"numeric",month:"short",year:"numeric"});
+  const tbl=(head,rows,n)=>`<div class="scroll"><table><thead><tr>${head.map(h=>`<th>${h}</th>`).join("")}</tr></thead><tbody>${rows.join("")||`<tr><td colspan="${n}" class="muted">${t("empty")}</td></tr>`}</tbody></table></div>`;
+  b.innerHTML=`
+  <div class="panel admin-box"><h3>Administrateurs</h3><p class="muted">Une personne devient administratrice quand son courriel est dans cette liste <b>et</b> qu'elle a confirmé son compte.</p>
+    ${tbl(["Courriel",""],(ad.data||[]).map(a=>`<tr><td>${esc(a.email)}</td><td><button class="btn small ghost danger" type="button" onclick="delAdmin('${esc(a.email)}')">Retirer</button></td></tr>`),2)}
+    <form id="addAdminForm" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px"><input id="newAdmin" type="email" required placeholder="courriel@exemple.com" style="flex:1;min-width:200px"><button class="btn small" type="submit">Ajouter</button></form></div>
+  <div class="panel admin-box"><h3>Paiements déclarés</h3>
+    ${tbl(["Date","Membre","Type","Montant","Référence","Statut",""],(pa.data||[]).map(p=>`<tr><td>${dt(p.created_at)}</td><td>${esc(who(p.user_id))}</td><td>${p.kind==="don"?"Don : "+esc(title(p.campagne)):"Contribution"}</td><td class="num">${money(+p.montant)}</td><td dir="ltr">${esc(p.reference)}</td><td>${{en_attente:"En attente",confirme:"Confirmé",refuse:"Refusé"}[p.statut]}</td><td>${p.statut==="en_attente"?`<button class="btn small" type="button" onclick="setPay('${p.id}','confirme')">Confirmer</button> <button class="btn small ghost" type="button" onclick="setPay('${p.id}','refuse')">Refuser</button>`:""}</td></tr>`),7)}
+    <p class="muted" style="font-size:.85rem;margin-top:8px">Après avoir vérifié le virement dans le compte bancaire, cliquez sur « Confirmer », puis ajoutez la contribution dans l'onglet Finances ou mettez à jour la campagne de dons.</p></div>
+  <div class="panel admin-box"><h3>Confirmations de présence</h3>
+    ${tbl(["Activité","Nom","Personnes","Téléphone","Reçu le"],(rv.data||[]).map(r=>`<tr><td>${esc(title(r.item_id))}</td><td>${esc(r.nom)}</td><td class="num">${r.n}</td><td dir="ltr">${esc(r.tel)}</td><td>${dt(r.created_at)}</td></tr>`),5)}</div>
+  <div class="panel admin-box"><h3>Inscriptions aux cours de Coran</h3>
+    ${tbl(["Participant","Parent","Âge","Formule","Niveau","Téléphone","Courriel","Reçu le",""],(co.data||[]).map(c=>`<tr><td>${esc(c.nom)}</td><td>${esc(c.parent)}</td><td>${c.age==="child"?"Enfant":"Adulte"}</td><td>${c.mode==="online"?"En ligne":"Présentiel"}</td><td>${esc(c.niveau)}</td><td dir="ltr">${esc(c.tel)}</td><td><a href="mailto:${esc(c.email)}">${esc(c.email)}</a></td><td>${dt(c.created_at)}</td><td><button class="btn small ghost danger" type="button" onclick="delCours('${c.id}')">Supprimer</button></td></tr>`),9)}</div>`;
+  $("#addAdminForm").onsubmit=async e=>{e.preventDefault();const em=$("#newAdmin").value.trim().toLowerCase();
+    const {error}=await sb.from("admin_emails").insert({email:em});toast(error?"Erreur : "+error.message:"Administrateur ajouté.");renderAdmin(b)};
+}
+async function delAdmin(em){if(!confirm("Retirer "+em+" des administrateurs ?"))return;const {error}=await sb.from("admin_emails").delete().eq("email",em);toast(error?"Erreur : "+error.message:"Retiré.");await refreshSession();if(isAdmin)renderAdmin($("#memBody"));else renderMember()}
+async function setPay(id,st){const {error}=await sb.from("paiements").update({statut:st}).eq("id",id);toast(error?"Erreur : "+error.message:"Mis à jour.");renderAdmin($("#memBody"))}
+async function delCours(id){if(!confirm("Supprimer cette inscription ?"))return;await sb.from("cours").delete().eq("id",id);renderAdmin($("#memBody"))}
 
 /* ===================== Thème & démarrage ===================== */
 $("#themeBtn").onclick=()=>{const r=document.documentElement;const dark=r.dataset.theme?r.dataset.theme==="dark":matchMedia("(prefers-color-scheme: dark)").matches;r.dataset.theme=dark?"light":"dark";store.set("theme",r.dataset.theme)};
@@ -1006,6 +1154,10 @@ function renderAll(){
   if(location.hash==="#membres")renderMember();
 }
 bindTabs(document);applyLang();route();
+if(sb){sb.auth.onAuthStateChange(ev=>{
+  if(ev==="PASSWORD_RECOVERY")setTimeout(askNewPassword,0);
+  if(["INITIAL_SESSION","SIGNED_IN","SIGNED_OUT","USER_UPDATED"].includes(ev))setTimeout(async()=>{await refreshSession();if(location.hash==="#membres")renderMember()},0);
+})}else{toast("Connexion au serveur impossible.")}
 setInterval(()=>{renderHeroPrayers();checkAdhan()},15000);
 document.addEventListener("visibilitychange",()=>{if(!document.hidden){renderHeroPrayers();checkAdhan()}});
 </script>
